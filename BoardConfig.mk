@@ -205,6 +205,11 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USES_MKE2FS := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
+
+# Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_samsung_sm8250
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # SePolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk

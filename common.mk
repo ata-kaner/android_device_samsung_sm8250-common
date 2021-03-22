@@ -361,7 +361,7 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.2.vendor
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+    $(COMMON_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # PowerShare
 PRODUCT_PACKAGES += \

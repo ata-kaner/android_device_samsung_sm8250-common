@@ -58,6 +58,15 @@ done
         SRC="adb"
     fi
 
+function blob_fixup() {
+    case "${1}" in
+        vendor/lib64/hw/android.hardware.health@2.0-impl-2.1-samsung.so)
+            # Replace libutils with vndk30 libutils
+            "${PATCHELF}" --replace-needed libutils.so libutils-v30.so "${2}"
+            ;;
+    esac
+}
+
 if [ -z "${ONLY_TARGET}" ]; then
     # Initialize the helper for common device
     setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true "${CLEAN_VENDOR}"

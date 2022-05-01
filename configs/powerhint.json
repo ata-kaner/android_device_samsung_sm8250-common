@@ -279,26 +279,6 @@
                 "aot_enable,1"
             ],
             "DefaultIndex":0
-        },
-        {
-            "Name": "PowerHALMainState",
-            "Path": "vendor.powerhal.state",
-            "Values": [
-                "SUSTAINED_PERFORMANCE",
-                "VR_MODE",
-                "VR_SUSTAINED_PERFORMANCE",
-                ""
-            ],
-            "Type": "Property"
-        },
-        {
-            "Name": "PowerHALRenderingState",
-            "Path": "vendor.powerhal.rendering",
-            "Values": [
-                "EXPENSIVE_RENDERING",
-                ""
-            ],
-            "Type": "Property"
         }
     ],
     "Actions": [
@@ -568,12 +548,6 @@
         },
         {
             "PowerHint": "SUSTAINED_PERFORMANCE",
-            "Node": "PowerHALMainState",
-            "Duration": 0,
-            "Value": "SUSTAINED_PERFORMANCE"
-        },
-        {
-            "PowerHint": "SUSTAINED_PERFORMANCE",
             "Node": "CPUBigClusterMaxFreq",
             "Duration": 0,
             "Value": "1497600"
@@ -595,24 +569,6 @@
             "Node": "GPUMaxFreq",
             "Duration": 0,
             "Value": "427000000"
-        },
-        {
-            "PowerHint": "VR_MODE",
-            "Node": "PowerHALMainState",
-            "Duration": 0,
-            "Value": "VR_MODE"
-        },
-        {
-            "PowerHint": "VR_SUSTAINED_PERFORMANCE",
-            "Node": "PowerHALMainState",
-            "Duration": 0,
-            "Value": "VR_SUSTAINED_PERFORMANCE"
-        },
-        {
-            "PowerHint": "EXPENSIVE_RENDERING",
-            "Node": "PowerHALRenderingState",
-            "Duration": 0,
-            "Value": "EXPENSIVE_RENDERING"
         },
         {
             "PowerHint": "EXPENSIVE_RENDERING",

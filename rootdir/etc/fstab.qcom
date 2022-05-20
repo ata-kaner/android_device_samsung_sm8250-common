@@ -58,7 +58,7 @@ odm                                                     /odm                   e
 
 # VOLD:samsung/common/fstab.samsung
 /devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.*.auto*   auto                   auto    defaults                                                                                               voldmanaged=usb:auto
-/devices/platform/soc/8804000.sdhci/mmc_host*           auto                   vfat    defaults                                                                                               voldmanaged=sdcard:auto
+/devices/platform/soc/8804000.sdhci/mmc_host*           auto                   auto    defaults                                                                                               wait,voldmanaged=sdcard:auto,encryptable=userdata
 
 # Samsung ODE
 /dev/block/bootdevice/by-name/keydata	                /keydata	          ext4	   noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=continue             wait,check

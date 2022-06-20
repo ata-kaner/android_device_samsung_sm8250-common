@@ -64,6 +64,9 @@ function blob_fixup() {
             # Replace libutils with vndk30 libutils
             "${PATCHELF}" --replace-needed libutils.so libutils-v30.so "${2}"
             ;;
+        vendor/lib64/libsec-ril.so)
+            sed -i 's/ril.dds.call.ongoing/vendor.calls.ongoing/g' "${2}"
+            ;;
     esac
 }
 

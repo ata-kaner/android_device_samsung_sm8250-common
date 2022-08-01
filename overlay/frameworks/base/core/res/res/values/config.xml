@@ -160,6 +160,11 @@
         <item>7,1</item>
     </string-array>
 
+    <!-- Whether the device enable the standalone (SA) mode of 5G NR.-->
+    <bool name="config_telephony5gStandalone">true</bool>
+    <!-- Whether the device enable the non-standalone (NSA) mode of 5G NR.-->
+    <bool name="config_telephony5gNonStandalone">true</bool>
+
     <!-- Flag indicating whether we should enable the automatic brightness.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>

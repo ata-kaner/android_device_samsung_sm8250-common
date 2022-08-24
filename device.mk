@@ -33,6 +33,7 @@ PRODUCT_TARGET_VNDK_VERSION := 30
 
 # No A/B
 AB_OTA_UPDATER := false
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
 # Init files and fstab
 PRODUCT_PACKAGES += \

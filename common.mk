@@ -31,6 +31,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+
 # Init files and fstab
 PRODUCT_PACKAGES += \
     fstab.ramplus \

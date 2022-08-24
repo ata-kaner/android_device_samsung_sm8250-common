@@ -24,6 +24,9 @@ $(call inherit-product, vendor/samsung/r8q/r8q-vendor.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# Non A/B
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+
 # Fingerprint
 TARGET_HAS_UDFPS := true
 

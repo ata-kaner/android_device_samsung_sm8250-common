@@ -317,6 +317,9 @@ on post-fs-data
 # Create the directories used by WiGig Sensing
     mkdir /data/vendor/sensing 0770 system wifi
 
+# Create directory for gatekeeper
+    mkdir /data/vendor/gatekeeper 0770 system system
+
 # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
     chown radio radio /data/vendor/connectivity

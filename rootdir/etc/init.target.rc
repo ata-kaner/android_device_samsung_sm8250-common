@@ -255,3 +255,10 @@ service dcvs-sh /vendor/bin/init.qti.dcvs.sh
 
 on property:vendor.dcvs.prop=1
     start dcvs-sh
+
+## WiFi Country code
+on property:ro.boot.em.model=SM-G780G
+   setprop ro.boot.wificountrycode EU
+
+on property:ro.boot.em.model=SM-G781B
+   setprop ro.boot.wificountrycode EU

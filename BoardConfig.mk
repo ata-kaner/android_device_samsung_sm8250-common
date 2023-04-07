@@ -163,6 +163,9 @@ BOARD_USES_ALSA_AUDIO := true
 # Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_samsung_r8q
+
 # HIDL manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/configs/framework_compatibility_matrix.xml \

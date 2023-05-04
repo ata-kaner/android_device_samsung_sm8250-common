@@ -1405,6 +1405,13 @@
         <item>700</item>
     </integer-array>
 
+    <!-- Height of the status bar.
+         Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
+         -->
+    <dimen name="status_bar_height_default">24dp</dimen>
+    <dimen name="status_bar_height_portrait">88px</dimen>
+    <dimen name="status_bar_height_landscape">24dp</dimen>
+
      <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
          {@link android.util.PathParser}.

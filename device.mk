@@ -528,6 +528,9 @@ PRODUCT_PACKAGES += \
     android.hardware.tetheroffload.control@1.0.vendor
 
 # Thermal
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/thermal/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
+
 PRODUCT_PACKAGES += \
     android.frameworks.cameraservice.service@2.1.vendor \
     android.hardware.thermal@2.0.vendor

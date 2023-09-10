@@ -98,14 +98,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.ir</name>
-        <version>1.0</version>
-        <interface>
-            <name>IConsumerIr</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.light</name>
         <interface>
@@ -161,13 +153,6 @@
         <version>2.3</version>
         <interface>
             <name>ISoundTriggerHw</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.usb</name>
-        <interface>
-            <name>IUsb</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -241,14 +226,6 @@
         <interface>
             <name>ISehBluetoothAudioProvidersFactory</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.camera.provider</name>
-        <version>4.0</version>
-        <interface>
-            <name>ISehCameraProvider</name>
-            <instance>legacy/0</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">

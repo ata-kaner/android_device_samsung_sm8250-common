@@ -28,7 +28,7 @@
 #
 
 import /vendor/etc/init/hw/init.samsung.bsp.rc
-import /vendor/etc/init/hw/init.samsung.power.rc
+import /vendor/etc/init/hw/init.samsung.eif.rc
 import /vendor/etc/init/hw/init.samsung.display.rc
 
 on early-init

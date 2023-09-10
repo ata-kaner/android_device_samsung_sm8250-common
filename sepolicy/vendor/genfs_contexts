@@ -52,7 +52,6 @@ genfscon sysfs /class/sec/hall_ic/hall_logical_detect                           
 genfscon sysfs /class/sec/led/led_blink                                                                        u:object_r:sysfs_ski_led_writable:s0
 genfscon sysfs /class/sec/pcie-wifi/pcie_l1ss_ctrl                                                             u:object_r:sysfs_ss_writable:s0
 genfscon sysfs /class/sec/sec_hw_param(/.*)?                                                                   u:object_r:sysfs_ski_hwparam_readable:s0
-genfscon sysfs /class/sec/sec_ir                                                                               u:object_r:sysfs_sec_ir:s0
 genfscon sysfs /class/sec/sec_key(/.*)?                                                                        u:object_r:sysfs_ss_writable:s0
 genfscon sysfs /class/sec/sec_touchkey(/.*)?                                                                   u:object_r:sysfs_ss_writable:s0
 genfscon sysfs /class/sec/switch                                                                               u:object_r:sysfs_switch:s0

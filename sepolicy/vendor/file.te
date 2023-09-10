@@ -48,6 +48,13 @@ type dqmdbgblk_file, file_type;
 type keydata_data_file, file_type;
 type keyrefuge_data_file, file_type;
 type omr_file, file_type, mlstrustedobject;
+type carrier_file, file_type;
+type misc_file, file_type;
+type optics_file, file_type;
+type prism_file, file_type;
+type spu_file, file_type;
+
+
 
 # proc
 type proc_abox, fs_type, proc_type;
@@ -76,7 +83,6 @@ type sysfs_iio, sysfs_type, fs_type;
 type sysfs_lpeff, sysfs_type, fs_type;
 type sysfs_modem, sysfs_type, fs_type;
 type sysfs_sec, sysfs_type, fs_type;
-type sysfs_sec_ir, sysfs_type, fs_type;
 type sysfs_sec_touchscreen, sysfs_type, fs_type;
 type sysfs_secgpio, sysfs_type, fs_type;
 type sysfs_socinfo, sysfs_type, fs_type;

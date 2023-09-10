@@ -63,7 +63,6 @@
 /dev/goodix_fp                                  u:object_r:goodix_device:s0
 /dev/gsm_.*                                     u:object_r:sec_radio_device:s0
 /dev/ionfd2phys                                 u:object_r:ion_device:s0
-/dev/ir_spi                                     u:object_r:ir_spi_device:s0
 /dev/iva_ctl                                    u:object_r:stitch_device:s0
 /dev/jsqz                                       u:object_r:jsqz_device:s0
 /dev/kgsl-[0-9a-z]*                             u:object_r:kgsl_device:s0
@@ -195,19 +194,22 @@
 /keyrefuge(/.*)?                                u:object_r:keyrefuge_data_file:s0
 /omr(/.*)?                                      u:object_r:omr_file:s0
 /sec_efs(/.*)?                                  u:object_r:system_sec_efs_file:s0
+/carrier(/.*)?                                  u:object_r:carrier_file:s0
+/misc(/.*)?                                  u:object_r:misc_file:s0
+/optics(/.*)?                                  u:object_r:optics_file:s0
+/prism(/.*)?                                  u:object_r:prism_file:s0
+/spu(/.*)?                                  u:object_r:spu_file:s0
 
 # HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@[0-9]\.[0-9]-service-samsung\.sm8250     u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@[0-9]\.[0-9]-service_64\.samsung-sm8250         u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@[0-9]\.[0-9]-service\.widevine                               u:object_r:vendor_hal_drm_widevine_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.health@[0-9]\.[0-9]-service\.samsung                             u:object_r:hal_health_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.ir@[0-9]\.[0-9]-service\.samsung                                 u:object_r:hal_ir_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@[0-9]\.[0-9]-service\.samsung                          u:object_r:hal_keymaster_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light(@[0-9].[0-9])?-service\.samsung\.sm8250                    u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@[0-9]\.[0-9]-service\.samsung                                u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power(@[0-9]\.[0-9])?-service\.samsung-libperfmgr                u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.sensors(@[0-9].[0-9])?-service\.samsung-multihal                 u:object_r:hal_sensors_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.usb(@[0-9].[0-9])?-service\.samsung                              u:object_r:hal_usb_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator(@[0-9].[0-9])?-service\.samsung                         u:object_r:hal_vibrator_default_exec:s0
 
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.fastcharge@[0-9]\.[0-9]-service\.samsung                           u:object_r:hal_lineage_fastcharge_default_exec:s0
@@ -215,7 +217,7 @@
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.powershare@[0-9]\.[0-9]-service\.samsung                           u:object_r:hal_lineage_powershare_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@[0-9]\.[0-9]-service\.samsung\.sm8250                        u:object_r:hal_lineage_touch_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.biometrics\.face@[0-9]\.[0-9]-service                    u:object_r:vendor_biometricsface_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.camera\.provider@[0-9]\.[0-9]-service_64                 u:object_r:hal_camera_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@2\.6-service_64\.samsung\-sm8250                u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.thermal@[0-9]\.[0-9]-service                             u:object_r:hal_thermal_default_exec:s0
 
 # Socket

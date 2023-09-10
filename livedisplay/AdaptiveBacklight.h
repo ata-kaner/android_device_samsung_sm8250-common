@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019-2022 The LineageOS Project
+ * Copyright (C) 2019-2023 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-#pragma once
+#ifndef VENDOR_LINEAGE_LIVEDISPLAY_V2_0_ADAPTIVEBACKLIGHT_H
+#define VENDOR_LINEAGE_LIVEDISPLAY_V2_0_ADAPTIVEBACKLIGHT_H
 
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
-#include <vendor/lineage/touch/1.0/IStylusMode.h>
-#include "samsung_touch.h"
+#include <vendor/lineage/livedisplay/2.0/IAdaptiveBacklight.h>
 
 namespace vendor {
 namespace lineage {
-namespace touch {
-namespace V1_0 {
+namespace livedisplay {
+namespace V2_0 {
 namespace samsung {
 
 using ::android::hardware::hidl_array;
@@ -35,13 +35,11 @@ using ::android::hardware::Return;
 using ::android::hardware::Void;
 using ::android::sp;
 
-class StylusMode : public IStylusMode {
+class AdaptiveBacklight : public IAdaptiveBacklight {
   public:
-    StylusMode() = default;
-
     bool isSupported();
 
-    // Methods from ::vendor::lineage::touch::V1_0::IStylusMode follow.
+    // Methods from ::vendor::lineage::livedisplay::V2_0::IAdaptiveBacklight follow.
     Return<bool> isEnabled() override;
     Return<bool> setEnabled(bool enabled) override;
 
@@ -49,7 +47,9 @@ class StylusMode : public IStylusMode {
 };
 
 }  // namespace samsung
-}  // namespace V1_0
-}  // namespace touch
+}  // namespace V2_0
+}  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor
+
+#endif  // VENDOR_LINEAGE_LIVEDISPLAY_V2_0_ADAPTIVEBACKLIGHT_H

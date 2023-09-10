@@ -89,7 +89,6 @@ on init
     symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
     chown system system /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
-    start logd
 
 on early-fs
     start vold
@@ -246,15 +245,6 @@ on property:init.svc.vendor.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop vendor.per_proxy
-
-on property:vold.decrypt=trigger_restart_framework
-    start vendor.cnss_diag
-
-service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM
-    class main
-    user system
-    group system wifi inet sdcard_rw media_rw diag
-    oneshot
 
 service dcvs-sh /vendor/bin/init.qti.dcvs.sh
     class late_start

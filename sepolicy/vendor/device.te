@@ -16,7 +16,6 @@ type drb_device, dev_type;
 type fp_sensor_device, dev_type;
 type goodix_device, dev_type;
 type hrm_device, dev_type;
-type ir_spi_device, dev_type;
 type jsqz_device, dev_type;
 type kgsl_device, dev_type;
 type mcfrc_device, dev_type;

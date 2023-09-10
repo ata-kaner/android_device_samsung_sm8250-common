@@ -40,6 +40,11 @@
         <fqname>@1.2::IMediaCasService/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.configstore</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.1::ISurfaceFlingerConfigs/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.dumpstate</name>
         <transport>hwbinder</transport>
         <fqname>@1.1::IDumpstateDevice/default</fqname>
@@ -49,11 +54,6 @@
         <transport>hwbinder</transport>
         <fqname>@1.0::IGatekeeper/default</fqname>
         <fqname>@1.0::IGatekeeper/mdfpp</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.ir</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IConsumerIr/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
@@ -163,7 +163,6 @@
         <transport>hwbinder</transport>
         <fqname>@2.0::IAdaptiveBacklight/default</fqname>
         <fqname>@2.0::IDisplayColorCalibration/default</fqname>
-        <fqname>@2.0::IDisplayModes/default</fqname>
         <fqname>@2.0::IReadingEnhancement/default</fqname>
         <fqname>@2.0::ISunlightEnhancement/default</fqname>
     </hal>
@@ -171,8 +170,6 @@
         <name>vendor.lineage.touch</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IGloveMode/default</fqname>
-        <fqname>@1.0::IKeyDisabler/default</fqname>
-        <fqname>@1.0::IStylusMode/default</fqname>
         <fqname>@1.0::ITouchscreenGesture/default</fqname>
     </hal>
     <hal format="hidl">
@@ -350,11 +347,6 @@
         <name>vendor.samsung.hardware.bluetooth.audio</name>
         <transport>hwbinder</transport>
         <fqname>@2.1::ISehBluetoothAudioProvidersFactory/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.samsung.hardware.camera.provider</name>
-        <transport>hwbinder</transport>
-        <fqname>@4.0::ISehCameraProvider/legacy/0</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.samsung.hardware.gnss</name>

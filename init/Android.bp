@@ -22,3 +22,16 @@ cc_library_static {
     shared_libs: ["libbase"],
     recovery_available: true,
 }
+
+cc_library_static {
+    name: "libinit_r8q",
+    srcs: ["init_r8q.cpp"],
+    header_libs: ["libbase_headers"],
+    include_dirs: [
+        "device/samsung/r8q/init",
+        "external/fmtlib/include",
+        "system/core/init",
+    ],
+    whole_static_libs: ["libinit_helpers_sm8250"],
+    recovery_available: true,
+}

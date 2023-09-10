@@ -16,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter y2qdcmw,$(TARGET_DEVICE)),)
+ifneq ($(filter r8q,$(TARGET_DEVICE)),)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
@@ -31,6 +31,8 @@ FIRMWARE_MODEM_MOUNT_POINT := $(TARGET_OUT_VENDOR)/firmware-modem
 $(FIRMWARE_MODEM_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating $(FIRMWARE_MODEM_MOUNT_POINT)"
 	@mkdir -p $(TARGET_OUT_VENDOR)/firmware-modem
+	@echo "Creating firmware-modem symlink"
+	$(hide) ln -sf /vendor/firmware-modem $(TARGET_OUT_ROOT)/firmware-modem
 
 BT_FIRMWARE_MOUNT_POINT := $(TARGET_OUT_VENDOR)/bt_firmware
 $(BT_FIRMWARE_MOUNT_POINT): $(LOCAL_INSTALLED_MODULE)
@@ -101,7 +103,7 @@ $(RFS_MSM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /mnt/vendor/persist/rfs/msm/mpss $@/readwrite
 	$(hide) ln -sf /mnt/vendor/persist/rfs/shared $@/shared
 	$(hide) ln -sf /mnt/vendor/persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /vendor/firmware_mnt $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware-modem $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
 
 RFS_MDM_MPSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/mpss/
@@ -113,7 +115,7 @@ $(RFS_MDM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /mnt/vendor/persist/rfs/mdm/mpss $@/readwrite
 	$(hide) ln -sf /mnt/vendor/persist/rfs/shared $@/shared
 	$(hide) ln -sf /mnt/vendor/persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /vendor/firmware_modem $@/readonly/firmware
+	$(hide) ln -sf /vendor/firmware-modem $@/readonly/firmware
 	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
 
 RFS_MSM_SLPI_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/msm/slpi/
@@ -144,7 +146,7 @@ RFS_MDM_TN_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/tn/
 $(RFS_MDM_TN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating RFS MDM TN folder structure: $@"
 	@rm -rf $@/*
-	@mkdir -p $(dir $@)/readonly/vendor
+	@mkdir -p $(dir $@)/readonly
 	$(hide) ln -sf /data/vendor/tombstones/rfs/tn $@/ramdumps
 	$(hide) ln -sf /mnt/vendor/persist/rfs/mdm/tn $@/readwrite
 	$(hide) ln -sf /mnt/vendor/persist/rfs/shared $@/shared

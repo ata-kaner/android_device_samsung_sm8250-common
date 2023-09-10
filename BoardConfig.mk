@@ -14,7 +14,10 @@
 # limitations under the License.
 #
 
-COMMON_PATH := device/samsung/sm8250-common
+# OTA assert
+TARGET_OTA_ASSERT_DEVICE := r8q,r8qxx,r8qxxx
+
+DEVICE_PATH := device/samsung/r8q
 
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -44,7 +47,7 @@ TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := := cortex-a55
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
 
 # Audio policy
 AUDIOSERVER_MULTILIB := 32
@@ -70,10 +73,8 @@ BOARD_USES_ALSA_AUDIO := true
 TARGET_BOOTLOADER_BOARD_NAME := kona
 TARGET_NO_BOOTLOADER := true
 
-# Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-
 # Display
+TARGET_SCREEN_DENSITY := 420
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2000U | 0x400000000LL
 TARGET_USES_COLOR_METADATA := true
 TARGET_USES_DISPLAY_RENDER_INTENTS := true
@@ -90,14 +91,14 @@ TARGET_USES_QTI_MAPPER_EXTENSIONS_1_1 := true
 TARGET_ENABLE_MEDIADRM_64 := true
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Fingerprint
 TARGET_SEC_FP_HAS_FINGERPRINT_GESTURES := true
 TARGET_SEC_FP_REQUEST_FORCE_CALIBRATE := true
 
 # FOD
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.samsung-sm8250
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.samsung-sm8250
 TARGET_USES_FOD_ZPOS := true
 
 # Health
@@ -108,42 +109,40 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 
 # HIDL manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    $(COMMON_PATH)/configs/framework_compatibility_matrix.xml \
+    $(DEVICE_PATH)/configs/framework_compatibility_matrix.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
     vendor/lineage/config/device_framework_matrix.xml
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/manifest.xml
-DEVICE_MATRIX_FILE += $(COMMON_PATH)/configs/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/manifest.xml
+DEVICE_MATRIX_FILE += $(DEVICE_PATH)/configs/compatibility_matrix.xml
+
+# INIT
+TARGET_INIT_VENDOR_LIB ?= //$(DEVICE_PATH):libinit_r8q
+TARGET_RECOVERY_DEVICE_MODULES ?= libinit_r8q
 
 # Kernel: config
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/samsung/sm8250
+TARGET_KERNEL_CONFIG := vendor/lineage_r8q_defconfig
 TARGET_LINUX_KERNEL_VERSION := 4.19
+TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/$(HOST_OS)-x86/clang-r416183b
 
-# Kernel: flags
-BOARD_BOOTIMG_HEADER_VERSION := 2
-BOARD_DTB_OFFSET := 0x01F00000
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+# Image
+BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 androidboot.usbcontroller=a600000.dwc3 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_KERNEL_SECOND_OFFSET := 0x00F00000
 BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_RAMDISK_OFFSET := 0x02000000
-TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc
-
-# Kernel: mkbootimgs args
-BOARD_MKBOOTIMG_ARGS += --board $(BOARD_BOOT_HEADER_NAME)
-BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_DTB_OFFSET := 0x01F00000
+TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc OEM_TARGET_PRODUCT=$(PRODUCT_DEVICE)
+BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --dtb_offset $(BOARD_DTB_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 # Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
@@ -156,16 +155,19 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 82694144
 
 ###  Super partition
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system vendor
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
 BOARD_SUPER_PARTITION_SIZE := 9168748544 # obtained from /dev/block/dm-[0,1,2,3]
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9164554240 # BOARD_SUPER_PARTITION_SIZE-4MiB
-BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 1258291200
-BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT := -1
 BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 1258291200
-BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := -1
+BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 30720000
+BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 1258291200
 BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 1258291200
-BOARD_SYSTEM_EXTIMAGE_EXTFS_INODE_COUNT := -1
+BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT             := -1
+BOARD_VENDORIMAGE_EXTFS_INODE_COUNT             := -1
+BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT            := -1
+BOARD_ODMIMAGE_EXTFS_INODE_COUNT           	    := -1
+BOARD_SYSTEM_EXTIMAGE_EXTFS_INODE_COUNT         := -1
 
 ### CACHE
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -184,10 +186,6 @@ TARGET_COPY_OUT_PRODUCT := product
 ### SYSTEM
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 
-### SYSTEM_EXT
-BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
-TARGET_COPY_OUT_SYSTEM_EXT := system_ext
-
 ### USERDATA
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -195,6 +193,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 ### VENDOR
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
+
+### SYSTEM_EXT
+TARGET_COPY_OUT_SYSTEM_EXT := system/system_ext
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
@@ -204,12 +205,12 @@ TARGET_BOARD_PLATFORM := kona
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USES_MKE2FS := true
 
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS ?= $(COMMON_PATH)
+TARGET_RELEASETOOLS_EXTENSIONS ?= $(DEVICE_PATH)
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
@@ -217,8 +218,16 @@ TARGET_USES_VND_SECRIL := true
 
 # Root
 BOARD_ROOT_EXTRA_FOLDERS += \
+    carrier \
+    efs \
+    keydata \
+    keyrefuge \
     metadata \
-    efs
+    misc \
+    omr \
+    optics \
+    prism \
+    spu
 
 # Samsung
 BOARD_VENDOR := samsung
@@ -229,9 +238,9 @@ VENDOR_SECURITY_PATCH := 2023-08-01
 # SePolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
 
-BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 
 # Vibrator
 $(call soong_config_set,samsungVibratorVars,duration_amplitude,true)

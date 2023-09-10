@@ -43,11 +43,19 @@
     </path>
 
     <path name="fm-usb-headphones-gain">
-        <ctl name="Headset Playback Volume" value="101" />
+        <ctl name="Headset Playback Volume" value="107" />
     </path>
 
     <path name="remote-usb-headset-gain">
         <ctl name="Headset Playback Volume" value="108" />
+    </path>
+
+    <path name="listenback-usb-headphones-gain">
+        <ctl name="Headset Playback Volume" value="107" />
+    </path>
+
+    <path name="listenback-usb-headset-gain">
+        <ctl name="Headset Playback Volume" value="107" />
     </path>
     <!-- end of Play Scenario -->
 
@@ -111,10 +119,6 @@
         <ctl name="Headset Playback Volume" value="88" />
     </path>
 
-    <path name="call-tty-vco-usb-headset-mic-gain">
-        <ctl name="Headset Capture Volume" value="42" />
-    </path>
-
     <path name="call-tty-full-usb-headset-mic-gain">
         <ctl name="Headset Capture Volume" value="30" />
     </path>
@@ -130,10 +134,6 @@
 
     <path name="wifi-call-tty-usb-headset-gain">
         <ctl name="Headset Playback Volume" value="88" />
-    </path>
-
-    <path name="wifi-call-tty-vco-usb-headset-mic-gain">
-        <ctl name="Headset Capture Volume" value="42" />
     </path>
 
     <path name="wifi-call-tty-full-usb-headset-mic-gain">
@@ -167,7 +167,7 @@
 
     <!-- Factory Scenario -->
     <path name="loopback-usb-headset-gain">
-        <ctl name="Headset Playback Volume" value="108" />
+        <ctl name="Headset Playback Volume" value="104" />
     </path>
 
     <path name="loopback-main-mic-gain">

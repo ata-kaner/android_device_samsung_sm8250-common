@@ -31,7 +31,7 @@
 
     <!-- Play Scenario  -->
     <path name="usb-headphones-gain">
-        <ctl name="Headset Playback Volume" value="112" />
+        <ctl name="Headset Playback Volume" value="111" />
     </path>
 
     <path name="speaker-and-usb-headphones-gain">
@@ -43,17 +43,25 @@
     </path>
 
     <path name="fm-usb-headphones-gain">
-        <ctl name="Headset Playback Volume" value="112" />
+        <ctl name="Headset Playback Volume" value="114" />
     </path>
 
     <path name="remote-usb-headset-gain">
         <ctl name="Headset Playback Volume" value="112" />
     </path>
+
+    <path name="listenback-usb-headphones-gain">
+        <ctl name="Headset Playback Volume" value="118" />
+    </path>
+
+    <path name="listenback-usb-headset-gain">
+        <ctl name="Headset Playback Volume" value="118" />
+    </path>
     <!-- end of Play Scenario -->
 
     <!-- Recording Scenario  -->
     <path name="rec-usb-headset-mic-gain">
-        <ctl name="Headset Capture Volume" value="93" />
+        <ctl name="Headset Capture Volume" value="100" />
     </path>
 
     <path name="rec-usb-headset-stereo-mic-gain">
@@ -159,7 +167,7 @@
 
     <!-- Factory Scenario -->
     <path name="loopback-usb-headset-gain">
-        <ctl name="Headset Playback Volume" value="120" />
+        <ctl name="Headset Playback Volume" value="116" />
     </path>
 
     <path name="loopback-main-mic-gain">

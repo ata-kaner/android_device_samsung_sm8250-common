@@ -25,12 +25,9 @@
  * device tree.
  */
 
-// For GloveMode and StylusMode
+// For GloveMode
 #define TSP_CMD_LIST_NODE "/sys/class/sec/tsp/cmd_list"
 #define TSP_CMD_RESULT_NODE "/sys/class/sec/tsp/cmd_result"
 #define TSP_CMD_NODE "/sys/class/sec/tsp/cmd"
-
-// For KeyDisabler
-#define KEY_DISABLER_NODE "/sys/class/sec/sec_touchkey/input/enabled"
 
 #endif  // SAMSUNG_TOUCH_H

@@ -33,8 +33,65 @@ on post-fs-data
     chown system radio /sys/class/audio/earjack/mic_adc
     chown system radio /sys/class/audio/earjack/select_jack
     chown system radio /sys/class/audio/earjack/state
+    chown system radio /sys/class/audio/earjack/headset_state
+    chown system radio /sys/class/audio/earjack/l_impedance
+    chown system radio /sys/class/audio/earjack/r_impedance
 
-on property:sys.boot_completed=1
+# Cirrus Amp Calibration
+    chown system audio /sys/class/cirrus/cirrus_cal/status
+    chown system audio /sys/class/cirrus/cirrus_cal/rdc
+    chown system audio /sys/class/cirrus/cirrus_cal/rdc_r
+    chown system audio /sys/class/cirrus/cirrus_cal/temp
+    chown system audio /sys/class/cirrus/cirrus_cal/temp_r
+    chown system audio /sys/class/cirrus/cirrus_cal/v_status
+    chown system audio /sys/class/cirrus/cirrus_cal/v_validation
+    chown system audio /sys/class/cirrus/cirrus_cal/v_validation_r
+    chown system audio /sys/class/cirrus/cirrus_cal/vsc
+    chown system audio /sys/class/cirrus/cirrus_cal/vsc_r
+    chown system audio /sys/class/cirrus/cirrus_cal/isc
+    chown system audio /sys/class/cirrus/cirrus_cal/isc_r
+    mkdir /efs/cirrus 0770 audioserver audio
+    chown audioserver audio /efs/cirrus/temp_cal
+    chown audioserver audio /efs/cirrus/rdc_cal
+    chown audioserver audio /efs/cirrus/rdc_cal_r
+    chown audioserver audio /efs/cirrus/vsc_cal
+    chown audioserver audio /efs/cirrus/vsc_cal_r
+    chown audioserver audio /efs/cirrus/isc_cal
+    chown audioserver audio /efs/cirrus/isc_cal_r
+    chmod 0660 /efs/cirrus/temp_cal
+    chmod 0660 /efs/cirrus/rdc_cal
+    chmod 0660 /efs/cirrus/rdc_cal_r
+    chmod 0660 /efs/cirrus/vsc_cal
+    chmod 0660 /efs/cirrus/vsc_cal_r
+    chmod 0660 /efs/cirrus/isc_cal
+    chmod 0660 /efs/cirrus/isc_cal_r
+
+# Cirrus Amp power
+    chown system audio /sys/class/cirrus/cirrus_pwr/status
+    chown system audio /sys/class/cirrus/cirrus_pwr/value
+    chown system audio /sys/class/cirrus/cirrus_pwr/value_r
+    chown system audio /sys/class/cirrus/cirrus_pwr/spk_t
+    chown system audio /sys/class/cirrus/cirrus_pwr/spk_t_r
+    chown system audio /sys/class/cirrus/cirrus_pwr/env_temp
+    chown system audio /sys/class/cirrus/cirrus_pwr/env_temp_r
+	
+# Cirrus Amp Bigdata
+    chown system audio /sys/class/audio/amp/temperature_max_0
+    chown system audio /sys/class/audio/amp/temperature_keep_max_0
+    chown system audio /sys/class/audio/amp/temperature_overcount_0
+    chown system audio /sys/class/audio/amp/excursion_max_0
+    chown system audio /sys/class/audio/amp/excursion_overcount_0
+    chown system audio /sys/class/audio/amp/temperature_max_1
+    chown system audio /sys/class/audio/amp/temperature_keep_max_1
+    chown system audio /sys/class/audio/amp/temperature_overcount_1
+    chown system audio /sys/class/audio/amp/excursion_max_1
+    chown system audio /sys/class/audio/amp/excursion_overcount_1
+	
+# DBMDx
+    chmod 0660 /dev/dbmdx-1
+    chown system audio /dev/dbmdx-1
+    chown system audio /sys/class/voicep/dbmdx/va_mic_mode
+
 # TI Amp Calibration/Validation
     chown system audio /sys/class/tas25xx/calib/calibration
     chown system audio /sys/class/tas25xx/calib/cstatus
@@ -56,7 +113,17 @@ on property:sys.boot_completed=1
     chmod 0660 /efs/tas25xx/calib_re_r
     chmod 0660 /efs/tas25xx/amb_temp_r
 
-# DBMDx
-    chmod 0660 /dev/dbmdx-1
-    chown system audio /dev/dbmdx-1
-    chown system audio /sys/class/voicep/dbmdx/va_mic_mode
+# Goodix Amp Calibration/Validation
+    chown system system /sys/class/tfa/tfa_cal/status
+    chown system system /sys/class/tfa/tfa_cal/rdc
+    chown system system /sys/class/tfa/tfa_cal/rdc_r
+    chown system system /sys/class/tfa/tfa_cal/temp
+    chown system system /sys/class/tfa/tfa_cal/temp_r
+    chown system audio /sys/class/tfa/tfa_vval/status
+    chown system audio /sys/class/tfa/tfa_vval/status_r
+    chown system audio /sys/class/tfa/tfa_vval/validation
+    chmod 0660 /sys/class/tfa/tfa_cal/status
+
+# SSRM Amp temperature
+    chown system system /sys/class/audio/amp/surface_temperature_0
+    chown system system /sys/class/audio/amp/surface_temperature_1

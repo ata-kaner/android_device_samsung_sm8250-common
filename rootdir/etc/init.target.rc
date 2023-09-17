@@ -158,6 +158,7 @@ on boot
     write /dev/cpuset/audio-app/cpus 0-3
     write /dev/cpuset/sf/cpus 0-7
 
+# TO-DO: Check necessarity of these chowns.
     chown root system /dev/cpuset/sf/cpus
     chown root system /dev/cpuset/top-app/cpus
     chown root system /dev/cpuset/foreground/cpus
@@ -169,7 +170,6 @@ on boot
     chown root system /dev/cpuset/top-app/tasks
     chown root system /dev/cpuset/foreground/tasks
     chown root system /dev/cpuset/background/tasks
-    chown root system /dev/cpuset/system-background/tasks
     chown root system /dev/cpuset/restricted/tasks
     chown root system /dev/cpuset/audio-app/tasks
     chmod 0664 /dev/cpuset/sf/cpus

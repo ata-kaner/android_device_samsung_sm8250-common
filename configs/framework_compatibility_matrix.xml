@@ -139,6 +139,20 @@
             <instance>slot1</instance>
             <instance>slot2</instance>
         </interface>
+        <interface>
+            <name>ISap</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" override="true">
+        <name>android.hardware.radio.config</name>
+        <transport>hwbinder</transport>
+        <version>1.1</version>
+        <interface>
+            <name>IRadioConfig</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <hal format="hidl" override="true">
         <name>android.hardware.secure_element</name>
@@ -273,6 +287,7 @@
         <interface>
             <name>ISehRadio</name>
             <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -281,6 +296,7 @@
         <interface>
             <name>ISehBridge</name>
             <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -289,7 +305,9 @@
         <interface>
             <name>ISehChannel</name>
             <instance>epdgd</instance>
+            <instance>epdgd2</instance>
             <instance>imsd</instance>
+            <instance>imsd2</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">

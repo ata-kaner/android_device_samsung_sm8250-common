@@ -78,7 +78,7 @@ function blob_fixup() {
             xxd -r -p "${2}".hex > "${2}"
             rm "${2}".hex
             ;;
-            vendor/lib64/libskeymaster4device.so)
+            vendor/lib64/hw/gatekeeper.mdfpp.so|vendor/lib64/libskeymaster4device.so)
             "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "${2}"
             ;;
     esac

@@ -58,7 +58,8 @@ PRODUCT_PACKAGES += \
     libreverbwrapper \
     libtinycompress \
     libvisualizer \
-    libvolumelistener
+    libvolumelistener \
+    audio_parameter_service.samsung_sm8250
 
 PRODUCT_PACKAGES += \
     SamsungDAP

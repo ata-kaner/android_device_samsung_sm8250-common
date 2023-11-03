@@ -165,12 +165,6 @@ SOONG_CONFIG_samsungCameraVars += \
 
 SOONG_CONFIG_samsungCameraVars_needs_sec_reserved_field := true
 
-# Health
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/batt_slate_mode
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED := 0
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED := 1
-TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
-
 # Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
 

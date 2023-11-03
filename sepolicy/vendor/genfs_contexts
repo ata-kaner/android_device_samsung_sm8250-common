@@ -6,6 +6,7 @@ genfscon sysfs /devices/virtual/cirrus(/.*)?                                    
 
 genfscon sysfs /devices/platform/soc/soc:battery/power_supply/                                                       u:object_r:sysfs_battery:s0
 genfscon sysfs /devices/platform/soc/soc:battery/power_supply/battery/batt_slate_mode                                u:object_r:sysfs_battery_writable:s0
+genfscon sysfs /devices/platform/soc/soc:battery/power_supply/battery/charging_enabled                               u:object_r:sysfs_battery_writable:s0
 genfscon sysfs /devices/platform/soc/soc:battery/power_supply/battery/lcd                                            u:object_r:sysfs_battery_writable:s0
 genfscon sysfs /devices/platform/soc/soc:sec-direct-charger/power_supply/                                            u:object_r:sysfs_battery:s0
 genfscon sysfs /devices/platform/soc/soc:i2c@22/i2c-0/0-003b/power_supply/mfc-charger/                               u:object_r:sysfs_battery:s0

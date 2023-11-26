@@ -362,7 +362,10 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+     $(DEVICE_PATH)/overlay \
+     $(DEVICE_PATH)/overlay-lineage
+
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     device/samsung/r8q/overlay/hardware/samsung/AdvancedDisplay

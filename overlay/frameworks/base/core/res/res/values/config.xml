@@ -1445,4 +1445,7 @@
          don't support RIL_REQUEST_GET_RADIO_CAPABILITY
          format is UMTS|LTE|... -->
     <string name="config_radio_access_family">GSM|CDMA|EVDO|WCDMA|LTE</string>
+
+    <!-- Screen off UDFPS -->
+    <bool name="config_supportScreenOffUdfps">true</bool>
 </resources>

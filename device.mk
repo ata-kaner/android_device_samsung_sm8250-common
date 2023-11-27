@@ -189,7 +189,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.face@1.0.vendor \
     android.hardware.biometrics.fingerprint@2.3.vendor \
-    android.hardware.biometrics.fingerprint@2.3-service-samsung.sm8250 \
+    android.hardware.biometrics.fingerprint@2.3-service.samsung \
     android.hardware.common-V1-ndk_platform.vendor \
     fingerprint.default \
     SamsungUdfpsHandler.sm8250

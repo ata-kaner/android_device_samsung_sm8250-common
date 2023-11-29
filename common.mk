@@ -387,6 +387,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.powershare@1.0-service.samsung
 
+# Public libraries
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson \

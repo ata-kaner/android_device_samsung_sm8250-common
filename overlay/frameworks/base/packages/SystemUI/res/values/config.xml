@@ -19,15 +19,21 @@
 
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Doze: does this device support STATE_DOZE?
-         The display is dozing in a low power state; it is still on but is
-         optimized for showing system-provided content while the device is
-         non-interactive. -->
+<resources>
+    <!-- Doze: does this device support STATE_DOZE?  -->
     <bool name="doze_display_state_supported">true</bool>
 
-    <!-- Threshold in micro watts above which a charger is rated as "fast"; 2.16A @ 5V  -->
-    <integer name="config_chargingFastThreshold">10800000</integer>
+    <!-- The radius of the enrollment progress bar, in dp -->
+    <integer name="config_udfpsEnrollProgressBar" translatable="false">
+        70
+    </integer>
+
+    <!-- the padding on the top of the statusbar (usually 0) -->
+    <dimen name="status_bar_padding_top">8dp</dimen>
+
+    <!-- Should we vibrate on an icon animation of the shelf. This should only be active if the
+          vibrator is capable of subtle vibrations -->
+     <bool name="config_vibrateOnIconAnimation">true</bool>
 
      <!-- HBM type of UDFPS overlay.
             0 - GLOBAL HBM

@@ -143,6 +143,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.capabilityconfigstore@1.0.vendor
 
+# CGroups
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json
+
 # GNSS
 PRODUCT_PACKAGES += \
     android.hardware.gnss.measurement_corrections@1.1.vendor \

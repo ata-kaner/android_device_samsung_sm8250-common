@@ -121,6 +121,10 @@ PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service \
     vendor.qti.hardware.capabilityconfigstore@1.0.vendor
 
+# CGroups
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@3.0-impl-qti-display \

@@ -1160,7 +1160,7 @@ vendor/lib/libkeymasterutils.so
 vendor/lib/libqtikeymaster4.so
 vendor/lib/libspcom.so
 -vendor/lib64/libkeymaster_helper.so
--vendor/lib64/libskeymaster4device.so
+-vendor/lib64/libskeymaster4device.so|8d67e6b59bba0c5a7a7fc8c08fb3ab1a07e157c4
 vendor/lib64/libkeymasterutils.so
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libqtikeymaster4.so

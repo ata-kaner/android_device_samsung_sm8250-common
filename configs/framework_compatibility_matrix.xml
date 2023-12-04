@@ -133,7 +133,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.radio</name>
-        <version>1.5</version>
+        <version>1.4</version>
         <interface>
             <name>IRadio</name>
             <instance>slot1</instance>
@@ -292,7 +292,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.samsung.hardware.radio</name>
-        <version>2.2</version>
+        <version>2.1</version>
         <interface>
             <name>ISehRadio</name>
             <instance>slot1</instance>

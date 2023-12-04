@@ -232,7 +232,7 @@ BOARD_ROOT_EXTRA_FOLDERS += \
 BOARD_VENDOR := samsung
 
 # Security patch
-VENDOR_SECURITY_PATCH := 2023-08-01
+VENDOR_SECURITY_PATCH := 2023-09-01
 
 # SePolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk

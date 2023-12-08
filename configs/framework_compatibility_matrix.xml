@@ -116,6 +116,14 @@
             <instance>qti-hta</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>android.hardware.nfc</name>
+        <version>1.2</version>
+        <interface>
+            <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.power</name>
         <interface>
@@ -134,11 +142,18 @@
     </hal>
     <hal format="hidl" override="true">
         <name>android.hardware.secure_element</name>
-        <version>1.2</version>
+        <version>1.0</version>
         <interface>
             <name>ISecureElement</name>
             <instance>eSE1</instance>
-            <instance>SIM1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nxp.nxpese</name>
+        <version>1.0</version>
+        <interface>
+            <name>INxpEse</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="aidl" optional="true">
@@ -186,6 +201,14 @@
             <name>ISupplicant</name>
             <instance>default</instance>
             <instance>wigigp2p</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nxp.nxpnfc</name>
+        <version>2.0</version>
+        <interface>
+            <name>INxpNfc</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">

@@ -34,3 +34,21 @@ on boot
 # For NFC hardware SKU
 on boot && property:ro.boot.nfc.feature.chipname=*
     setprop ro.vendor.nfc.feature.chipname ${ro.boot.nfc.feature.chipname}
+
+# Support both Samsung and NXP HAL implementation for r8qxx
+on property:ro.boot.product.hardware.sku=sn110t
+    stop nfc_hal_service
+    start vendor.nfc_hal_service
+
+on property:ro.boot.product.hardware.sku=s3fwrn5
+    stop vendor.nfc_hal_service
+    start nfc_hal_service
+
+# SecureElement
+on property:ro.boot.product.hardware.sku=sn110t
+    stop gto_secure_element_hal_service
+    start secure_element_hal_service
+
+on property:ro.boot.product.hardware.sku=s3fwrn5
+    stop secure_element_hal_service
+    start gto_secure_element_hal_service

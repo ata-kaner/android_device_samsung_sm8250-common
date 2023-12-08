@@ -1,0 +1,5 @@
+service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc_snxxx@1.2-service
+    disabled
+    class hal
+    user nfc
+    group nfc

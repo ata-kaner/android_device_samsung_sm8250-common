@@ -53,10 +53,6 @@ on post-fs
     mkdir /efs/biometrics 0770 system system
     mkdir /efs/biometrics/meta 0770 system system
 
-on post-fs-data
-    # Samsung Pay
-    mkdir /efs/pfw_data 0760 vendor_spay vendor_spay
-
     # MST/NFC Switch
     chown vendor_spay system /dev/mst_ctrl
     chmod 0660 /dev/mst_ctrl
@@ -125,89 +121,13 @@ on property:ro.boot.carrierid=USC
 on property:ro.boot.carrierid=CCT
     setprop ssu.support 1
 
-on init
-# setup cgroup freezer for freecess
-    mkdir /dev/freezer
-    mount cgroup none /dev/freezer freezer
-    mkdir /dev/freezer/frozen
-    mkdir /dev/freezer/thaw
-    write /dev/freezer/frozen/freezer.state FROZEN
-    write /dev/freezer/thaw/freezer.state THAWED
-    write /dev/freezer/frozen/freezer.killable 1
-
-# MARs for freecess
-    chown system system /dev/freezer
-    chown system system /dev/freezer/frozen
-    chown system system /dev/freezer/frozen/tasks
-    chown system system /dev/freezer/frozen/cgroup.procs
-    chown system system /dev/freezer/frozen/freezer.state
-    chown system system /dev/freezer/thaw
-    chown system system /dev/freezer/thaw/tasks
-    chown system system /dev/freezer/thaw/cgroup.procs
-
-# MARs for freecess
-    chmod 0644 /dev/freezer/frozen/tasks
-    chmod 0644 /dev/freezer/frozen/cgroup.procs
-    chmod 0644 /dev/freezer/frozen/freezer.state
-    chmod 0644 /dev/freezer/thaw/tasks
-    chmod 0644 /dev/freezer/thaw/cgroup.procs
-
-# SDHMS Slowdown : Freezer
-    mkdir /dev/freezer/abnormal
-    write /dev/freezer/abnormal/freezer.state THAWED
-    chown system system /dev/freezer/abnormal
-    chown system system /dev/freezer/abnormal/tasks
-    chown system system /dev/freezer/abnormal/cgroup.procs
-    chown system system /dev/freezer/abnormal/freezer.state
-    chmod 0644 /dev/freezer/abnormal/tasks
-    chmod 0644 /dev/freezer/abnormal/cgroup.procs
-    chmod 0644 /dev/freezer/abnormal/freezer.state
-
 on boot
-# SSWAP
-    write /proc/sys/vm/swappiness 160
 
 # Performance
     chmod 0664 /dev/cpuset/restricted/cpus
     write /dev/cpuset/restricted/cpus 0-7
     chmod 0664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
     chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
-
-# SDHMS Slowdown : Cpuset
-    mkdir /dev/cpuset/abnormal
-    write /dev/cpuset/abnormal/cpus 0-3
-    copy /dev/cpuset/mems /dev/cpuset/abnormal/mems
-
-    chown system system /dev/cpuset/abnormal
-    chown system system /dev/cpuset/abnormal/tasks
-    chown system system /dev/cpuset/abnormal/cpus
-    chmod 0664 /dev/cpuset/abnormal/tasks
-    chmod 0664 /dev/cpuset/abnormal/cpus
-
-    mkdir /dev/cpuset/moderate
-    write /dev/cpuset/moderate/cpus 0-2
-    copy /dev/cpuset/mems /dev/cpuset/moderate/mems
-
-    chown system system /dev/cpuset/moderate
-    chown system system /dev/cpuset/moderate/tasks
-    chown system system /dev/cpuset/moderate/cpus
-    chmod 0664 /dev/cpuset/moderate/tasks
-    chmod 0664 /dev/cpuset/moderate/cpus
-
-#Performance
-    chmod 0664 /dev/cpuset/restricted/cpus
-    write /dev/cpuset/restricted/cpus 0-7
-
-# Pageboostd
-on property:sys.boot_completed=1
-    start pageboostd
-
-service pageboostd /system/bin/pageboostd
-    class main
-    user system
-    group system mount radio net_bt sdcard_rw shell media media_rw
-    socket pageboostd seqpacket 0660 system system
-    disabled
 
 # some priv-apps of SPR bind mount to TMB priv-apps
 on post-fs-data && property:ro.csc.sales_code=TMB

@@ -573,7 +573,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi.hostapd@1.2.vendor \
     vendor.qti.hardware.wifi.supplicant@2.1.vendor \
     WifiOverlay \
-    TetheringOverlay \
+    TetheringConfigOverlay \
     wpa_cli \
     wpa_supplicant \
     wpa_supplicant.conf

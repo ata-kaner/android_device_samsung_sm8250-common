@@ -163,7 +163,7 @@ ro.hardware.gatekeeper=mdfpp
 
 # Keystore
 ro.hardware.keystore=mdfpp
-ro.security.keystore.keytype=sakv2,gak,sgak
+ro.security.keystore.keytype=sakv2,gak
 
 # Media
 debug.stagefright.ccodec=1

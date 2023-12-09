@@ -195,3 +195,7 @@ vendor.usb.use_gadget_hal=0
 
 # Wifi
 wifi.aware.interface=wifi-aware0
+
+# Vibrator
+ro.vendor.vibrator_hal.click_duration=80
+ro.vendor.vibrator_hal.tick_duration=40

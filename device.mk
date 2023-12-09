@@ -21,6 +21,9 @@ PRODUCT_TARGET_VNDK_VERSION := 30
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/samsung/r8q/r8q-vendor.mk)
 
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
 # AdvancedDisplay (MDNIE)
 PRODUCT_PACKAGES += \
     AdvancedDisplay

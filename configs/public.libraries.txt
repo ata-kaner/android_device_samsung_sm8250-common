@@ -4,6 +4,5 @@ libOpenCL.so
 libadsprpc.so
 libcdsprpc.so
 libfastcvopt.so
-libqti-perfd-client.so
 libsdsprpc.so
 libswldc_capture_core.camera.samsung.so

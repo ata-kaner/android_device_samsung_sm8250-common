@@ -298,7 +298,6 @@ PRODUCT_PACKAGES += \
 
 # Perf
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.perf@2.2.vendor \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \

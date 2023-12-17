@@ -169,6 +169,16 @@ ro.security.keystore.keytype=sakv2,gak
 debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
 
+# NFC
+ro.vendor.nfc.support.advancedsetting=false
+ro.vendor.nfc.support.autoselect=true
+ro.vendor.nfc.support.defaultaid=true
+ro.vendor.nfc.support.nonaid=true
+ro.vendor.nfc.support.othercategory=true
+ro.vendor.nfc.support.uicc=true
+ro.vendor.nfc.info.antpos=1
+ro.vendor.nfc.support.ese=true
+
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 

@@ -115,7 +115,6 @@ DEVICE_MATRIX_FILE += $(DEVICE_PATH)/configs/compatibility_matrix.xml
 
 # INIT
 TARGET_INIT_VENDOR_LIB ?= //$(DEVICE_PATH):libinit_r8q
-TARGET_RECOVERY_DEVICE_MODULES ?= libinit_r8q
 
 # Kernel: config
 TARGET_KERNEL_ARCH := arm64

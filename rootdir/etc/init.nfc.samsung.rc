@@ -31,28 +31,7 @@ on boot
     chmod 0660 /dev/st54spi
     chown system system /dev/st54spi
 
-# Support both Samsung and NXP HAL implementation for r8q
+# NFC init script for NXP and SEC-NFC
 
-on boot && property:ro.product.vendor.name=r8qxxx
-    setprop ro.boot.nfc.feature.chipname SLSI
-    setprop ro.vendor.nfc.feature.chipname SLSI
-
-on boot && property:ro.product.vendor.name=r8qxx && property:ro.boot.product.hardware.sku=sn110t
-    setprop ro.boot.nfc.feature.chipname NXP_SN100U
-    setprop ro.vendor.nfc.feature.chipname NXP_SN100U
-
-on boot && property:ro.product.vendor.name=r8qxx && property:ro.boot.product.hardware.sku=s3fwrn5
-    setprop ro.boot.nfc.feature.chipname SLSI
-    setprop ro.vendor.nfc.feature.chipname SLSI
-
-on property:ro.product.vendor.name=r8qxxx
-    start nfc_hal_service
-    start gto_secure_element_hal_service
-
-on property:ro.product.vendor.name=r8qxx && property:ro.vendor.nfc.feature.chipname=s3fwrn5
-    start nfc_hal_service
-    start gto_secure_element_hal_service
-
-on property:ro.product.vendor.name=r8qxx && property:ro.vendor.nfc.feature.chipname=sn110t
-    start vendor.nfc_hal_service
-    start secure_element_hal_service
+service vendor.nfc_init /vendor/bin/sh /vendor/bin/init.nfc.sh
+    oneshot

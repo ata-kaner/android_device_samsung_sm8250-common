@@ -33,4 +33,9 @@ on fs
 
 on post-fs-data
     exec_start network_config
-    setprop ro.telephony.default_network ${ro.vendor.radio.default_network}
+
+on property:ro.product.device=r8qxxx
+    setprop ro.telephony.default_network 33,33
+
+on property:ro.product.device=r8qxx
+    setprop ro.telephony.default_network 9,9

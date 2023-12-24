@@ -65,9 +65,6 @@ allow kernel { sysfs_ss_writable sysfs_usb }:file rw_file_perms;
 allow kernel sysfs_ss_writable:lnk_file r_file_perms;
 allow kernel vendor_sysfs_sensors:dir search;
 
-allow kernel debugfs_mmc:dir r_dir_perms;
-allow kernel { vendor_debugfs_ipc vendor_debugfs_wlan }:dir search;
-
 allow kernel sdcard_type:dir r_dir_perms;
 allow kernel sdcard_type:file rw_file_perms;
 

@@ -18,8 +18,6 @@ allow vendor_qti_init_shell mnt_vendor_file:dir create_dir_perms;
 allow vendor_qti_init_shell usb_configfs:dir rw_dir_perms;
 allow vendor_qti_init_shell usb_configfs:file rw_file_perms;
 
-allow vendor_qti_init_shell debugfs_tracing:file rw_file_perms;
-
 allow vendor_qti_init_shell {
     proc_default_smp_affinity
     proc_page_cluster

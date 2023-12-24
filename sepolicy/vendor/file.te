@@ -24,10 +24,6 @@ type zram_data_file, file_type, data_file_type, core_data_file_type;
 # configfs
 type usb_configfs, fs_type;
 
-# debugfs
-type vendor_debugfs_ipc, fs_type, debugfs_type;
-type vendor_debugfs_wlan, fs_type, debugfs_type;
-
 # EFS files
 type app_efs_file, file_type, mlstrustedobject, efs_type;
 type battery_efs_file, file_type, efs_type;

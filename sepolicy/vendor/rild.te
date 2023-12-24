@@ -70,7 +70,6 @@ allow rild hal_audio_default:file { read getattr open };
 r_dir_file(rild, vendor_sysfs_diag);
 allow rild sysfs_ss_writable:file rw_file_perms;
 
-r_dir_file(rild, vendor_debugfs_ipc);
 
 allow rild self:capability { chown sys_time };
 allow rild self:packet_socket { ioctl read write create getopt setopt };

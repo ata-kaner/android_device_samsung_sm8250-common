@@ -60,14 +60,6 @@ allow init usb_configfs:lnk_file create_file_perms;
 allow init usb_configfs:file link;
 allow init usb_configfs:filesystem mount;
 
-allow init debugfs:file write;
-allow init debugfs_tracing:dir rw_dir_perms;
-allow init debugfs_tracing:file rw_file_perms;
-allow init debugfs_tracing_debug:dir r_dir_perms;
-allow init debugfs_tracing_debug:file rw_file_perms;
-allow init debugfs_type:{ dir file lnk_file } relabelfrom;
-allow init debugfs_wifi_tracing:dir create_dir_perms;
-
 allow init {
     proc_avc_msg
     proc_fslog

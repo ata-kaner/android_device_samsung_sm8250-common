@@ -44,6 +44,8 @@ void vendor_load_properties()
     std::string model;
     std::string device;
     std::string name;
+    std::string fingerprint;
+    std::string build_desc;    
 
     model = "SM-" + bl_model;
 
@@ -72,4 +74,14 @@ void vendor_load_properties()
     property_override_quad("ro.product.device", "ro.product.vendor.device", "ro.product.product.device", "ro.product.odm.device", device.c_str());
     property_override_quad("ro.product.name", "ro.product.vendor.name", "ro.product.product.name", "ro.product.odm.name", name.c_str());
     property_override("ro.build.product", device.c_str());
+
+    if (bootloader.find("G780G") == 0) {
+         property_override("ro.build.description", "r8qxx-user 11 RP1A.200720.012 G780GXXS7EWH8 release-keys");
+         property_override("ro.build.fingerprint", "samsung/r8qxx/qssi:11/RP1A.200720.012/G780GXXS7EWH8:user/release-keys");
+    }
+    else if (bootloader.find("G781B") == 0) {
+         property_override("ro.build.description", "r8qxxx-user 11 RP1A.200720.012 G781BXXS8HWH8 release-keys");
+         property_override("ro.build.fingerprint", "samsung/r8qxxx/qssi:11/RP1A.200720.012/G781BXXS8HWH8:user/release-keys");
+    }
+
 }

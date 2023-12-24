@@ -13,6 +13,9 @@
 #include "init_r8q.h"
 
 #define MODEL_NAME_LEN 5
+#define BUILD_NAME_LEN 8
+#define CODENAME_LEN   9
+
 
 static void property_override(char const prop[], char const value[]) {
     prop_info *pi;
@@ -53,8 +56,8 @@ void vendor_load_properties()
     }
 
     if (device.size() == 0) {
-        LOG(ERROR) << "Could not detect device, forcing r8qxx";
-        device = "r8qxx";
+        LOG(ERROR) << "Could not detect device, forcing G781B";
+        device = "r8qxxx";
     }
 
     name = device;

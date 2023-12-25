@@ -45,11 +45,6 @@
         <fqname>@1.1::ISurfaceFlingerConfigs/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.dumpstate</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.1::IDumpstateDevice/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IGatekeeper/default</fqname>

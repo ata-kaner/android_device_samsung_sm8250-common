@@ -166,10 +166,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
     libdrmclearkeyplugin
 
-# Dumpstate
-PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.1
-
 # Dynamic Partitions
 PRODUCT_BUILD_SUPER_PARTITION  := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true

@@ -317,7 +317,7 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc_snxxx@1.2-service \
+    android.hardware.nfc-service.nxp \
     android.hardware.nfc@1.2-service.samsung \
     com.android.nfc_extras \
     NfcNci \
@@ -332,7 +332,7 @@ PRODUCT_PACKAGES += \
 
 # Disabled NFC inits
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/init/android.hardware.nfc_snxxx@1.2-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.nfc_snxxx@1.2-service.rc \
+    $(DEVICE_PATH)/configs/init/nfc-service-nxp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/nfc-service-nxp.rc \
     $(DEVICE_PATH)/configs/init/android.hardware.nfc@1.2-service.samsung.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.nfc@1.2-service.samsung.rc \
     $(DEVICE_PATH)/configs/init/android.hardware.secure_element@1.0-service-gto.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.secure_element@1.0-service-gto.rc
 

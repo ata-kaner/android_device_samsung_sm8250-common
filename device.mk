@@ -186,8 +186,8 @@ PRODUCT_PACKAGES += \
     fingerprint.default
 
 # FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
+# PRODUCT_PACKAGES += \
+#    FlipFlap
 
 # Gatekeeper
 PRODUCT_PACKAGES += \

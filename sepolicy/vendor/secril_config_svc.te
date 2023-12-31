@@ -1,21 +1,27 @@
-type vendor_secril_config_svc, domain, halserverdomain, hal_telephony, hal_telephony_server;
-type vendor_secril_config_svc_exec, exec_type, vendor_file_type, file_type;
+# secril_config_svc.te
 
-init_daemon_domain(vendor_secril_config_svc)
+type secril_config_svc, domain, halserverdomain, hal_telephony, hal_telephony_server;
+type secril_config_svc_exec, exec_type, vendor_file_type, file_type;
 
-hal_server_domain(vendor_secril_config_svc, hal_telephony)
+# secril_config_svc is started by init, type transit from init domain to secril_config_svc domain
+init_daemon_domain(secril_config_svc)
 
-allow vendor_secril_config_svc { efs_file sec_poc_file }:dir r_dir_perms;
-allow vendor_secril_config_svc { efs_file sec_poc_file }:file r_file_perms;
-allow vendor_secril_config_svc imei_efs_file:dir create_dir_perms;
-allow vendor_secril_config_svc imei_efs_file:file create_file_perms;
+unix_socket_connect(secril_config_svc, property, init)
 
-allow vendor_secril_config_svc proc_simslot_count:file r_file_perms;
+# /mnt/vendor/
+allow secril_config_svc mnt_vendor_file:dir search;
 
-allow vendor_secril_config_svc property_socket:sock_file write;
-allow vendor_secril_config_svc init:unix_stream_socket connectto;
+# /mnt/vendor/efs/factory.prop
+# /mnt/vendor/efs/telephony.prop
+allow secril_config_svc efs_file:dir search;
+allow secril_config_svc efs_file:file r_file_perms;
 
-get_prop(vendor_secril_config_svc, exported_system_prop)
-set_prop(vendor_secril_config_svc, multisim_prop)
-set_prop(vendor_secril_config_svc, radio_prop)
-set_prop(vendor_secril_config_svc, vendor_radio_prop)
+# ro.multisim.
+# ro.vendor.multisim.
+# ro.vendor.radio.default_network
+get_prop(secril_config_svc, exported_system_prop)
+set_prop(secril_config_svc, radio_prop)
+set_prop(secril_config_svc, vendor_radio_prop)
+
+# ro.multisim.*
+dontaudit secril_config_svc default_prop:property_service set;

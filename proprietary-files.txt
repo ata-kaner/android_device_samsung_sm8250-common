@@ -1071,6 +1071,7 @@ vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib64/hw/gatekeeper.mdfpp.so
+vendor/lib64/android.hardware.gatekeeper@1.0-impl.so
 
 # Graphics
 vendor/bin/ppd
@@ -1146,9 +1147,21 @@ vendor/firmware/ipa_fws.elf
 vendor/firmware/ipa_fws.mdt
 
 # Keymaster
-vendor/lib64/libkeymasterdeviceutils.so
+-vendor/bin/hw/android.hardware.keymaster@4.0-strongbox-service-qti
+vendor/bin/sec_nvm
+vendor/bin/spdaemon
+vendor/bin/StoreKeybox
+vendor/etc/init/android.hardware.keymaster@4.0-strongbox-service-qti.rc
+vendor/etc/init/init.spdaemon_wait_spunvm.rc
+vendor/lib/libkeymasterdeviceutils.so
+vendor/lib/libkeymasterutils.so
+vendor/lib/libqtikeymaster4.so
+vendor/lib/libspcom.so
+-vendor/lib64/libkeymaster_helper.so
 -vendor/lib64/libskeymaster4device.so
-vendor/lib64/libkeymaster_helper.so
+vendor/lib64/libkeymasterutils.so
+vendor/lib64/libkeymasterdeviceutils.so
+vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libspcom.so
 
 # Latency

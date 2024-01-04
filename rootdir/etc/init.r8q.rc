@@ -53,6 +53,10 @@ on post-fs
     mkdir /efs/biometrics 0770 system system
     mkdir /efs/biometrics/meta 0770 system system
 
+    # MST/NFC Switch
+    chown system system /dev/mst_ctrl
+    chmod 0660 /dev/mst_ctrl
+
 # Cirrus Amp Calibration
     chown system audio /sys/class/cirrus/cirrus_cal/status
     chown system audio /sys/class/cirrus/cirrus_cal/rdc

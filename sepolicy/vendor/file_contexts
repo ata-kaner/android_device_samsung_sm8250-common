@@ -33,6 +33,11 @@
 # radio
 /dev/drb                                     u:object_r:drb_device:s0
 
+# strongbox
+/dev/ssp                                        u:object_r:ssp_device:s0
+/dev/tzic                                       u:object_r:tz_device:s0
+/dev/tzirs                                      u:object_r:tz_device:s0
+
 # EFS
 /efs/Battery(/.*)?                           u:object_r:battery_efs_file:s0
 /efs/biometrics(/.*)?                        u:object_r:biometrics_efs_file:s0

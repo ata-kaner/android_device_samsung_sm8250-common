@@ -44,8 +44,6 @@ void vendor_load_properties()
     std::string model;
     std::string device;
     std::string name;
-    std::string fingerprint;
-    std::string build_desc;    
 
     model = "SM-" + bl_model;
 
@@ -59,10 +57,15 @@ void vendor_load_properties()
 
     if (device.size() == 0) {
         LOG(ERROR) << "Could not detect device, forcing G781B";
-        device = "r8qxxx";
+        device = "r8q";
     }
 
-    name = device;
+    if (bootloader.find("G780G") == 0) {
+        name = device + "xx";
+    }
+    else {
+        name = device + "xxx";
+    }
 
     LOG(INFO) << "Found bootloader: %s", bootloader.c_str();
     LOG(INFO) << "Setting ro.product.model: %s", model.c_str();

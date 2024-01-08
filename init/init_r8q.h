@@ -16,12 +16,12 @@ typedef struct {
 
 static const variant international_models = {
     .model = "SM-G780G",
-    .codename = "r8qxx"
+    .codename = "r8q"
 };
 
 static const variant international_models_5g = {
     .model = "SM-G781B",
-    .codename = "r8qxxx"
+    .codename = "r8q"
 };
 
 static const variant *all_variants[VARIANT_MAX] = {

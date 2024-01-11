@@ -452,6 +452,8 @@ PRODUCT_PACKAGES += \
     libwifi-hal \
     libwifi-hal-qcom \
     libwpa_client \
+    vendor.qti.hardware.wifi.hostapd@1.2.vendor \
+    vendor.qti.hardware.wifi.supplicant@2.1.vendor \
     WifiOverlay \
     TetheringConfigOverlay \
     wpa_cli \

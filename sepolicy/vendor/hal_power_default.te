@@ -24,11 +24,11 @@ allow hal_power_default sysfs_touchscreen_writable:file rw_file_perms;
 # /sys/devices/system/cpu/cpu[0-9]/cpufreq/scaling_max_freq
 allow hal_power_default sysfs_devices_system_cpu:file rw_file_perms;
 
-# /sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel
+# /sys/devices/platform/soc/3d00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel
 allow hal_power_default vendor_sysfs_kgsl:file { write open };
+allow hal_power_default vendor_sysfs_kgsl:lnk_file read;
 
-# /sys/devices/platform/soc/a84000.i2c/i2c-23/23-0049/input/
-allow hal_power_default sysfs_power_writable:file { write open };
+# /sys/devices/platform/soc/994000.i2c/i2c-5/5-0049/input/
 allow hal_power_default sysfs_power_writable:dir search;
 
 # /sys/devices/platform/soc/soc:qcom,cpu-cpu-llcc-bw/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/hyst_trigger_count

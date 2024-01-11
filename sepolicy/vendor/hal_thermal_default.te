@@ -6,3 +6,9 @@ allow hal_thermal_default sysfs_battery:file { read open getattr };
 allow hal_thermal_default sysfs_power_writable:file { read open };
 
 allow hal_thermal_default hal_thermal_samsung_hwservice:hwservice_manager { add find };
+
+binder_call(hal_thermal_default, servicemanager)
+
+get_prop(hal_thermal_default, boot_status_prop)
+
+dontaudit hal_thermal_default default_android_service:service_manager find;

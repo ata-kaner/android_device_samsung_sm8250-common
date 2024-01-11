@@ -34,10 +34,10 @@ allow hal_sensors_default sysfs_sec_key:file r_file_perms;
 
 # /sys/class/sec/tsp/
 allow hal_sensors_default sysfs_sec_touchscreen:dir r_dir_perms;
-allow hal_sensors_default sysfs_sec_touchscreen:file r_file_perms;
+allow hal_sensors_default sysfs_sec_touchscreen:file rw_file_perms;
 allow hal_sensors_default sysfs_sec_touchscreen:lnk_file r_file_perms;
 allow hal_sensors_default sysfs_power_writable:dir search;
-allow hal_sensors_default sysfs_power_writable:file { read open };
+allow hal_sensors_default sysfs_power_writable:file rw_file_perms;
 
 # /sys/class/sec/tsp/cmd
 allow hal_sensors_default sysfs_touchscreen_writable:file rw_file_perms;
@@ -45,3 +45,6 @@ allow hal_sensors_default sysfs_touchscreen_writable:file rw_file_perms;
 # props
 allow hal_sensors_default property_socket:sock_file write;
 unix_socket_connect(hal_sensors_default, property, init)
+
+dontaudit hal_sensors_default { default_prop build_bootimage_prop }:file { getattr map open read };
+set_prop(hal_sensors_default, sns_camera_light_prop)

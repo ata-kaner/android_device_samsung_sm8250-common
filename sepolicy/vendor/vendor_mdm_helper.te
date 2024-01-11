@@ -1,0 +1,3 @@
+allow vendor_mdm_helper sysfs_qcacld:file { read open };
+
+allow vendor_mdm_helper vendor_toolbox_exec:file execute_no_trans;

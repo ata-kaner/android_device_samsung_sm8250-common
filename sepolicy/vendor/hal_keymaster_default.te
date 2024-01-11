@@ -9,3 +9,27 @@ allow hal_keymaster_default efs_file:dir search;
 # /mnt/vendor/efs/DAK/
 allow hal_keymaster_default prov_efs_file:dir search;
 allow hal_keymaster_default prov_efs_file:file { read open getattr };
+
+# /vendor/firmware_mnt
+allow kernel vendor_fw_mnt:dir r_dir_perms;
+allow kernel vendor_fw_mnt:file r_file_perms;
+
+get_prop(hal_keymaster_default, vendor_spcomlib_prop)
+get_prop(hal_keymaster_default, vendor_tee_listener_prop)
+set_prop(hal_keymaster_default, ctl_start_prop)
+
+# Allow StrongBox to access it's node
+allow hal_keymaster_default {
+    ssp_device
+    tee_device
+    tz_device
+    vendor_skp_device
+    vendor_sp_keymaster_device
+    vendor_spcom_device
+    vendor_spss_utils_device
+}:chr_file rw_file_perms;
+
+allowxperm hal_keymaster_default vendor_spss_utils_device:chr_file ioctl { 0x5302 };
+
+binder_call(hal_keymaster_default, vendor_hal_keymaster_qti)
+

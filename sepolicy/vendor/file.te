@@ -1,5 +1,4 @@
 # SYSFS
-type sysfs_battery, sysfs_type, r_fs_type, fs_type;
 type sysfs_camera, sysfs_type, r_fs_type, fs_type;
 type sysfs_fingerprint, sysfs_type, r_fs_type, fs_type;
 type sysfs_iio, sysfs_type, r_fs_type, fs_type;
@@ -11,7 +10,9 @@ type sysfs_sec_switch, sysfs_type, r_fs_type, fs_type;
 type sysfs_sec_touchscreen, sysfs_type, r_fs_type, fs_type;
 type sysfs_sensors, sysfs_type, r_fs_type, fs_type;
 type sysfs_wifi, sysfs_type, r_fs_type, fs_type;
+type sysfs_qcacld, sysfs_type, r_fs_type, fs_type;
 
+type sysfs_audio_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_backlight_writable, sysfs_type, rw_fs_type, fs_type;
 type sysfs_camera_writable, sysfs_type, r_fs_type, fs_type;
 type sysfs_battery_writable, sysfs_type, rw_fs_type, fs_type;
@@ -40,5 +41,19 @@ type pfw_efs_file, file_type;
 type prov_efs_file, file_type;
 type wifi_efs_file, file_type;
 
+# firmware_mnt
+type vendor_fw_mnt, file_type;
+
 # PROC
 type proc_last_kmsg, fs_type, proc_type;
+
+# Root folders
+type carrier_file, file_type;
+type keydata_data_file, file_type;
+type keyrefuge_data_file, file_type;
+type omr_file, file_type, mlstrustedobject;
+type misc_file, file_type;
+type optics_file, file_type;
+type prism_file, file_type;
+type spu_file, file_type;
+type dqmdbg_file, file_type;

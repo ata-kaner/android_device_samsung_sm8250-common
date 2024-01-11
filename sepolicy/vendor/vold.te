@@ -1,1 +1,7 @@
-allow vold efs_file:dir { read open ioctl };
+allow vold {
+    carrier_file
+    efs_file
+    keydata_data_file
+    keyrefuge_data_file
+    spu_file
+}:dir { read open ioctl };

@@ -17,3 +17,5 @@ allow factory_ssc property_socket:sock_file write;
 unix_socket_connect(factory_ssc, property, init)
 
 set_prop(factory_ssc, vendor_sensors_prop)
+
+dontaudit factory_ssc default_prop:file { getattr map open read };

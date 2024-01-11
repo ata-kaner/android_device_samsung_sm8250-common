@@ -84,6 +84,7 @@ on early-boot
     chown system radio /sys/class/sec/tsp/cmd
     chown system system /sys/class/sec/tsp/input/enabled
     chmod 0660 /sys/class/sec/tsp/input/enabled
+    chown system system /sys/class/sec/tsp/input/fod_pressed
     chown root system /proc/tsp_msg
     chmod 0440 /proc/tsp_msg
     chown system system /sys/class/sec/tsp/multi_count
@@ -132,6 +133,10 @@ on early-boot
     chown system radio /sys/class/sec/tsp2/cmd
     chown system system /sys/class/sec/tsp2/input/enabled
     chmod 0660 /sys/class/sec/tsp2/input/enabled
+
+# Camera
+    chown system system /sys/class/camera/flash/rear_flash
+    chown system system /sys/class/camera/rear/ssrm_camera_info
 
 # Permission for Wacom
     chown system radio /sys/class/sec/sec_epen/cmd
@@ -227,6 +232,10 @@ on boot
     chown radio system /sys/module/lpm_levels/parameters/secdebug
     chmod 664 /sys/module/lpm_levels/parameters/secdebug
     chown system system /sys/power/system_sleep/stats
+
+# Permissions for PowerShare
+    chown system system /sys/class/power_supply/battery/wc_tx_en
+    chmod 0664 /sys/class/power_supply/battery/wc_tx_en
 
 # Add permission for Display PMIC
     chown system system /sys/class/sec/disp_pmic/enable_fd

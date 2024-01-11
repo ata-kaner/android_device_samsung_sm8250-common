@@ -34,3 +34,6 @@ on boot
 # For NFC hardware SKU
 on boot && property:ro.boot.nfc.feature.chipname=*
     setprop ro.vendor.nfc.feature.chipname ${ro.boot.nfc.feature.chipname}
+
+service vendor.nfc_init /vendor/bin/sh /vendor/bin/init.nfc.sh
+    oneshot

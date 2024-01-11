@@ -96,7 +96,6 @@
         <version>1.2</version>
         <interface>
             <name>IComponentStore</name>
-            <instance>default</instance>
             <instance>software</instance>
         </interface>
     </hal>

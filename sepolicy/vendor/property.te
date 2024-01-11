@@ -1,5 +1,11 @@
+# Camera
+vendor_internal_prop(persist_camera_prop)
+
 # Fastcharge
 vendor_internal_prop(vendor_fastcharge_prop)
+
+# NFC
+vendor_internal_prop(vendor_nfc_prop)
 
 # power
 vendor_internal_prop(vendor_power_prop)

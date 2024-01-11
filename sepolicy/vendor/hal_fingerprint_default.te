@@ -12,10 +12,6 @@ allow hal_fingerprint_default biometrics_efs_file:file r_file_perms;
 allow hal_fingerprint_default biometrics_efs_file:dir search;
 allow hal_fingerprint_default efs_file:dir search;
 
-# /sys/class/lcd/panel/mask_brightness
-allow hal_fingerprint_default sysfs_lcd_writable:dir search;
-allow hal_fingerprint_default sysfs_lcd_writable:file rw_file_perms;
-
 # /sys/class/fingerprint/
 allow hal_fingerprint_default sysfs_fingerprint:dir r_dir_perms;
 allow hal_fingerprint_default sysfs_fingerprint:file r_file_perms;
@@ -24,9 +20,12 @@ allow hal_fingerprint_default sysfs_fingerprint:file r_file_perms;
 allow hal_fingerprint_default biometrics_vendor_data_file:file create_file_perms;
 allow hal_fingerprint_default biometrics_vendor_data_file:dir { read write open add_name create rmdir remove_name search };
 
-# /sys/class/sec/tsp/
-allow hal_fingerprint_default sysfs_sec_touchscreen:dir search;
-allow hal_fingerprint_default sysfs_touchscreen_writable:file { write open getattr };
+# /sys/devices/platform/samsung_mobile_device/samsung_mobile_device/
+allow hal_fingerprint_default sysfs_battery:dir search;
+allow hal_fingerprint_default sysfs_battery:file { open read };
 
-# vendor.finger.down
-set_prop(hal_fingerprint_default, vendor_fingerprint_prop)
+# /dev/uinput
+allow hal_fingerprint_default uhid_device:chr_file rw_file_perms;
+
+# /sys/devices/virtual/lcd/panel/
+allow hal_fingerprint_default sysfs_lcd_writable:file r_file_perms;

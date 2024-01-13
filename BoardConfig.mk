@@ -40,52 +40,46 @@ TARGET_NO_BOOTLOADER := true
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
-TARGET_CPU_VARIANT_RUNTIME := kryo385
+TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
 
 # Kernel config
 TARGET_KERNEL_SOURCE        := kernel/samsung/sm8250
 TARGET_KERNEL_CONFIG        := vendor/lineage_r8q_defconfig
-TARGET_KERNEL_CLANG_PATH    := $(shell pwd)/prebuilts/clang/kernel/$(HOST_OS)-x86/clang-r416183b
+TARGET_KERNEL_CLANG_PATH    := $(shell pwd)/prebuilts/clang/host/$(HOST_OS)-x86/clang-r416183b
 TARGET_KERNEL_ARCH          := arm64
 TARGET_KERNEL_HEADER_ARCH   := arm64
 TARGET_LINUX_KERNEL_VERSION := 4.19
 
 # Kernel flags
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_BOOT_HEADER_VERSION := 2
+BOARD_KERNEL_IMAGE_NAME        := Image
+BOARD_BOOT_HEADER_VERSION      := 2
+BOARD_KERNEL_SEPARATED_DTBO    := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG   := true
+TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc OEM_TARGET_PRODUCT=$(PRODUCT_DEVICE)
 
-BOARD_KERNEL_BASE            := 0x00000000
-BOARD_KERNEL_PAGESIZE        := 4096
-BOARD_RAMDISK_OFFSET         := 0x02000000
-BOARD_DTB_OFFSET             := 0x01f00000
-BOARD_KERNEL_OFFSET          := 0x00008000
-BOARD_KERNEL_SECOND_OFFSET   := 0x00f00000
-BOARD_KERNEL_TAGS_OFFSET     := 0x01e00000
-BOARD_KERNEL_IMAGE_NAME      := Image
-BOARD_KERNEL_SEPARATED_DTBO  := true
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
+BOARD_NAME                 := SRPUB26A007
+BOARD_DTB_OFFSET           := 0x01F00000
+BOARD_KERNEL_BASE          := 0x00000000
+BOARD_KERNEL_OFFSET        := 0x00008000    
+BOARD_KERNEL_PAGESIZE      := 4096
+BOARD_KERNEL_TAGS_OFFSET   := 0x01E00000
+BOARD_RAMDISK_OFFSET       := 0x02000000
+BOARD_KERNEL_SECOND_OFFSET := 0x00F00000
 
 # Kernel: mkbootimgs args
-BOARD_CUSTOM_BOOTIMG := true
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
+BOARD_MKBOOTIMG_ARGS =  --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --dtb_offset $(BOARD_DTB_OFFSET) --pagesize $(BOARD_KERNEL_PAGESIZE) --header_version $(BOARD_BOOT_HEADER_VERSION) --board $(BOARD_NAME) --kernel_offset $(BOARD_KERNEL_OFFSET) --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 
 # Additional root folders
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -230,6 +224,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 # SePolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 
 # Wi-Fi

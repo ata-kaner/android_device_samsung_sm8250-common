@@ -535,6 +535,10 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/samsung \
     hardware/samsung/aidl/power-libperfmgr
 
+# Wifi SAP Interface Name
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.wifi.sap.interface=wlan1
+
 # Prop files
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop

@@ -1489,6 +1489,16 @@ vendor/lib64/libfloatingfeature.so
 vendor/lib64/libsecnativefeature.so
 vendor/lib64/libsemnativecarrierfeature.so
 
+# Secure Element
+-vendor/bin/hw/android.hardware.secure_element@1.0-service
+-vendor/bin/hw/android.hardware.secure_element@1.0-service-gto
+vendor/etc/init/android.hardware.secure_element@1.0-service-sku.rc
+vendor/etc/init/android.hardware.secure_element@1.0-service-gto-sku.rc
+vendor/etc/libese-nxp.conf
+vendor/etc/libse-gto-hal.conf
+-vendor/lib64/android.hardware.secure_element-impl-gto.so
+-vendor/lib64/ese_spi_nxp.so
+
 # Sensor-configs
 vendor/etc/sensors/config/ak991x_dri_0.json
 vendor/etc/sensors/config/ak991x_polling_0.json

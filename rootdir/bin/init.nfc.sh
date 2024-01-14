@@ -18,8 +18,8 @@
 sku=`getprop ro.boot.hardware.sku`
 if [ "$sku" = "sn110t" ]; then
     start vendor.nfc_hal_service
-    start secure_element_hal_service
+    start vendor.secure_element_hal_service
 else
     start nfc_hal_service
-    start gto_secure_element_hal_service
+    start vendor.secure_element_hal_service-gto
 fi

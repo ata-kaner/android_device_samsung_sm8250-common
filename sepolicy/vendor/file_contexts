@@ -33,6 +33,10 @@
 # radio
 /dev/drb                                     u:object_r:drb_device:s0
 
+# secure element
+/dev/p61                                     u:object_r:secure_element_device:s0
+/dev/p3                                      u:object_r:secure_element_device:s0
+
 # strongbox
 /dev/ssp                                        u:object_r:ssp_device:s0
 /dev/tzic                                       u:object_r:tz_device:s0
@@ -86,7 +90,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@[0-9]\.[0-9]-service\.samsung                         u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc_snxxx@[0-9]\.[0-9]-service                            u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power(@[0-9]\.[0-9])?-service\.samsung-libperfmgr         u:object_r:hal_power_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element(@[0-9]\.[0-9])?-service-disabled           u:object_r:hal_secure_element_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element(@[0-9]\.[0-9])?-service                    u:object_r:hal_secure_element_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element(@[0-9]\.[0-9])?-service-gto                u:object_r:hal_secure_element_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android.hardware.sensors-service.samsung-multihal                            u:object_r:hal_sensors_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator\-service\.samsung                                u:object_r:hal_vibrator_default_exec:s0

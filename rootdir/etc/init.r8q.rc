@@ -152,3 +152,10 @@ on post-fs-data && property:ro.csc.sales_code=DSA
     mount none /mnt/temp/priv-app/VisualVoicemailDsh_Stub /system/carrier/priv-app/VisualVoicemailDsh_Stub bind
     umount /mnt/temp
     rmdir /mnt/temp
+
+# Enable 4G or 5G based on product name
+on property:ro.product.vendor.name=r8qxxx
+    setprop ro.telephony.default_network 33,33
+
+on property:ro.product.vendor.name=r8qxx
+    setprop ro.telephony.default_network 9,9

@@ -1484,6 +1484,13 @@ vendor/lib64/libfloatingfeature.so
 vendor/lib64/libsecnativefeature.so
 vendor/lib64/libsemnativecarrierfeature.so
 
+# GTO Secure Element - from G781BXXS8HWH8
+-vendor/bin/hw/android.hardware.secure_element@1.2-service:60b4a2d9285169ccf6e883662ac1ab81e50982aa
+-vendor/lib64/android.hardware.secure_element-impl-gto.so:bc98d4808a83e1e40e4bd863cd5fed3b1575ec58
+
+# Secure Element
+vendor/etc/libse-gto-hal.conf
+
 # Sensor-configs
 vendor/etc/sensors/config/ak991x_dri_0.json
 vendor/etc/sensors/config/ak991x_polling_0.json

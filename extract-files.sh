@@ -54,9 +54,9 @@ while [ "${#}" -gt 0 ]; do
     shift
 done
 
-    if [ -z "${SRC}" ]; then
-        SRC="adb"
-    fi
+if [ -z "${SRC}" ]; then
+    SRC="adb"
+fi
 
 function blob_fixup() {
     case "${1}" in

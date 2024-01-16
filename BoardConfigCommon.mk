@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/samsung/r8q
+COMMON_PATH := device/samsung/r8q-common
 
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -69,7 +69,6 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG   := true
 TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc OEM_TARGET_PRODUCT=$(PRODUCT_DEVICE)
 
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
-BOARD_NAME                 := SRPUB26A007
 BOARD_DTB_OFFSET           := 0x01F00000
 BOARD_KERNEL_BASE          := 0x00000000
 BOARD_KERNEL_OFFSET        := 0x00008000    
@@ -82,7 +81,7 @@ BOARD_KERNEL_SECOND_OFFSET := 0x00F00000
 BOARD_MKBOOTIMG_ARGS =  --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --dtb_offset $(BOARD_DTB_OFFSET) --pagesize $(BOARD_KERNEL_PAGESIZE) --header_version $(BOARD_BOOT_HEADER_VERSION) --board $(BOARD_NAME) --kernel_offset $(BOARD_KERNEL_OFFSET) --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 
 # Additional root folders
-TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 BOARD_ROOT_EXTRA_FOLDERS += \
     carrier \
@@ -161,7 +160,7 @@ TARGET_SEC_FP_REQUEST_FORCE_CALIBRATE := true
 TARGET_SEC_FP_REQUEST_TOUCH_EVENT := true
 
 # FOD
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.samsung-sm8250
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.samsung-sm8250
 TARGET_USES_FOD_ZPOS := true
 
 # Health
@@ -173,15 +172,12 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 # Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
 
-# Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_samsung_r8q
-
 # HIDL manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    $(DEVICE_PATH)/configs/framework_compatibility_matrix.xml \
+    $(COMMON_PATH)/configs/framework_compatibility_matrix.xml \
     vendor/lineage/config/device_framework_matrix.xml
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/manifest.xml
-DEVICE_MATRIX_FILE += $(DEVICE_PATH)/configs/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/manifest.xml
+DEVICE_MATRIX_FILE += $(COMMON_PATH)/configs/compatibility_matrix.xml
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
@@ -213,19 +209,18 @@ ENABLE_VENDOR_RIL_SERVICE := true
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/fstab.qcom
-TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery/root/fstab.qcom
 BOARD_USES_FULL_RECOVERY_IMAGE := true
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_samsung_sm8250
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 
 # SePolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
-BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 
 # Wi-Fi
 BOARD_WLAN_DEVICE := qcwcn

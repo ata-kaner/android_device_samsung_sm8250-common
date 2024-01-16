@@ -1,5 +1,0 @@
-service nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service.samsung
-    disabled
-    class hal
-    user nfc
-    group nfc

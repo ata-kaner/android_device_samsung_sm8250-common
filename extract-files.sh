@@ -64,11 +64,12 @@ function blob_fixup() {
             # Replace libutils with vndk30 libutils
             "${PATCHELF}" --replace-needed libutils.so libutils-v30.so "${2}"
             ;;
-        vendor/lib64/libsec-ril.so)
+        vendor/lib64/libsec-ril.so|vendor/lib64/libsec-ril-dsds.so)
+            # Replace SlotID prop
             sed -i 's/ril.dds.call.slotid/vendor.calls.slotid/g' "${2}"
-            ;;
-        vendor/lib64/libsec-ril-dsds.so)
-            sed -i 's/ril.dds.call.slotid/vendor.calls.slotid/g' "${2}"
+            # Pass an empty value to SecRil::RequestComplete in OnGetSmscAddressDone
+            xxd -p -c0 "${2}" | sed "s/600e40f9820c805224008052e10315aae30314aa/600e40f9820c805224008052e10315aa030080d2/g" | xxd -r -p > "${2}".patched
+            mv "${2}".patched "${2}"
             ;;
         vendor/lib64/hw/com.qti.chi.override.so)
             xxd -p "${2}" | tr -d \\n > "${2}".hex

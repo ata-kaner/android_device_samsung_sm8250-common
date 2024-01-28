@@ -319,12 +319,12 @@ endif
 
 ifeq ($(TARGET_HAVE_MULTI_SKU),true)
 PRODUCT_PACKAGES += \
-    android.hardware.nfc_snxxx@1.2-service \
+    android.hardware.nfc-service.nxp \
     init.nfc.sh
 
 # Disabled NFC inits
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/init/android.hardware.nfc_snxxx@1.2-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.nfc_snxxx@1.2-service.rc \
+    $(COMMON_PATH)/configs/init/android.hardware.nfc-service.nxp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.nfc-service.nxp.rc \
     $(COMMON_PATH)/configs/init/android.hardware.nfc@1.2-service.samsung.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.nfc@1.2-service.samsung.rc
 
 # NFC configs

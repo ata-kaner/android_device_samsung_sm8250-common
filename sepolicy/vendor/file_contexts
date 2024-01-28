@@ -80,7 +80,7 @@
 /(vendor|system/vendor)/bin/hw/macloader                                                                    u:object_r:macloader_exec:s0
 
 # Hals
-/(vendor|system/vendor)/bin/hw/android.hardware.biometrics.fingerprint@2.3-service.samsung                  u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android.hardware.biometrics.fingerprint-service.samsung                      u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@2\.6-service\_64\.samsung\-sm8250        u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@[0-9]\.[0-9]-service\.widevine                        u:object_r:hal_drm_widevine_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.health@2\.1-service-samsung                               u:object_r:hal_health_default_exec:s0

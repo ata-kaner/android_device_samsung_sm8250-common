@@ -154,6 +154,15 @@ AUDIO_FEATURE_ENABLED_SSR := false
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
 
+# Camera
+SOONG_CONFIG_NAMESPACES += samsungCameraVars
+SOONG_CONFIG_samsungCameraVars += \
+    needs_sec_reserved_field \
+    extra_ids
+
+SOONG_CONFIG_samsungCameraVars_needs_sec_reserved_field := true
+SOONG_CONFIG_samsungCameraVars_extra_ids := 20,21,23,50,52
+
 # FOD
 TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.samsung-sm8250
 TARGET_USES_FOD_ZPOS := true

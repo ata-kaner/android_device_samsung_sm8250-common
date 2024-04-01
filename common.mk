@@ -299,7 +299,8 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     NfcNci \
     SecureElement \
-    Tag
+    Tag \
+    libchrome.vendor
 
 ifneq ($(TARGET_HAVE_MULTI_SKU),true)
 # NFC configs

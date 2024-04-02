@@ -42,7 +42,7 @@ type prov_efs_file, file_type;
 type wifi_efs_file, file_type;
 
 # firmware_mnt
-type vendor_fw_mnt, file_type;
+type vendor_fw_mnt, file_type, vendor_file_type;
 
 # PROC
 type proc_last_kmsg, fs_type, proc_type;

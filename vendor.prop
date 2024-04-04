@@ -164,6 +164,9 @@ ro.vendor.fingerprint.type=udfps_optical
 ro.vendor.fingerprint.sensor_location=540|2137|119
 ro.vendor.fingerprint.request_touch_event=true
 
+# FUSE passthrough
+persist.sys.fuse.passthrough.enable=true
+
 # Gatekeeper
 ro.hardware.gatekeeper=mdfpp
 

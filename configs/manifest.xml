@@ -130,10 +130,6 @@
         </interface>
         <fqname>@1.0::IMemtrack/default</fqname>
     </hal>
-    <hal format="aidl" override="true">
-        <name>android.hardware.nfc</name>
-        <fqname>INfc/default</fqname>
-    </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.nfc</name>
         <transport>hwbinder</transport>

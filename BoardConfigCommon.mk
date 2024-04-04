@@ -170,10 +170,6 @@ SOONG_CONFIG_samsungCameraVars += \
 SOONG_CONFIG_samsungCameraVars_needs_sec_reserved_field := true
 SOONG_CONFIG_samsungCameraVars_extra_ids := 20,21,23,50,52
 
-# FOD
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.samsung-sm8250
-TARGET_USES_FOD_ZPOS := true
-
 # Health
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/batt_slate_mode
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED := 0

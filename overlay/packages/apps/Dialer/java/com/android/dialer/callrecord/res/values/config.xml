@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
-     Copyright (C) 2018-2022 The LineageOS Project
+     Copyright (C) 2021 The LineageOS Project
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -11,12 +12,7 @@
      limitations under the License.
 -->
 <resources>
-    <!-- HBM type of UDFPS overlay.
-            0 - GLOBAL HBM
-            1 - LOCAL HBM
-    -->
-    <integer name="config_udfpsHbmType">0</integer>
-
-    <!-- Color of the UDFPS pressed view -->
-    <color name="config_udfpsColor">#ffffff</color>
+    <bool name="call_recording_enabled">true</bool>
+    <integer name="call_recording_audio_source">4</integer>
 </resources>
+

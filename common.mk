@@ -134,6 +134,7 @@ PRODUCT_PACKAGES += \
 
 # Configstore
 PRODUCT_PACKAGES += \
+    disable_configstore \
     vendor.qti.hardware.capabilityconfigstore@1.0.vendor
 
 # CGroups

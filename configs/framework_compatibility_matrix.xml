@@ -1,44 +1,3 @@
-<!--
-    Input:
-        vendor_framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        device_framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        radio_framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        tlc_payment_compatibility_matrix.xml
-        vendor.samsung.hardware.authfw@1.0-matrix.xml
-        tlc_blockchain_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        vendor.samsung.hardware.tlc.iccc@1.0-matrix.xml
-        vendor.samsung.hardware.tlc.snap@1.0-matrix.xml
-        framework_compatibility_matrix.xml
-        vendor.samsung.hardware.tlc.hdm@1.1-matrix.xml
-        framework_compatibility_matrix.xml
-        vendor.samsung.hardware.hqm@1.0-matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        face_compatibility_matrix.xml
-        fingerprint_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        framework_compatibility_matrix.xml
-        vendor.samsung.hardware.tlc.ddar@1.0-matrix.xml
-        device_framework_compatibility_matrix.xml
--->
 <compatibility-matrix version="5.0" type="framework">
     <hal format="hidl" optional="true">
         <name>android.hardware.automotive.evs</name>
@@ -950,14 +909,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.authfw</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehAuthenticationFramework</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.samsung.hardware.bluetooth</name>
         <version>2.0</version>
         <interface>
@@ -1010,75 +961,6 @@
         <version>2.0</version>
         <interface>
             <name>ISehHealth</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.hqm</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehHqm</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.hyper</name>
-        <version>2</version>
-        <interface>
-            <name>ISehHyPer</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.hyper</name>
-        <version>2</version>
-        <interface>
-            <name>ISehHyPer</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.media.converter</name>
-        <interface>
-            <name>ISehColorConverterStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.media.converter</name>
-        <interface>
-            <name>ISehColorConverterStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.media.mpp</name>
-        <interface>
-            <name>ISehMppStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.miscpower</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISehMiscPower</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.nfc</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISehNfc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.nfc</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISehNfc</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1162,69 +1044,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.security.drk</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISehDrk</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.security.engmode</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehEngmode</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.security.engmode</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehEngmode</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.security.hdcp.keyprovisioning</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehHdcpKeyProvisioning</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.security.sem</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehSem</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.security.skpm</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehSkpm</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.snap</name>
-        <interface>
-            <name>ISehSnap</name>
-            <instance>default</instance>
-            <instance>secsnap</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.security.ssu</name>
-        <interface>
-            <name>ISehSSUTEECL</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.samsung.hardware.security.vaultkeeper</name>
         <version>2.0</version>
         <interface>
@@ -1233,128 +1052,10 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.security.wsm</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehWsm</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.sysinput</name>
-        <version>1.3</version>
-        <interface>
-            <name>ISehSysInputCallback</name>
-        </interface>
-        <interface>
-            <name>ISehSysInputDev</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.sysinput</name>
-        <version>1.3</version>
-        <interface>
-            <name>ISehSysInputCallback</name>
-        </interface>
-        <interface>
-            <name>ISehSysInputDev</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.samsung.hardware.thermal</name>
         <version>1.0</version>
         <interface>
             <name>ISehThermal</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.tlc.blockchain</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehBlockchain</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.tlc.ddar</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehDdar</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.tlc.hdm</name>
-        <version>1.1</version>
-        <interface>
-            <name>ISehHdm</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.tlc.iccc</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehIccc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.tlc.payment</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehTlcPayment</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.tlc.snap</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISehSnapSec</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.tlc.ucm</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISehUcm</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.vibrator</name>
-        <version>2.2</version>
-        <interface>
-            <name>ISehVibrator</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.wifi</name>
-        <version>2.0-3</version>
-        <interface>
-            <name>ISehWifi</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.wifi.hostapd</name>
-        <version>4.0</version>
-        <interface>
-            <name>ISehHostapd</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.samsung.hardware.wifi.supplicant</name>
-        <version>3.0-1</version>
-        <interface>
-            <name>ISehSupplicant</name>
             <instance>default</instance>
         </interface>
     </hal>

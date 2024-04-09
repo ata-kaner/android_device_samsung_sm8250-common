@@ -488,7 +488,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi.hostapd@1.2.vendor \
     vendor.qti.hardware.wifi.supplicant@2.1.vendor \
     WifiOverlay \
-    TetheringConfigOverlay \
     wpa_cli \
     wpa_supplicant \
     wpa_supplicant.conf
@@ -511,10 +510,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel \
     hardware/samsung \
     hardware/samsung/aidl/power-libperfmgr
-
-# Wifi SAP Interface Name
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.wifi.sap.interface=wlan1
 
 # Inherit proprietary blobs
 $(call inherit-product, vendor/samsung/sm8250-common/sm8250-common-vendor.mk)

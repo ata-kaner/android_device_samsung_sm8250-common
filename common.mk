@@ -128,10 +128,6 @@ PRODUCT_PACKAGES += \
     libgui_vendor \
     libcamera2ndk_vendor
 
-# CAS
-PRODUCT_PACKAGES += \
-    android.hardware.cas@1.2-service
-
 # Configstore
 PRODUCT_PACKAGES += \
     disable_configstore \
@@ -204,8 +200,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.samsung \
-    android.hardware.common-V1-ndk_platform.vendor \
-    fingerprint.default
+    android.hardware.common-V1-ndk_platform.vendor
 
 # FlipFlap
 PRODUCT_PACKAGES += \
@@ -465,10 +460,7 @@ PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/usb/etc
 # Tether
 PRODUCT_PACKAGES += \
     ipacm \
-    IPACM_cfg.xml \
-    libipanat \
-    android.hardware.tetheroffload.config@1.0.vendor  \
-    android.hardware.tetheroffload.control@1.0.vendor
+    IPACM_cfg.xml
 
 # VNDK
 PRODUCT_PACKAGES += \
@@ -485,8 +477,6 @@ PRODUCT_PACKAGES += \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
     libwpa_client \
-    vendor.qti.hardware.wifi.hostapd@1.2.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.1.vendor \
     WifiOverlay \
     wpa_cli \
     wpa_supplicant \

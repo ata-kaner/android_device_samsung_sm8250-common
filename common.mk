@@ -30,6 +30,9 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
+# Shipping API level
+PRODUCT_SHIPPING_API_LEVEL := 29
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
 # Init files and fstab

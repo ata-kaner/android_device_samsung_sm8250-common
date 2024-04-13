@@ -24,10 +24,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Enable Scoped Storage related
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Board API Level
-BOARD_SHIPPING_API_LEVEL := 30
-BOARD_API_LEVEL := $(BOARD_SHIPPING_API_LEVEL)
-
 # Partitions
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true

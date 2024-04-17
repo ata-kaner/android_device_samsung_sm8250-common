@@ -1158,6 +1158,28 @@ vendor/lib/libpredeflicker_native.so
 vendor/lib64/libopenvx.so
 vendor/lib64/libreffeature.so
 
+# Media Codec2
+vendor/bin/hw/samsung.software.media.c2@1.0-service
+vendor/etc/init/samsung.software.media.c2@1.0-service.rc
+vendor/etc/seccomp_policy/samsung.software.media.c2-base-policy
+vendor/etc/seccomp_policy/samsung.software.media.c2-ext-policy
+vendor/lib64/libcodec2_sec_aacdec.so
+vendor/lib64/libcodec2_sec_aacenc.so
+vendor/lib64/libcodec2_sec_amrnbdec.so
+vendor/lib64/libcodec2_sec_amrwbdec.so
+vendor/lib64/libcodec2_sec_apedec.so
+vendor/lib64/libcodec2_sec_flacdec.so
+vendor/lib64/libcodec2_sec_imadec.so
+vendor/lib64/libcodec2_sec_mp3dec.so
+vendor/lib64/libcodec2_sec_mp43dec.so
+vendor/lib64/libcodec2_sec_mp4vdec.so
+vendor/lib64/libcodec2_sec_soft_common.so
+vendor/lib64/libcodec2_sec_vc1dec.so
+vendor/lib64/libcodec2_sec_wmadec.so
+vendor/lib64/libcodec2_sec_wmv7dec.so
+vendor/lib64/libcodec2_sec_wmv8dec.so
+vendor/lib64/libSecC2ComponentStore.so
+
 # Media
 vendor/etc/configstore/vpp.configstore.xml
 vendor/etc/seccomp_policy/configstore@1.1.policy

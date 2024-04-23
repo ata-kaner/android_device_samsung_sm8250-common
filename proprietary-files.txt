@@ -1230,7 +1230,15 @@ vendor/lib64/libcodec2_sec_vc1dec.so
 vendor/lib64/libcodec2_sec_wmadec.so
 vendor/lib64/libcodec2_sec_wmv7dec.so
 vendor/lib64/libcodec2_sec_wmv8dec.so
+vendor/lib64/libcodec2_soft_ac4dec.so
+vendor/lib64/libcodec2_soft_common.so
+vendor/lib64/libcodec2_soft_eac3dec.so
+vendor/lib64/libcodec2_vndk.so
 vendor/lib64/libSecC2ComponentStore.so
+vendor/lib64/libstagefright_foundation_vendor.so
+vendor/lib64/libavservices_minijail_vendor.so
+vendor/lib64/libcodec2_hidl@1.0.so
+vendor/lib64/libcodec2_hidl@1.1.so
 
 # NFC (SLSI)
 vendor/etc/nfc/sec_s3nrn4v_hwreg.bin

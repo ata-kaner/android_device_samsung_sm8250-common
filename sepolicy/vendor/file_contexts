@@ -1,3 +1,8 @@
+# Audio
+/sys/class/cirrus/cirrus_bd(/.*)?                  u:object_r:sysfs_audio_writable:s0
+/sys/class/cirrus/cirrus_cal(/.*)?                 u:object_r:sysfs_audio_writable:s0
+/sys/class/cirrus/cirrus_pwr(/.*)?                 u:object_r:sysfs_audio_writable:s0
+
 # DATA
 /data/vendor/biometrics(/.*)?                u:object_r:biometrics_vendor_data_file:s0
 /data/vendor/conn(/.*)?                      u:object_r:conn_vendor_data_file:s0
@@ -41,6 +46,13 @@
 /dev/ssp                                        u:object_r:ssp_device:s0
 /dev/tzic                                       u:object_r:tz_device:s0
 /dev/tzirs                                      u:object_r:tz_device:s0
+
+# Sysfs nodes
+/sys/devices/platform/soc/[a-f0-9]+(\.)?qcom,[^/]+/(subsys[0-9]/)?wakeup(/.*)?            u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/[a-z0-9]+\.i2c/i2c-[0-9]+/[0-9]+-[a-z0-9]+/wakeup(/.*)?         u:object_r:sysfs_wakeup:s0
+/sys/devices/virtual/misc/msm_[a-z0-9]+(_[a-z0-9]+)?/wakeup([0-9])+(/.*)?                 u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/soc:(\.)?qcom,[^/]+/(subsys[0-9]/)?wakeup(/.*)?                 u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/soc:i2c@[0-9]+/i2c-[0-9]+/[0-9]+-[a-z0-9]+/wakeup(/.*)?         u:object_r:sysfs_wakeup:s0
 
 # EFS
 /efs/Battery(/.*)?                           u:object_r:battery_efs_file:s0

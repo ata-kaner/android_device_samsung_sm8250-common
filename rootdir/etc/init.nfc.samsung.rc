@@ -30,7 +30,6 @@ on boot
     chown nfc nfc /dev/st21nfc
     chmod 0660 /dev/st54spi
     chown system system /dev/st54spi
-    start vendor.nfc_init
 
 # For NFC hardware SKU
 on boot && property:ro.boot.nfc.feature.chipname=*

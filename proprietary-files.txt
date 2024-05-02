@@ -1547,7 +1547,6 @@ vendor/lib64/libtime_genoff.so
 vendor/lib/libstreamparser.so
 
 # WiFi
-vendor/bin/hw/macloader
 vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so

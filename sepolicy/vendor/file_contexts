@@ -89,7 +89,6 @@
 # Vendor
 /(vendor|system/vendor)/bin/factory\.ssc                                                                    u:object_r:factory_ssc_exec:s0
 /(vendor|system/vendor)/bin/secril_config_svc                                                               u:object_r:secril_config_svc_exec:s0
-/(vendor|system/vendor)/bin/hw/macloader                                                                    u:object_r:macloader_exec:s0
 
 # Hals
 /(vendor|system/vendor)/bin/hw/android.hardware.biometrics.fingerprint-service.samsung                      u:object_r:hal_fingerprint_default_exec:s0

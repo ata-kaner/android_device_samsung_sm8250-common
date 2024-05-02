@@ -1503,6 +1503,9 @@ vendor/lib64/sensors.grip.so
 vendor/lib64/sensors.ssc.so
 
 # SMC Invoke 
+vendor/lib/libminkdescriptor.so
+vendor/lib/libnative-api.so
+vendor/lib/libqcbor.so
 vendor/lib64/libminkdescriptor.so
 vendor/lib64/libnative-api.so
 vendor/lib64/libqcbor.so

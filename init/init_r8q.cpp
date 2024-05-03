@@ -79,11 +79,11 @@ void vendor_load_properties()
     property_override("ro.build.product", device.c_str());
 
     if (bootloader.find("G780G") == 0) {
-         property_override("ro.build.description", "r8qxx-user 13 TP1A.220624.014 G780GXXS8EXC1 release-keys");
+         property_override("ro.build.description", "r8qxx-user 11 RP1A.200720.012 G780GXXS8EXC1 release-keys");
          property_override("ro.vendor.build.fingerprint", "samsung/r8qxx/r8q:11/RP1A.200720.012/G780GXXS8EXC1:user/release-keys");
     }
     else if (bootloader.find("G781B") == 0) {
-         property_override("ro.build.description", "r8qxxx-user 13 TP1A.220624.014 G781BXXS9HXC2 release-keys");
+         property_override("ro.build.description", "r8qxxx-user 11 RP1A.200720.012 G781BXXS9HXC2 release-keys");
          property_override("ro.vendor.build.fingerprint", "samsung/r8qxxx/r8q:11/RP1A.200720.012/G781BXXS9HXC2:user/release-keys");
     }
 }

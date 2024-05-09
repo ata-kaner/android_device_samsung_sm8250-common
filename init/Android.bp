@@ -15,9 +15,9 @@
 //
 
 cc_library_static {
-    name: "libinit_samsung_r8q",
+    name: "libinit_samsung_sm8250",
     recovery_available: true,
-    srcs: ["init_r8q.cpp"],
+    srcs: ["init_sm8250.cpp"],
     whole_static_libs: ["libbase"],
     include_dirs: [
         "system/libbase/include",

@@ -183,6 +183,9 @@ ro.vendor.nfc.support.uicc=true
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
+## Power HAL
+vendor.powerhal.disp.idle_support=false
+
 # RIL
 ro.radio.noril=no
 ro.telephony.default_cdma_sub=0

@@ -197,17 +197,6 @@ persist.vendor.radio.enableadvancedscan=true
 vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
 vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so
 
-# USB
-sys.usb.mtp.batchcancel=1
-vendor.usb.diag.func.name=ffs
-vendor.usb.dpl.inst.name=dpl
-vendor.usb.rmnet.func.name=gsi
-vendor.usb.rmnet.inst.name=rmnet
-vendor.usb.rndis.func.name=gsi
-vendor.usb.qdss.inst.name=qdss_sw
-vendor.usb.use_ffs_mtp=1
-vendor.usb.use_gadget_hal=0
-
 # Wifi
 wifi.aware.interface=wifi-aware0
 

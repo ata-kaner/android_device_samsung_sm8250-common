@@ -135,10 +135,6 @@ PRODUCT_PACKAGES += \
     disable_configstore \
     vendor.qti.hardware.capabilityconfigstore@1.0.vendor
 
-# CGroups
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json
-
 # GNSS
 PRODUCT_PACKAGES += \
     android.hardware.gnss.measurement_corrections@1.1.vendor \
@@ -325,9 +321,6 @@ PRODUCT_PACKAGES += \
 # Perf
 PRODUCT_PACKAGES += \
     libqti-perfd-client
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 # Permissions
 PRODUCT_COPY_FILES += \

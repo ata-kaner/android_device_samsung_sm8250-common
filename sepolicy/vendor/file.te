@@ -49,8 +49,6 @@ type proc_last_kmsg, fs_type, proc_type;
 
 # Root folders
 type carrier_file, file_type;
-type keydata_data_file, file_type;
-type keyrefuge_data_file, file_type;
 type omr_file, file_type, mlstrustedobject;
 type misc_file, file_type;
 type optics_file, file_type;

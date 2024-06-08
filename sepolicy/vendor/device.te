@@ -6,8 +6,6 @@ type dsp_block_device, dev_type;
 type sec_efs_block_device, dev_type;
 type dqmdbg_block_device, dev_type;
 type spu_block_device, dev_type;
-type keydata_block_device, dev_type;
-type keyrefuge_block_device, dev_type;
 type ssp_device, dev_type;
 type tz_device, dev_type;
 

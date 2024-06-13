@@ -4,6 +4,7 @@ on early-init
 
 on init
     write /sys/class/sec/tsp/cmd "fod_enable,1,1,0"
+    write /sys/class/sec/tsp/cmd "set_fod_rect,421,2018,659,2256"
 
 on boot
 # Fingerprint sensor

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017-2020 The LineageOS Project
+# Copyright (C) 2017-2023 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -54,9 +54,9 @@ while [ "${#}" -gt 0 ]; do
     shift
 done
 
-    if [ -z "${SRC}" ]; then
-        SRC="adb"
-    fi
+if [ -z "${SRC}" ]; then
+    SRC="adb"
+fi
 
 function blob_fixup() {
     case "${1}" in
@@ -70,14 +70,6 @@ function blob_fixup() {
             # Pass an empty value to SecRil::RequestComplete in OnGetSmscAddressDone
             xxd -p -c0 "${2}" | sed "s/600e40f9820c805224008052e10315aae30314aa/600e40f9820c805224008052e10315aa030080d2/g" | xxd -r -p > "${2}".patched
             mv "${2}".patched "${2}"
-            ;;
-        vendor/lib64/hw/com.qti.chi.override.so)
-            xxd -p "${2}" | tr -d \\n > "${2}".hex
-            # NOP CONNECT_RILD
-            sed -i "s/a00640f96d66009480010034a2eaffd043ecff9065ebfff0e603002a/1f2003d51f2003d51f2003d51f2003d51f2003d51f2003d51f2003d5/g" "${2}".hex
-            sed -i "s/42503d91633c1391a5743191e40e8052e0031f2a2100805265d8ff97a00640f9/1f2003d51f2003d51f2003d51f2003d51f2003d51f2003d51f2003d5a00640f9/g" "${2}".hex
-            xxd -r -p "${2}".hex > "${2}"
-            rm "${2}".hex
             ;;
         vendor/lib64/hw/gatekeeper.mdfpp.so|vendor/lib64/libskeymaster4device.so)
             "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "${2}"

@@ -33,7 +33,6 @@ Value *VerifyBootloader(const char *name, State *state,
     return ErrorAbort(state, kArgsParsingFailure,
                       "%s() error parsing arguments", name);
   }
-
   int min_supported_bootloader = int(min_supported_bootloader_arg[0]);
 
   int version = 0;

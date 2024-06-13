@@ -47,7 +47,8 @@ on early-boot
     chown system system /sys/kernel/boot_adsp/ssr
 
 on boot
-# SSC CORE
+
+    # SSC CORE
     chown system radio /sys/class/sensors/ssc_core/operation_mode
     chown system log /sys/class/sensors/ssc_core/dumpstate
     chown system radio /sys/class/sensors/ssc_core/ssc_pid
@@ -69,11 +70,11 @@ on boot
     chown system system /sys/class/sensors/ssc_core/ar_mode
     chown system system /sys/class/sensors/ssc_core/sbm_init
 
-# Sensor
+    # Sensor
     chown system system /sys/kernel/boot_slpi/cmd
     chown system system /sys/kernel/boot_slpi/cmd_result
 
-# Accelerometer Sensor
+    # Accelerometer Sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/name
     chown system radio /sys/class/sensors/accelerometer_sensor/vendor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
@@ -84,7 +85,7 @@ on boot
     chown system system /sys/class/sensors/accelerometer_sensor/dhr_sensor_info
     chown system system /sys/class/sensors/accelerometer_sensor/turn_over_crash
 
-# Gyro Sensor
+    # Gyro Sensor
     chown system radio /sys/class/sensors/gyro_sensor/name
     chown system radio /sys/class/sensors/gyro_sensor/vendor
     chown system radio /sys/class/sensors/gyro_sensor/selftest_revised
@@ -93,7 +94,7 @@ on boot
     chown system radio /sys/class/sensors/gyro_sensor/selftest
     chown system media /sys/class/sensors/gyro_sensor/temperature
 
-# Sub Accelerometer Sensor
+    # Sub Accelerometer Sensor
     chown system radio /sys/class/sensors/sub_accelerometer_sensor/name
     chown system radio /sys/class/sensors/sub_accelerometer_sensor/vendor
     chown system radio /sys/class/sensors/sub_accelerometer_sensor/raw_data
@@ -103,7 +104,7 @@ on boot
     chown system radio /sys/class/sensors/sub_accelerometer_sensor/lowpassfilter
     chown system system /sys/class/sensors/sub_accelerometer_sensor/dhr_sensor_info
 
-# Sub Gyro Sensor
+    # Sub Gyro Sensor
     chown system radio /sys/class/sensors/sub_gyro_sensor/name
     chown system radio /sys/class/sensors/sub_gyro_sensor/vendor
     chown system radio /sys/class/sensors/sub_gyro_sensor/selftest_revised
@@ -112,7 +113,7 @@ on boot
     chown system radio /sys/class/sensors/sub_gyro_sensor/selftest
     chown system media /sys/class/sensors/sub_gyro_sensor/temperature
 
-# Magnetic Sensor
+    # Magnetic Sensor
     chown system radio /sys/class/sensors/magnetic_sensor/name
     chown system radio /sys/class/sensors/magnetic_sensor/vendor
     chown system radio /sys/class/sensors/magnetic_sensor/raw_data
@@ -122,7 +123,7 @@ on boot
     chown system radio /sys/class/sensors/magnetic_sensor/selftest
     chown system system /sys/class/sensors/magnetic_sensor/dhr_sensor_info
 
-# DIGITAL HALL
+    # DIGITAL HALL
     chown system radio /sys/class/sensors/digital_hall/vendor
     chown system radio /sys/class/sensors/digital_hall/name
     chown system radio /sys/class/sensors/digital_hall/selftest
@@ -141,7 +142,7 @@ on boot
     chown system radio /sys/class/sensors/digital_hall/block_autocal
     chown system system /sys/class/sensors/digital_hall/dhr_sensor_info
 
-# Barometer Sensor
+    # Barometer Sensor
     chown system radio /sys/class/sensors/barometer_sensor/name
     chown system radio /sys/class/sensors/barometer_sensor/vendor
     chown system radio /sys/class/sensors/barometer_sensor/sea_level_pressure
@@ -152,7 +153,7 @@ on boot
     chown system system /sys/class/sensors/barometer_sensor/dhr_sensor_info
     chown system system /sys/class/sensors/barometer_sensor/sw_offset
 
-# Proximity Sensor
+    # Proximity Sensor
     chown system radio /sys/class/sensors/proximity_sensor/name
     chown system radio /sys/class/sensors/proximity_sensor/vendor
     chown system radio /sys/class/sensors/proximity_sensor/state
@@ -172,7 +173,7 @@ on boot
     chown system system /sys/class/sensors/proximity_sensor/prox_wakelock
     chown system system /sys/class/sensors/proximity_sensor/touch_prox
 
-# Light Sensor
+    # Light Sensor
     chown system radio /sys/class/sensors/light_sensor/name
     chown system radio /sys/class/sensors/light_sensor/vendor
     chown system radio /sys/class/sensors/light_sensor/lux
@@ -180,7 +181,7 @@ on boot
     chown system radio /sys/class/sensors/light_sensor/read_copr
     chown system radio /sys/class/sensors/light_sensor/boled_enable
     chown system radio /sys/class/sensors/light_sensor/hallic_info
-    chown system system /sys/class/sensors/light_sensor/lcd_onoff
+    chown system radio /sys/class/sensors/light_sensor/lcd_onoff
     chown system radio /sys/class/sensors/light_sensor/sensorhub_ddi_spi_check
     chown system radio /sys/class/sensors/light_sensor/light_cal
     chown system radio /sys/class/sensors/light_sensor/set_aod_rect
@@ -188,34 +189,34 @@ on boot
     chown system radio /sys/class/sensors/light_sensor/debug_info
     chown system radio /sys/class/sensors/light_sensor/hyst
 
-# Sub Light Sensor
+    # Sub Light Sensor
     chown system radio /sys/class/sensors/sub_light_sensor/name
     chown system radio /sys/class/sensors/sub_light_sensor/vendor
     chown system radio /sys/class/sensors/sub_light_sensor/lux
     chown system radio /sys/class/sensors/sub_light_sensor/raw_data
     chown system radio /sys/class/sensors/sub_light_sensor/dhr_sensor_info
 
-# Hidden Hole
+    # Hidden Hole
     chown system radio /sys/class/sensors/hidden_hole/hh_ver
     chown system radio /sys/class/sensors/hidden_hole/hh_write_all_data
     chown system radio /sys/class/sensors/hidden_hole/hh_is_exist_efs
     chown system radio /sys/class/sensors/hidden_hole/hh_ext_prox_th
 
-# Hidden Hole Sub
+    # Hidden Hole Sub
     chown system radio /sys/class/sensors/hidden_hole/hh_sub_ver
     chown system radio /sys/class/sensors/hidden_hole/hh_sub_write_all_data
     chown system radio /sys/class/sensors/hidden_hole/hh_sub_is_exist_efs
     chown system radio /sys/class/sensors/hidden_hole/hh_sub_ext_prox_th
 
-# Flip Cover Detector
+    # Flip Cover Detector
     chown system radio /sys/class/sensors/flip_cover_detector_sensor/nfc_cover_status
     chown system radio /sys/class/sensors/flip_cover_detector_sensor/factory_cover_status
     chown system radio /sys/class/sensors/flip_cover_detector_sensor/axis_threshold_setting
 
-# Meta event
+    # Meta event
     chown system radio /sys/class/sensors/sensor_dev/flush
 
-# Permissions for Grip Sensor
+    # [ Permissions for Grip Sensor
     chown system radio /sys/class/sensors/grip_sensor/motion
     chown system radio /sys/class/sensors/grip_sensor/unknown_state
     chown system radio /sys/class/sensors/grip_sensor/unknown_state_b
@@ -242,10 +243,10 @@ on boot
     chown system radio /sys/class/sensors/grip_sensor_wifi/noti_enable
 
 on property:sys.boot_completed=1
-# Permissions for Grip Sensor
+    # [ Permissions for Grip Sensor
     chown root input /sys/devices/virtual/input/input*/enable
 
-# SX93xx
+    # SX93xx
     chown system radio /sys/class/sensors/grip_sensor/name
     chown system radio /sys/class/sensors/grip_sensor/vendor
     chown system radio /sys/class/sensors/grip_sensor/raw_data
@@ -291,7 +292,7 @@ on property:sys.boot_completed=1
     chown system radio /sys/class/sensors/grip_sensor/noti_enable
     chown system radio /sys/class/sensors/grip_sensor/country_code
 
-on post-fs-data
-# sensors log dir
+on post-fs-data && property:ro.build.type=userdebug
+    #sensors log dir
     mkdir /data/vendor/sensors 0777 system system
     mkdir /data/vendor/sensors/scripts 0777 system system

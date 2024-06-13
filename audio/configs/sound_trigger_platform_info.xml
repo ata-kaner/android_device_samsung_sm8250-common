@@ -52,7 +52,7 @@
         <param platform_lpi_enable="true" />
     </common_config>
     <acdb_ids>
-        <param DEVICE_HANDSET_MIC_APE="600" />
+        <param DEVICE_HANDSET_MIC_APE="602" />
         <param DEVICE_HANDSET_MIC_PP_APE="603" />
         <param DEVICE_HANDSET_DMIC_APE="601" />
         <param DEVICE_HANDSET_DMIC_LPI_APE="600" />
@@ -94,7 +94,7 @@
             <!-- is FFECNS -->
             <param fluence_type="NONE" />
             <param execution_mode="ADSP" />
-            <param app_type="2" /> <!-- app type used in ACDB -->
+            <param app_type="5" /> <!-- app type used in ACDB -->
             <param in_channels="1"/> <!-- Module input channels -->
             <param in_channels_lpi="1"/>
             <param load_sound_model_ids="0x10012C1C, 0x0, 0x00012C14" />
@@ -108,7 +108,7 @@
             <param adm_cfg_profile="NONE" />
             <param fluence_type="NONE" />
             <param execution_mode="ADSP" />
-            <param app_type="2" /> <!-- app type used in ACDB -->
+            <param app_type="5" /> <!-- app type used in ACDB -->
             <param in_channels="1"/> <!-- Module input channels -->
             <param load_sound_model_ids="0x10012C1C, 0x0, 0x00012C14" />
             <param unload_sound_model_ids="0x10012C1C, 0x0, 0x00012C15" />

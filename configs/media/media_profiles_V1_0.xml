@@ -27,7 +27,7 @@
 <!ATTLIST EncoderProfile quality (low|high|qcif|qvga|480p|720p|1080p|2160p|timelapselow|timelapsehigh|timelapseqcif|timelapseqvga|timelapse480p|timelapse720p|timelapse1080p|timelapse2160p) #REQUIRED>
 <!ATTLIST EncoderProfile fileFormat (mp4|3gp) #REQUIRED>
 <!ATTLIST EncoderProfile duration (30|60) #REQUIRED>
-<!ATTLIST EncoderProfile cameraId (0|1|2|3) #REQUIRED>
+<!ATTLIST EncoderProfile cameraId (0|1|2) #REQUIRED>
 <!ELEMENT Video EMPTY>
 <!ATTLIST Video codec (h264|h263|m4v) #REQUIRED>
 <!ATTLIST Video bitRate CDATA #REQUIRED>
@@ -548,7 +548,7 @@
 
     </CamcorderProfiles>
 
-        <!-- Back 2 Camera -->
+    <!-- Rear wide Camera -->
     <CamcorderProfiles cameraId="2">
 
     <EncoderProfile quality="low" fileFormat="3gp" duration="30">
@@ -679,10 +679,10 @@
              height="2160"
              frameRate="30" />
 
-      <!--
-            The Audio part of the profile will not be used since time lapse mode
-            does not capture audio
-      -->
+       <!--
+             The Audio part of the profile will not be used since time lapse mode
+             does not capture audio
+       -->
       <Audio codec="aac"
              bitRate="256000"
              sampleRate="48000"
@@ -696,10 +696,10 @@
              height="144"
              frameRate="30" />
 
-      <!--
-            The Audio part of the profile will not be used since time lapse mode
-            does not capture audio
-      -->
+       <!--
+             The Audio part of the profile will not be used since time lapse mode
+             does not capture audio
+       -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
@@ -714,9 +714,9 @@
              frameRate="30" />
 
       <!--
-            The Audio part of the profile will not be used since time lapse mode
-            does not capture audio
-      -->
+             The Audio part of the profile will not be used since time lapse mode
+             does not capture audio
+       -->
       <Audio codec="aac"
              bitRate="128000"
              sampleRate="48000"
@@ -747,10 +747,10 @@
              height="720"
              frameRate="30" />
 
-      <!--
-            The Audio part of the profile will not be used since time lapse mode
-            does not capture audio
-      -->
+       <!--
+             The Audio part of the profile will not be used since time lapse mode
+             does not capture audio
+       -->
       <Audio codec="aac"
              bitRate="256000"
              sampleRate="48000"
@@ -764,10 +764,10 @@
              height="1080"
              frameRate="30" />
 
-      <!--
-            The Audio part of the profile will not be used since time lapse mode
-            does not capture audio
-      -->
+       <!--
+             The Audio part of the profile will not be used since time lapse mode
+             does not capture audio
+       -->
       <Audio codec="aac"
              bitRate="256000"
              sampleRate="48000"
@@ -798,7 +798,7 @@
 
     </CamcorderProfiles>
 
-    <!-- Front Camera - Wide Angle -->
+    <!-- Front Wide Angle Camera -->
     <CamcorderProfiles cameraId="3">
 
     <EncoderProfile quality="low" fileFormat="3gp" duration="30">
@@ -1030,7 +1030,7 @@
         minBitRate="64000" maxBitRate="50000000"
         minFrameWidth="176" maxFrameWidth="3840"
         minFrameHeight="144" maxFrameHeight="2160"
-        minFrameRate="1" maxFrameRate="60" />
+        minFrameRate="1" maxFrameRate="30" />
 
     <VideoEncoderCap name="h263" enabled="true"
         minBitRate="64000" maxBitRate="2000000"
@@ -1045,10 +1045,10 @@
         minFrameRate="1" maxFrameRate="30" />
 
     <VideoEncoderCap name="hevc" enabled="true"
-        minBitRate="64000" maxBitRate="50000000"
+        minBitRate="64000" maxBitRate="35000000"
         minFrameWidth="176" maxFrameWidth="3840"
         minFrameHeight="144" maxFrameHeight="2160"
-        minFrameRate="1" maxFrameRate="60" />
+        minFrameRate="1" maxFrameRate="30" />
 
     <AudioEncoderCap name="aac" enabled="true"
         minBitRate="8192" maxBitRate="256000"

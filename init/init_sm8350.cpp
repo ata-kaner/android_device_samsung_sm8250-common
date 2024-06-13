@@ -58,17 +58,17 @@ void vendor_load_properties()
     }
 
     if (device.size() == 0) {
-        LOG(ERROR) << "Could not detect device, forcing r9q";
-        device = "r9q";
+        LOG(ERROR) << "Could not detect device, forcing a52sxq";
+        device = "a52sxq";
     }
 
     name = device + "xx";
 
-    LOG(INFO) << "Found bootloader: " << bootloader.c_str();
-    LOG(INFO) << "Setting ro.product.model: " << model.c_str();
-    LOG(INFO) << "Setting ro.product.device:  " << device.c_str();
-    LOG(INFO) << "Setting ro.product.name: " << name.c_str();
-    LOG(INFO) << "Setting ro.build.product: " << device.c_str();
+    LOG(INFO) << "Found bootloader: %s", bootloader.c_str();
+    LOG(INFO) << "Setting ro.product.model: %s", model.c_str();
+    LOG(INFO) << "Setting ro.product.device: %s", device.c_str();
+    LOG(INFO) << "Setting ro.product.name: %s", name.c_str();
+    LOG(INFO) << "Setting ro.build.product: %s", device.c_str();
 
     property_override_quad("ro.product.model", "ro.product.vendor.model", "ro.product.product.model", "ro.product.odm.model", model.c_str());
     property_override_quad("ro.product.device", "ro.product.vendor.device", "ro.product.product.device", "ro.product.odm.device", device.c_str());

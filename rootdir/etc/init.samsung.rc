@@ -1,3 +1,4 @@
+
 # Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -28,8 +29,9 @@
 #
 
 import /vendor/etc/init/hw/init.samsung.bsp.rc
-import /vendor/etc/init/hw/init.samsung.eif.rc
 import /vendor/etc/init/hw/init.samsung.display.rc
+import /vendor/etc/init/hw/init.samsung.svcled.rc
+import /vendor/etc/init/init.sensors.spu.rc
 
 on early-init
     mkdir /mnt/vendor/efs 0771 radio system
@@ -39,51 +41,59 @@ on init
     symlink /dev/block/bootdevice/by-name/steady  /dev/block/steady
     symlink /dev/block/bootdevice/by-name/persistent  /dev/block/persistent
 
-# Change backlog queue size
-    write /proc/sys/net/core/netdev_max_backlog 100000
+    # System Performance HyPer Permission
+    chmod 0440 /sys/kernel/gpu/gpu_freq_table
+    chmod 0660 /sys/kernel/gpu/gpu_max_clock
+    chmod 0660 /sys/kernel/gpu/gpu_min_clock
+    chown root system /sys/kernel/gpu/gpu_freq_table
+    chown root system /sys/kernel/gpu/gpu_max_clock
+    chown root system /sys/kernel/gpu/gpu_min_clock
+
+    chmod 0664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
+    chmod 0664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/max_freq
+    chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
+    chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/max_freq
+
+    chmod 0664 /dev/cpuctl/top-app/cpu.uclamp.min
+    chown root system /dev/cpuctl/top-app/cpu.uclamp.min
 
 # Create carrier folder for HiddenMenu
 on post-fs
     mkdir /efs/carrier 0755 system system
     restorecon_recursive /efs
 
-    restorecon_recursive /mnt/vendor/efs
-    chown radio system /mnt/vendor/efs
-    chmod 0771 /mnt/vendor/efs
+	restorecon_recursive /mnt/vendor/efs
+	chown radio system /mnt/vendor/efs
+	chmod 0771 /mnt/vendor/efs
 
     chown system radio /efs
     chmod 0771 /efs
     restorecon /efs
 
 on post-fs-data
-# carrier partition
+    # carrier partition
     chown system system /carrier
     chmod 0771 /carrier
     restorecon /carrier
 
-# spu partition
+    # spu partition
     chown system system /spu
     chmod 0771 /spu
     restorecon /spu
     
-    chown system system /dqmdbg
-    chmod 0770 /dqmdbg
-    restorecon /dqmdbg
-
-# FINGERPRINT
-    # fp_migration /data/biometrics /data/vendor/biometrics
-    mkdir /data/vendor/biometrics 0770 system system
-    mkdir /data/vendor/fpSnrTest 0770 system system
-    # restorecon_recursive /data/vendor/biometrics
-
-# argos
-    chown system system /dev/network_throughput
+# sensors
+    mkdir /efs/FactoryApp/sensors/ 0775 root root
+    chown system system /mnt/vendor/persist/sensors/registry/registry/sns_cm
 
 on early-boot
-# Permissions for Touchscreen
-    chown system system /sys/class/sec/tsp/cmd
+ # Firmware CUSTOMIZED_PATH
+    chown system radio /sys/module/firmware_class/parameters/path
+
+ # Permissions for Touchscreen
+    chown system radio /sys/class/sec/tsp/cmd
     chown system system /sys/class/sec/tsp/input/enabled
     chmod 0660 /sys/class/sec/tsp/input/enabled
+    chown system system /sys/class/sec/tsp/enabled
     chown system system /sys/class/sec/tsp/input/fod_pressed
     chown root system /proc/tsp_msg
     chmod 0440 /proc/tsp_msg
@@ -101,10 +111,10 @@ on early-boot
     chown system system /dev/tspio
     chown system system /sys/class/sec/tsp/ear_detect_enable
     chown system system /sys/class/sec/tsp/hw_param
-    chown system system /sys/class/sec/tsp/dualscreen_policy
     chown system system /sys/class/sec/tsp/virtual_prox
+    chown system system /sys/class/sec/tsp/dualscreen_policy
 
-# Permissions for Touchscreen-1
+ # Permissions for Touchscreen-1
     chown system radio /sys/class/sec/tsp1/cmd
     chown system system /sys/class/sec/tsp1/input/enabled
     chmod 0660 /sys/class/sec/tsp1/input/enabled
@@ -113,7 +123,7 @@ on early-boot
     chown system system /sys/class/sec/tsp1/hw_param
     chown system system /sys/class/sec/tsp1/dualscreen_policy
 
-# Permissions for Touchscreen-2
+ # Permissions for Touchscreen-2
     chown system radio /sys/class/sec/tsp2/cmd
     chown system system /sys/class/sec/tsp2/input/enabled
     chmod 0660 /sys/class/sec/tsp2/input/enabled
@@ -122,8 +132,9 @@ on early-boot
     chown system system /sys/class/sec/tsp2/hw_param
     chown system system /sys/class/sec/tsp2/dualscreen_policy
 
-# Permission for Securetouch
+ # Permission for Securetouch
     chown system system /sys/class/sec/ss_touch/secure/secure_touch_enable
+    chown system system /sys/class/sec/tsp/input/secure_touch_enable
     chown system system /sys/class/sec/tsp1/input/secure_touch_enable
     chown system system /sys/class/sec/tsp2/input/secure_touch_enable
 
@@ -133,12 +144,6 @@ on early-boot
     chown system radio /sys/class/sec/tsp2/cmd
     chown system system /sys/class/sec/tsp2/input/enabled
     chmod 0660 /sys/class/sec/tsp2/input/enabled
-
-# Camera
-    chown system camera /sys/class/camera/flash/rear_flash
-    chmod 0664 /sys/class/camera/flash/rear_flash
-    chown system camera /sys/class/camera/rear/ssrm_camera_info
-    chmod 0664 /sys/class/camera/rear/ssrm_camera_info
 
 # Permission for Wacom
     chown system radio /sys/class/sec/sec_epen/cmd
@@ -164,6 +169,26 @@ on early-boot
 # pogo keyboard
     chown system system /sys/class/sec/sec_keypad/fw_update
 
+    # Fingerprint sensor
+    chmod 0660 /dev/esfp0
+    chown system system /dev/esfp0
+
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+    chown system radio /sys/class/fingerprint/fingerprint/name
+    chown system radio /sys/class/fingerprint/fingerprint/vendor
+    chown system radio /sys/class/fingerprint/fingerprint/adm
+    chown system radio /sys/class/fingerprint/fingerprint/bfs_values
+    chown system radio /sys/class/fingerprint/fingerprint/hbm
+    chown system radio /sys/class/fingerprint/fingerprint/position
+    chown system radio /sys/class/fingerprint/fingerprint/intcnt
+    chown system radio /sys/class/fingerprint/fingerprint/resetcnt
+    chown system radio /sys/class/fingerprint/fingerprint/rb
+
+    mkdir /data/vendor/biometrics 0770 system system
+    mkdir /data/vendor/fpSnrTest 0770 system system
+    mkdir /efs/biometrics 0770 system system
+    mkdir /efs/biometrics/meta 0770 system system
+
 on boot
 # Permission for nfc, eSE driver
     chmod 0660 /dev/pn547
@@ -171,9 +196,9 @@ on boot
     chown nfc nfc /dev/pn547
     chown system system /dev/p61
     chmod 0660 /dev/sec-nfc
-    chmod 0660 /dev/p3
     chown nfc nfc /dev/sec-nfc
-    chown system system /dev/p3
+    chmod 0660 /dev/k250a
+    chown system system /dev/k250a
 
 # DP AUX switch control
     chmod 0660 /sys/class/dp_sec/dp_sbu_sw_sel
@@ -199,56 +224,38 @@ on boot
     chmod 0440 /sys/class/dp_sec/dex_ver
     chown system system /sys/class/dp_sec/dex_ver
 
-# Key
-    chown system radio /sys/class/sec/sec_key/wakeup_keys
-    write /sys/class/sec/sec_key/wakeup_keys 116,172
-    chown system system /sys/class/sec/sec_key/key_pressed_count
-    chown system system /sys/class/sec/sec_powerkey/powerkey_pressed_count
-
-# sensors
-    mkdir /efs/FactoryApp/sensors/ 0775 root root
-    chown system system /mnt/vendor/persist/sensors/registry/registry/sns_cm
-
-# Meta event
-    chown system radio /sys/class/sensors/sensor_dev/flush
-
 # Permissions for Power
+    chown radio system /sys/module/lpm_levels/parameters/secdebug
+    chmod 664 /sys/module/lpm_levels/parameters/secdebug
     chown radio system /sys/power/cpufreq_max_limit
     chown radio system /sys/power/cpufreq_min_limit
     chown radio system /sys/power/cpufreq_table
     chown radio system /sys/power/over_limit
+    chown radio system /sys/power/limit_stat
     chmod 664 /sys/power/cpufreq_max_limit
     chmod 664 /sys/power/cpufreq_min_limit
     chmod 444 /sys/power/cpufreq_table
     chmod 664 /sys/power/over_limit
-    chown system system /sys/power/rtc_status
-    chmod 444 /sys/power/rtc_status
+    chmod 664 /sys/power/limit_stat
+    chown system system /sys/class/sec/rtc/rtc_status
+    chmod 444 /sys/class/sec/rtc/rtc_status
+    chown system system /efs/FactoryApp/rtc_status
+    chmod 664 /efs/FactoryApp/rtc_status
     chown radio system /sys/power/volkey_wakeup
-    chmod 664 /sys/power/volkey_wakeup
+    chmod 0660 /sys/power/volkey_wakeup
     chown system system /sys/class/sec/ap_pmic/chg_det
     chown system system /sys/class/sec/ap_pmic/manual_reset
     chown radio system /sys/module/qpnp_power_on/parameters/reset_enabled
     chmod 664 /sys/module/qpnp_power_on/parameters/reset_enabled
     chown radio system /sys/module/qpnp_power_on/parameters/wake_enabled
-    chmod 664 /sys/module/qpnp_power_on/parameters/wake_enabled
-    chown radio system /sys/module/lpm_levels/parameters/secdebug
-    chmod 664 /sys/module/lpm_levels/parameters/secdebug
-    chown system system /sys/power/system_sleep/stats
-
-# Permissions for PowerShare
-    chown system system /sys/class/power_supply/battery/wc_tx_en
-    chmod 0664 /sys/class/power_supply/battery/wc_tx_en
+    chmod 664 /sys/module/qpnp_power_on/parameters/wake_enabled	
 
 # Add permission for Display PMIC
     chown system system /sys/class/sec/disp_pmic/enable_fd
     chown system system /sys/class/sec/disp_pmic/power_meter/adc_mode
     chown system system /sys/class/sec/disp_pmic/power_meter/adc_val_all
 
-# for eRR.p
-    chown system system /proc/pwrsrc
-    chmod 0400 /proc/pwrsrc
-
-# Permissions for FMM
+    # Permissions for FMM
     chown system system /sys/class/sec/sec_debug/FMM_lock
     chmod 0660 /sys/class/sec/sec_debug/FMM_lock
 
@@ -263,18 +270,9 @@ service factory_ssc /vendor/bin/factory.ssc
     user system
     group system radio inet diag net_admin net_raw sdcard_rw sdcard_r media_rw
 
-# ARGOSD
-service argos-daemon /vendor/bin/argosd
-    class main
-    user system
-    group system radio
-    disabled
-
-on property:sys.boot_completed=1
-    start argos-daemon
 
 on property:sys.boot_completed=1
     setprop ro.factory.sensor.delay.init 1
 
 on property:vendor.chre.enabled=0
-    stop chre
+   stop chre

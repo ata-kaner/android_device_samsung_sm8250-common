@@ -77,8 +77,8 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
-    # Charger
-    chown system system /sys/class/power_supply/battery/batt_slate_mode
+	# Change backlog queue size
+    write /proc/sys/net/core/netdev_max_backlog 100000
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
@@ -97,6 +97,7 @@ on early-boot
 
     chown system system /mnt/vendor/persist/data/pfm/licenses
     chmod 0775 /mnt/vendor/persist/data/pfm/licenses
+
     chown system system /mnt/vendor/persist/data/pfm/licenses/store_0
     chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_0
     chown system system /mnt/vendor/persist/data/pfm/licenses/store_1
@@ -107,27 +108,6 @@ on early-boot
     chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_3
     chown system system /mnt/vendor/persist/data/pfm/licenses/store_4
     chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_4
-
-    # for backward compatibility
-    chown system system /persist/sensors
-    chown system system /persist/sensors/registry
-    chown system system /persist/sensors/registry/registry
-    chown system system /persist/sensors/registry/registry/sensors_registry
-    chown system system /persist/sensors/sensors_settings
-    chown system system /persist/sensors/registry/config
-    chmod 0664 /persist/sensors/sensors_settings
-
-    chown system system /mnt/vendor/persist/sensors
-    chown system system /mnt/vendor/persist/sensors/sns.reg
-    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
-    chown system system /mnt/vendor/persist/sensors/registry
-    chown system system /mnt/vendor/persist/sensors/registry/registry
-    chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
-    chown system system /mnt/vendor/persist/sensors/sensors_settings
-    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
-    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
-    chown system system /mnt/vendor/persist/sensors/registry/config
-    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on boot
     #chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -143,7 +123,7 @@ on boot
     chown system system /sys/kernel/debug/msm_core/enable
     chown system system /sys/kernel/debug/msm_core/ptable
     chown system system /sys/kernel/boot_slpi/ssr
-    #chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
+    chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
     #chmod 0660 /sys/module/bluetooth_power/parameters/power
     #chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
     #chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
@@ -153,8 +133,8 @@ on boot
     #chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
     #chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
     #chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+    #chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
+    #chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
@@ -162,13 +142,11 @@ on boot
     #chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
     #chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
-
     # for BT MAC address
     mkdir /mnt/vendor/efs/bluetooth 0770 system bluetooth
     # if already exist
-    chown system bluetooth /mnt/vendor/efs/bluetooth
     chown system bluetooth /mnt/vendor/efs/bluetooth/bt_addr
-    chmod 0770 /mnt/vendor/efs/bluetooth
+    chmod 0770 /mnt/vendor/efs/bluetooth/bt_addr
     chmod 0660 /mnt/vendor/efs/bluetooth/bt_addr
 
     # permissions for bluetooth.
@@ -181,6 +159,11 @@ on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/device/extldo
+
+    chmod 0660 /sys/class/rfkill/rfkill2/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill2/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill2/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill2/device/extldo
 
     # bluetooth LPM
     chmod 0660 /proc/bluetooth/sleep/lpm
@@ -196,17 +179,18 @@ on boot
     # modules
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
-    chmod 2770 /dev/socket/qmux_bluetooth
 
     mkdir /persist/drm 0770 system system
-    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /persist/bluetooth 0770 bluetooth bluetooth
     mkdir /persist/misc 0770 system system
     mkdir /persist/alarm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/iar_db 0770 system system
     mkdir /mnt/vendor/spunvm 0770 system system
+
+    #Create WIGIG socket area
+    mkdir /dev/socket/wigig 0770 wifi wifi
 
     setprop wifi.interface wlan0
 
@@ -263,6 +247,39 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
+# Fingerprint sensor
+    chmod 0660 /dev/qbt2000_fd
+    chmod 0660 /dev/qbt2000_ipc
+    chmod 0660 /dev/qbtspi
+    chown system system /dev/qbt2000_fd
+    chown system system /dev/qbt2000_ipc
+    chown system system /dev/qbtspi
+
+    chmod 0660 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+    chown system radio /sys/class/fingerprint/fingerprint/name
+    chown system radio /sys/class/fingerprint/fingerprint/vendor
+    chown system radio /sys/class/fingerprint/fingerprint/adm
+    chown system radio /sys/class/fingerprint/fingerprint/bfs_values
+    chown system radio /sys/class/fingerprint/fingerprint/position
+    chown system radio /sys/class/fingerprint/fingerprint/cbgecnt
+    chown system radio /sys/class/fingerprint/fingerprint/intcnt
+    chown system radio /sys/class/fingerprint/fingerprint/resetcnt
+    chown system radio /sys/class/fingerprint/fingerprint/wuhbtest
+    chown system radio /sys/class/fingerprint/fingerprint/rb
+
+    mkdir /data/vendor/misc 0770 system system
+    mkdir /data/vendor/misc/qti_fp 0770 system system
+    mkdir /data/vendor/misc/qti_fp/bg_estimation 0770 system system
+    mkdir /data/vendor/misc/qti_fp/calib_test 0770 system system
+    mkdir /data/vendor/misc/qti_fp/template 0770 system system
+    mkdir /data/vendor/biometrics 0770 system system
+    mkdir /data/vendor/fpSnrTest 0770 system system
+    mkdir /efs/biometrics 0770 system system
+    mkdir /efs/biometrics/meta 0770 system system
+
     # Create directory used for display
     # for backward compatibility
     mkdir /persist/display 0770 system graphics
@@ -303,9 +320,40 @@ on post-fs-data
     # Create directory for apps access via QTEEConnector
     mkdir /data/vendor/qtee 0770 system system
 
-    #Create folder of camera
-    mkdir /data/vendor/camera 0770 camera camera
-
+    #Create folder and file for camera
+    mkdir /data/vendor/camera 0770 camera system
+    mkdir /data/vendor/camera/coredump 0770 camera system
+    mkdir /data/vendor/camera/logdump 0770 camera system
+    write /data/vendor/camera/logdump/chi_log1.log 1
+    write /data/vendor/camera/logdump/chi_log2.log 1
+    write /data/vendor/camera/logdump/chi_log3.log 1
+    write /data/vendor/camera/logdump/chi_log4.log 1
+    write /data/vendor/camera/logdump/chi_log5.log 1
+    write /data/vendor/camera/logdump/chi_log6.log 1
+    write /data/vendor/camera/logdump/chi_log7.log 1
+    write /data/vendor/camera/logdump/chi_log8.log 1
+    write /data/vendor/camera/logdump/chi_log9.log 1
+    write /data/vendor/camera/logdump/chi_log10.log 1
+    chown camera system /data/vendor/camera/logdump/chi_log1.log
+    chown camera system /data/vendor/camera/logdump/chi_log2.log
+    chown camera system /data/vendor/camera/logdump/chi_log3.log
+    chown camera system /data/vendor/camera/logdump/chi_log4.log
+    chown camera system /data/vendor/camera/logdump/chi_log5.log
+    chown camera system /data/vendor/camera/logdump/chi_log6.log
+    chown camera system /data/vendor/camera/logdump/chi_log7.log
+    chown camera system /data/vendor/camera/logdump/chi_log8.log
+    chown camera system /data/vendor/camera/logdump/chi_log9.log
+    chown camera system /data/vendor/camera/logdump/chi_log10.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log1.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log2.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log3.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log4.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log5.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log6.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log7.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log8.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log9.log
+    chmod 0770 /data/vendor/camera/logdump/chi_log10.log
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
@@ -321,6 +369,7 @@ on post-fs-data
     mkdir /data/vendor/wifi/hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/hostapd/ctrl 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/vendor/wifi/wigig_hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
@@ -473,7 +522,7 @@ service vendor.ssr_setup /system/vendor/bin/ssr_setup
     oneshot
     disabled
 
-service vendor.ss_ramdump /system/vendor/bin/subsystem_ramdump
+service vendor.ss_ramdump /system/vendor/bin/subsystem_ramdump 3
     class main
     user system
     group system
@@ -587,10 +636,66 @@ service qmiproxy /system/bin/qmiproxy
     group radio diag
     disabled
 
-service factory_ssc /vendor/bin/factory.ssc
-    class core
+# service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+#    -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 -dd \
+#    -g@android:vendor_wpa_wlan0
+#   we will start as root and wpa_supplicant will switch to user wifi
+#   after setting up the capabilities required for WEXT
+#   user wifi
+#   group wifi inet keystore
+#   interface android.hardware.wifi.supplicant@1.0::ISupplicant default
+#   interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+#   interface android.hardware.wifi.supplicant@1.2::ISupplicant default
+#   interface android.hardware.wifi.supplicant@1.3::ISupplicant default
+#   interface vendor.qti.hardware.wifi.supplicant@2.0::ISupplicantVendor default
+#   interface vendor.qti.hardware.wifi.supplicant@2.1::ISupplicantVendor default
+#   interface vendor.qti.hardware.wifi.supplicant@2.2::ISupplicantVendor default
+#   class main
+#   socket vendor_wpa_wlan0 dgram 660 wifi wifi
+#   disabled
+#   oneshot
+
+service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
+    -iwigig0 -Dnl80211 -c/data/vendor/wifi/wigig_supplicant.conf \
+    -m/data/vendor/wifi/wigig_p2p_supplicant.conf \
+    -O/data/vendor/wifi/wigig_sockets -dd \
+    -e/data/vendor/wifi/wigig_entropy.bin -g@android:wigig/wpa_wigig0 \
+    -S wigigsvc
+    #   we will start as root and wpa_supplicant will switch to user wifi
+    #   after setting up the capabilities required for WEXT
+    #   user wifi
+    #   group wifi inet keystore
+    class main
+    socket wigig/wpa_wigig0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+# Data Migration
+service vendor.move_wifi_data /system/bin/move_wifi_data.sh
+    class main
+    user  wifi
+    group wifi
+    disabled
+    oneshot
+
+service wigignpt /vendor/bin/wigignpt
+    interface vendor.qti.hardware.wigig.netperftuner@1.0::INetPerfTuner default
+    class hal
+    socket wigig/wigignpt stream 660 system wifi
     user system
-    group system radio inet diag net_admin net_raw sdcard_rw sdcard_r media_rw
+    group wifi
+    capabilities NET_ADMIN
+    disabled
+
+on property:persist.vendor.wigig.npt.enable=1
+    start wigignpt
+
+service vendor.sensingdaemon /vendor/bin/sensingdaemon
+    class hal
+    socket wigig/sensingdaemon stream 660 system wifi
+    user system
+    group wifi
+    disabled
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
     class late_start
@@ -607,6 +712,11 @@ service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
     disabled
     oneshot
 
+service dhcpcd_wigig0 /system/bin/dhcpcd -ABKLG
+    class late_start
+    disabled
+    oneshot
+
 service iprenew_wlan0 /system/bin/dhcpcd -n
     class late_start
     disabled
@@ -618,6 +728,11 @@ service iprenew_bond0 /system/bin/dhcpcd -n
     oneshot
 
 service iprenew_p2p /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_wigig0 /system/bin/dhcpcd -n
     class late_start
     disabled
     oneshot
@@ -641,6 +756,18 @@ service wifi_ftmd /system/vendor/bin/wifi_ftmd
     socket wififtmd_server dgram 0660 system system
     disabled
     oneshot
+
+#qfp fingerprint daemon
+service qfp-daemon /vendor/bin/qfp-daemon
+	class late_start
+	user system
+	group system drmrpc diag input
+
+# FINGERPRINT FRAMEWORK : starts goodixfingerprintd
+service goodixd /vendor/bin/goodixfingerprintd
+    class late_start
+    user system
+    group media_rw system
 
 on property:vendor.wifi.ftmd.load=true
     insmod /system/lib/modules/pronto/pronto_wlan.ko con_mode=5
@@ -700,6 +827,7 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     disabled
     oneshot
 
+#    do not run the script for treble-based model
 #service qti-testscripts /system/bin/sh /product/etc/init.qcom.testscripts.sh
 #    class late_start
 #    user root
@@ -721,6 +849,7 @@ service wifi-crda /vendor/bin/init.crda.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+#    do not run the script for treble-based model
 #    start qti-testscripts
 
 on property:ro.vendor.ril.mbn_copy_completed=1
@@ -866,6 +995,11 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     disabled
     oneshot
 
+#Mixed HWC versions among targets
+on property:init.svc.surfaceflinger=restarting
+    stop vendor.qti.hardware.display.composer
+    start vendor.qti.hardware.display.composer
+
 # Set vendor-ril lib path based on Meta version
 on property:vendor.rild.libpath=*
     setprop rild.libpath ${vendor.rild.libpath}
@@ -895,6 +1029,14 @@ service chre /vendor/bin/chre
 
 on property:vendor.chre.enabled=0
    stop chre
+
+on property:sys.factory.running_pretest=true
+    write /sys/class/sensors/accelerometer_sensor/lowpassfilter 2
+    write /sys/class/sensors/sub_accelerometer_sensor/lowpassfilter 2
+
+on property:sys.factory.running_pretest=false
+    write /sys/class/sensors/accelerometer_sensor/lowpassfilter 1
+    write /sys/class/sensors/sub_accelerometer_sensor/lowpassfilter 1
 
 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main

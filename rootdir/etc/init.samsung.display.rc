@@ -227,7 +227,7 @@ on init
 
 	chown system system /sys/class/lcd/panel1/gamma_flash
 	chmod 0660 /sys/class/lcd/panel1/gamma_flash
-	
+
 # GAMMA_CHECK
 	chown system system /sys/class/lcd/panel/gamma_check
 	chmod 0660 /sys/class/lcd/panel/gamma_check
@@ -290,7 +290,7 @@ on init
 
 	chown system system /sys/class/lcd/panel1/poc_info
 	chmod 0440 /sys/class/lcd/panel1/poc_info
-	
+
 # POC OFF
 	chown system system /sys/class/lcd/panel/poc_onoff
 	chmod 0660 /sys/class/lcd/panel/poc_onoff
@@ -351,6 +351,7 @@ on init
 	chown system system /sys/class/lcd/panel1/ldu_correction
 	chmod 0660 /sys/class/lcd/panel1/ldu_correction
 	chown radio system /sys/class/lcd/panel1/force_flip
+	chown system system /sys/class/lcd/panel/panel_vcom_type
 
 # COPR
 	chown system system /sys/class/lcd/panel/copr_roi
@@ -375,8 +376,14 @@ on init
 	chown system system /sys/class/lcd/panel/self_mask
 	chmod 0660 /sys/class/lcd/panel/self_mask
 
+	chown system system /sys/class/lcd/panel/self_mask_udc
+	chmod 0660 /sys/class/lcd/panel/self_mask_udc
+
 	chown system system /sys/class/lcd/panel1/self_mask
 	chmod 0660 /sys/class/lcd/panel1/self_mask
+
+	chown system system /sys/class/lcd/panel1/self_mask_udc
+	chmod 0660 /sys/class/lcd/panel1/self_mask_udc
 
 	chown system system /sys/class/lcd/panel/self_mask_check
 	chmod 0660 /sys/class/lcd/panel/self_mask_check
@@ -422,12 +429,19 @@ on init
 	chown system system /sys/class/lcd/panel1/actual_mask_brightness
 	chmod 0440 /sys/class/lcd/panel1/actual_mask_brightness
 
-# UB CONN DET 
+# UB CONN DET
 	chown system system /sys/class/lcd/panel/conn_det
 	chmod 0660 /sys/class/lcd/panel/conn_det
 
 	chown system system /sys/class/lcd/panel1/conn_det
 	chmod 0660 /sys/class/lcd/panel1/conn_det
+
+# TE CHECK
+	chown system system /sys/class/lcd/panel/te_check
+	chmod 0660 /sys/class/lcd/panel/te_check
+
+	chown system system /sys/class/lcd/panel1/te_check
+	chmod 0660 /sys/class/lcd/panel1/te_check
 
 # DIA
 	chown system system /sys/class/lcd/panel/dia
@@ -466,10 +480,39 @@ on init
 	chown system system /sys/class/lcd/panel/motto/emphasis
 	chmod 0660 /sys/class/lcd/panel/motto/emphasis
 
-# ioctl_power_ctrl  
+# ioctl_power_ctrl
 	chown system system /sys/class/lcd/panel/ioctl_power_ctrl
 	chmod 0440 /sys/class/lcd/panel/ioctl_power_ctrl
 
 # debug information for dumpstate
 	chown system system /dev/sec_display_debug
 	chmod 0660 /dev/sec_display_debug
+
+# vendor graphics trace points - perfetto-trace
+    chmod 0660 /sys/kernel/debug/tracing/events/drm/enable
+    chmod 0660 /sys/kernel/tracing/events/drm/enable
+    chmod 0660 /sys/kernel/debug/events/tracing/sde/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/enable
+
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_cmd_release_bw/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_cmd_release_bw/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_encoder_underrun/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_encoder_underrun/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_evtlog/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_evtlog/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_perf_calc_crtc/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_perf_calc_crtc/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_perf_crtc_update/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_perf_crtc_update/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_perf_set_ot/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_perf_set_ot/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_perf_set_qos_luts/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_perf_set_qos_luts/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_perf_uidle_cntr/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_perf_uidle_cntr/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_perf_uidle_status/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_perf_uidle_status/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/sde_perf_update_bus/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/sde_perf_update_bus/enable
+    chmod 0660 /sys/kernel/debug/tracing/events/sde/tracing_mark_write/enable
+    chmod 0660 /sys/kernel/tracing/events/sde/tracing_mark_write/enable	

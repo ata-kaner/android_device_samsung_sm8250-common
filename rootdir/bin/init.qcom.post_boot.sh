@@ -6234,6 +6234,16 @@ case "$console_config" in
         ;;
 esac
 
+echo ufshcd_clk_gating >> /d/tracing/set_event
+echo ufshcd_clk_scaling >> /d/tracing/set_event
+echo ufshcd_runtime_suspend >> /d/tracing/set_event
+echo ufshcd_system_suspend >> /d/tracing/set_event
+echo ufshcd_runtime_resume >> /d/tracing/set_event
+echo ufshcd_command >> /d/tracing/set_event
+echo dispatch_cmd_start >> /d/tracing/set_event
+echo scsi_dispatch_cmd_start >> /d/tracing/set_event
+echo scsi_dispatch_cmd_error >> /d/tracing/set_event
+
 # Parse misc partition path and set property
 misc_link=$(ls -l /dev/block/bootdevice/by-name/misc)
 real_path=${misc_link##*>}

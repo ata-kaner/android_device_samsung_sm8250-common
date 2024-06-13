@@ -35,9 +35,19 @@ import /vendor/etc/init/hw/init.qti.kernel.rc
 
 on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/vendor_modprobe.sh
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules q6_pdr_dlkm q6_notifier_dlkm snd_event_dlkm apr_dlkm adsp_loader_dlkm q6_dlkm native_dlkm pinctrl_wcd_dlkm pinctrl_lpi_dlkm swr_dlkm platform_dlkm hdmi_dlkm stub_dlkm wcd_core_dlkm wsa883x_dlkm bolero_cdc_dlkm wsa_macro_dlkm va_macro_dlkm rx_macro_dlkm tx_macro_dlkm bt_fm_slim wcd938x_dlkm wcd938x_slave_dlkm wcd937x_dlkm wcd937x_slave_dlkm swr_dmic_dlkm swr_haptics_dlkm machine_dlkm radio-i2c-rtc6226-qca cdsprm
+    #exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules q6_pdr_dlkm q6_notifier_dlkm snd_event_dlkm apr_dlkm adsp_loader_dlkm q6_dlkm native_dlkm pinctrl_wcd_dlkm pinctrl_lpi_dlkm swr_dlkm platform_dlkm hdmi_dlkm stub_dlkm wcd_core_dlkm wsa883x_dlkm bolero_cdc_dlkm wsa_macro_dlkm va_macro_dlkm rx_macro_dlkm tx_macro_dlkm bt_fm_slim wcd938x_dlkm wcd938x_slave_dlkm swr_dmic_dlkm swr_haptics_dlkm machine_dlkm radio-i2c-rtc6226-qca mmc_core mmc_block sdhci sdhci-pltfm sdhci-msm cdsprm
     write /proc/sys/kernel/sched_boost 1
     wait /sys/devices/soc0/soc_id
+
+    # midground set
+    mkdir /dev/cpuset/midground
+    copy /dev/cpuset/cpus /dev/cpuset/midground/cpus
+    copy /dev/cpuset/mems /dev/cpuset/midground/mems
+    chown root system /dev/cpuset/midground/cgroup.procs
+    chmod 0664 /dev/cpuset/midground/cgroup.procs
+    chown root system /dev/cpuset/midground/cpus
+    chmod 0664 /dev/cpuset/midground/cpus
+    write /dev/cpuset/midground/cpus 0-2,4-6
 
 on init
     # Scheduler uclamp
@@ -71,18 +81,11 @@ on init
     chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     start logd
 
-    # Property used by vintf for sku specific manifests
-    setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
-
-    # System Performance 0-7 to 0-2,4-7
-    write /dev/cpuset/foreground/cpus 0-2,4-7
-
 on early-fs
     start vold
 
 on fs
     start hwservicemanager
-    mkdir /mnt/vendor/spunvm 0660 system system
     mount_all --early
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
@@ -90,9 +93,6 @@ on fs
     mkdir /mnt/vendor/persist/data 0700 system system
 
 on fs && property:ro.boot.product.vendor.sku=lahaina
-    mkdir /mnt/vendor/spunvm 0660 system system
-    wait /dev/block/bootdevice/by-name/spunvm
-    mount vfat /dev/block/bootdevice/by-name/spunvm /mnt/vendor/spunvm rw noatime shortname=lower,uid=1000,gid=1000,dmask=007,fmask=007,context=u:object_r:vendor_spunvm_file:s0
 
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
@@ -139,6 +139,15 @@ on boot
     chmod 0660 /sys/devices/platform/soc/a94000.i2c/i2c-2/2-0062/trusted_touch_event
     chown system /sys/devices/system/cpu/hyp_core_ctl/enable
     chown system /sys/devices/system/cpu/hyp_core_ctl/hcc_min_freq
+
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-2,4-7
+    write /dev/cpuset/background/cpus 0-2
+    write /dev/cpuset/system-background/cpus 0-2
+    write /dev/cpuset/restricted/cpus 0-2
+    write /dev/cpuset/audio-app/cpus 0-3
+    write /dev/cpuset/sf/cpus 0-7
+
     #USB controller configuration
     setprop vendor.usb.rndis.func.name "gsi"
     setprop vendor.usb.rmnet.func.name "gsi"
@@ -146,11 +155,35 @@ on boot
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop vendor.usb.qdss.inst.name "qdss_mdm"
     setprop vendor.usb.controller a600000.dwc3
-    #Load WLAN driver
-    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/ qca_cld3_wlan qca_cld3_qca6390
-    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/5.4-gki qca_cld3_wlan qca_cld3_qca6390
     #Allow access to memory hotplug device attributes
     chown system system /sys/kernel/mem-offline/anon_migrate
+
+    # System Performance HyPer Permission
+    chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/available_frequencies
+    chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/max_freq
+    chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
+    chmod 444 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/available_frequencies
+    chmod 664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/max_freq
+    chmod 664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
+
+    chmod 0664 /sys/devices/system/cpu/cpu4/sched_load_boost
+    chown root system /sys/devices/system/cpu/cpu4/sched_load_boost
+    chmod 0664 /sys/devices/system/cpu/cpu5/sched_load_boost
+    chown root system /sys/devices/system/cpu/cpu5/sched_load_boost
+    chmod 0664 /sys/devices/system/cpu/cpu6/sched_load_boost
+    chown root system /sys/devices/system/cpu/cpu6/sched_load_boost
+    chmod 0664 /sys/devices/system/cpu/cpu7/sched_load_boost
+    chown root system /sys/devices/system/cpu/cpu7/sched_load_boost
+
+    chown root system /sys/devices/platform/soc/soc:aop-sysfs-msg-client/aop_send_message
+    chmod 0660 /sys/devices/platform/soc/soc:aop-sysfs-msg-client/aop_send_message
+
+    # System Performance TA Booster Permission
+    chown root system /dev/cpuctl/top-app/cpu.uclamp.min
+    chmod 0664 /dev/cpuctl/top-app/cpu.uclamp.min
+
+    # setprop gpu property for nnhal
+    setprop debug.nnhal.gpu.loadkernelcache 0
 
 # For CDSP crash
 on property:ro.boot.debug_level=0x494d
@@ -170,6 +203,12 @@ on charger
     start vendor.power_off_alarm
     setprop sys.usb.controller a600000.dwc3
     setprop sys.usb.configfs 1
+
+service vendor.lowi /vendor/bin/lowirpcd
+   class core
+   user system
+   group system wakelock
+   capabilities BLOCK_SUSPEND
 
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
@@ -203,6 +242,7 @@ on property:init.svc.vendor.per_mgr=running
     start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
+    write /sys/kernel/qcom_rproc/shutdown_in_progress 1
     stop vendor.per_proxy
 
 on property:vold.decrypt=trigger_restart_framework
@@ -226,16 +266,3 @@ service fan_control_turn_off /vendor/bin/fan_control 0
     user root
     disabled
     oneshot
-
-on property:persist.vendor.radio.port_index=""
-    setprop sys.usb.config adb
-
-# light sensor
-on property:vendor.post_boot.parsed=1 && property:ro.product.device=m52xq
-    write /sys/class/sensors/light_sensor/lcd_onoff 0
-
-on property:vendor.post_boot.parsed=1 && property:ro.product.device=a52sxq
-    write /sys/class/sensors/light_sensor/lcd_onoff 1
-
-on property:vendor.post_boot.parsed=1 && property:ro.product.device=a73xq
-    write /sys/class/sensors/light_sensor/lcd_onoff 0

@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
     init.qti.media.rc \
     init.ramplus.rc \
     init.samsung.bsp.rc \
+    init.samsung.connector.rc \
     init.samsung.display.rc \
     init.samsung.rc \
     init.target.rc \
@@ -53,13 +54,15 @@ PRODUCT_PACKAGES += \
     init.vendor.rilchip.rc \
     init.vendor.rilcommon.rc \
     init.vendor.sensors.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    wifi_brcm.rc \
+    wifi_sec.rc
 
 # Vendor scripts
 PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.kernel.post_boot.sh \
-    init.kernel.post_boot-yupik.sh \
+    init.kernel.post_boot-lahaina.sh \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \

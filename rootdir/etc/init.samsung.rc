@@ -30,7 +30,7 @@
 
 import /vendor/etc/init/hw/init.samsung.bsp.rc
 import /vendor/etc/init/hw/init.samsung.display.rc
-import /vendor/etc/init/hw/init.samsung.svcled.rc
+import /vendor/etc/init/hw/init.samsung.connector.rc
 import /vendor/etc/init/init.sensors.spu.rc
 
 on early-init
@@ -40,23 +40,7 @@ on early-init
 on init
     symlink /dev/block/bootdevice/by-name/steady  /dev/block/steady
     symlink /dev/block/bootdevice/by-name/persistent  /dev/block/persistent
-
-    # System Performance HyPer Permission
-    chmod 0440 /sys/kernel/gpu/gpu_freq_table
-    chmod 0660 /sys/kernel/gpu/gpu_max_clock
-    chmod 0660 /sys/kernel/gpu/gpu_min_clock
-    chown root system /sys/kernel/gpu/gpu_freq_table
-    chown root system /sys/kernel/gpu/gpu_max_clock
-    chown root system /sys/kernel/gpu/gpu_min_clock
-
-    chmod 0664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
-    chmod 0664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/max_freq
-    chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
-    chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/max_freq
-
-    chmod 0664 /dev/cpuctl/top-app/cpu.uclamp.min
-    chown root system /dev/cpuctl/top-app/cpu.uclamp.min
-
+	
 # Create carrier folder for HiddenMenu
 on post-fs
     mkdir /efs/carrier 0755 system system
@@ -168,28 +152,13 @@ on early-boot
     chown system system /sys/class/sec/sec_epen/hw_param
 # pogo keyboard
     chown system system /sys/class/sec/sec_keypad/fw_update
-
-    # Fingerprint sensor
-    chmod 0660 /dev/esfp0
-    chown system system /dev/esfp0
-
-    chown system radio /sys/class/fingerprint/fingerprint/type_check
-    chown system radio /sys/class/fingerprint/fingerprint/name
-    chown system radio /sys/class/fingerprint/fingerprint/vendor
-    chown system radio /sys/class/fingerprint/fingerprint/adm
-    chown system radio /sys/class/fingerprint/fingerprint/bfs_values
-    chown system radio /sys/class/fingerprint/fingerprint/hbm
-    chown system radio /sys/class/fingerprint/fingerprint/position
-    chown system radio /sys/class/fingerprint/fingerprint/intcnt
-    chown system radio /sys/class/fingerprint/fingerprint/resetcnt
-    chown system radio /sys/class/fingerprint/fingerprint/rb
-
-    mkdir /data/vendor/biometrics 0770 system system
-    mkdir /data/vendor/fpSnrTest 0770 system system
-    mkdir /efs/biometrics 0770 system system
-    mkdir /efs/biometrics/meta 0770 system system
+# folding digital hall ic
+    chown system system /sys/class/sec/digital_hall/digital_hall_thd
+    chmod 0664 /sys/class/sec/digital_hall/digital_hall_thd
 
 on boot
+    write /proc/sys/vm/stat_interval 10
+
 # Permission for nfc, eSE driver
     chmod 0660 /dev/pn547
     chmod 0660 /dev/p61
@@ -199,6 +168,10 @@ on boot
     chown nfc nfc /dev/sec-nfc
     chmod 0660 /dev/k250a
     chown system system /dev/k250a
+
+# Permission for UWB driver
+    chmod 0660 /dev/sr100
+    chown uwb uwb /dev/sr100
 
 # DP AUX switch control
     chmod 0660 /sys/class/dp_sec/dp_sbu_sw_sel

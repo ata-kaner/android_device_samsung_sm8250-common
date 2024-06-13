@@ -22,7 +22,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Default access point SSID used for tethering -->
-    <string name="wifi_tether_configure_ssid_default" translatable="false">Galaxy S20 FE</string>
+    <string name="wifi_tether_configure_ssid_default" translatable="false">Samsung Galaxy</string>
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
@@ -31,16 +31,10 @@
     <bool translatable="false" name="config_wifi_softap_ieee80211ac_supported">true</bool>
 
     <!-- Enable ACS (auto channel selection) for softap -->
-    <bool translatable="false" name="config_wifi_softap_acs_supported">true</bool>
+    <bool translatable="false" name="config_wifi_softap_acs_supported">false</bool>
 
     <!-- Boolean indicating whether the wifi chipset has 5GHz frequency band support -->
     <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
-
-    <!-- boolean indicating whether the WiFi chipset has 6GHz band support -->
-    <bool translatable="false" name ="config_wifi6ghzSupport">true</bool>
-
-    <!-- Wifi driver supports 6GHz band for softap -->
-    <bool translatable="false" name="config_wifiSoftap6ghzSupported">true</bool>
 
     <!-- True if the firmware supports connected MAC randomization -->
     <bool name="config_wifi_connected_mac_randomization_supported">true</bool>
@@ -54,11 +48,9 @@
     <!-- Wifi driver supports IEEE80211AX for softap -->
     <bool translatable="false" name="config_wifiSoftapIeee80211axSupported">true</bool>
 
-    <!-- Wifi driver supports WPA3 Simultaneous Authentication of Equals (WPA3-SAE) for softap -->
-    <bool translatable="false" name="config_wifi_softap_sae_supported">true</bool>
-
-    <!-- Configure wifi tcp buffersizes in the form:
-         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
-    <string name="config_wifi_tcp_buffers" translatable="false">524288,2097152,8388608,262144,524288,4194304</string>
-
+    <!-- Indicates that 11ax mode is supported on this device
+           Note that if this flag is set to true, then 11ax is assumed to be supported.
+           However, if it is left to the default value of false, the 11ax support will
+           be checked via NL80211 interface -->
+    <bool translatable="false" name="config_wifi11axSupportOverride">true</bool>
 </resources>

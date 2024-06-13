@@ -45,6 +45,26 @@
       "Name": "UClampMax",
       "Controller": "cpu",
       "File": "cpu.uclamp.max"
+    },
+    {
+      "Name": "FreezerState",
+      "Controller": "freezer",
+      "File": "cgroup.freeze"
+    },
+    {
+      "Name": "SFreezerState",
+      "Controller": "sfreezer",
+      "File": "frozen/freezer.state"
+    },
+    {
+      "Name": "SlowdownState",
+      "Controller": "sfreezer",
+      "File": "abnormal/freezer.state"
+    },
+    {
+      "Name": "OlafState",
+      "Controller": "sfreezer",
+      "File": "olaf/freezer.state"
     }
   ],
 
@@ -84,6 +104,45 @@
           {
             "Name": "FreezerState",
             "Value": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SFrozen",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "sfreezer",
+            "Path": "frozen"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SUnfrozen",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "sfreezer",
+            "Path": ""
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Slowdown",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "sfreezer",
+            "Path": "abnormal"
           }
         }
       ]
@@ -541,7 +600,98 @@
         }
       ]
     },
-	{
+    {
+      "Name": "FreezerThawed",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "SFreezerState",
+            "Value": "THAWED"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "FreezerFrozen",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "SFreezerState",
+            "Value": "FROZEN"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SlowdownThawed",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "SlowdownState",
+            "Value": "THAWED"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SlowdownFrozen",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "SlowdownState",
+            "Value": "FROZEN"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "DoSomethingOlaf",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "OlafState",
+            "Value": "FROZEN"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "DoNothingOlaf",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "OlafState",
+            "Value": "THAWED"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "JoinOlaf",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "sfreezer",
+            "Path": "olaf"
+          }
+        }
+      ]
+    },
+    {
       "Name": "TopAppUsage",
       "Actions": [
         {
@@ -566,6 +716,27 @@
           }
         }
       ]
+    },
+    {
+      "Name": "MidgroundProcess",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "midground"
+          }
+        },
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "midground"
+          }
+        }
+      ]
     }
   ],
 
@@ -576,7 +747,7 @@
     },
     {
       "Name": "SCHED_SP_BACKGROUND",
-      "Profiles": [ "HighEnergySaving", "LowIoPriority", "TimerSlackHigh" ]
+      "Profiles": [ "HighEnergySaving", "LowIoPriority", "TimerSlackNormal" ]
     },
     {
       "Name": "SCHED_SP_FOREGROUND",
@@ -596,7 +767,7 @@
     },
     {
       "Name": "CPUSET_SP_BACKGROUND",
-      "Profiles": [ "HighEnergySaving", "ProcessCapacityLow", "LowIoPriority", "TimerSlackHigh", "BackgroundUsage" ]
+      "Profiles": [ "HighEnergySaving", "ProcessCapacityLow", "LowIoPriority", "TimerSlackNormal", "BackgroundUsage" ]
     },
     {
       "Name": "CPUSET_SP_FOREGROUND",

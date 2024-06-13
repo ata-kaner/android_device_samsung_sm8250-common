@@ -90,7 +90,13 @@ BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 BOARD_ROOT_EXTRA_FOLDERS += \
-    efs
+    carrier \
+    efs \
+    metadata \
+    misc \
+    optics \
+    prism \
+    spu
 
 # File systems
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
@@ -172,8 +178,8 @@ TARGET_KEYMASTER_VARIANT := samsung
 TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_samsung_sm8350
 
 # HIDL manifests
-DEVICE_MANIFEST_SKUS := yupik
-DEVICE_MANIFEST_YUPIK_FILES += $(COMMON_PATH)/configs/manifest_yupik.xml
+DEVICE_MANIFEST_SKUS := lahaina
+DEVICE_MANIFEST_LAHAINA_FILES += $(COMMON_PATH)/configs/manifest_lahaina.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/configs/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(COMMON_PATH)/configs/framework_compatibility_matrix.xml \
@@ -212,7 +218,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_RECOVERY_MKBOOTIMG_ARGS += --header_version 2
 TARGET_USES_MKE2FS := true
 BOARD_USES_FULL_RECOVERY_IMAGE := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery/root/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery/root/fstab.default
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_samsung_sm8350

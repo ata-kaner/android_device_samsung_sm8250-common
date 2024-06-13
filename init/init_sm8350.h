@@ -4,12 +4,8 @@
 #include <string.h>
 
 enum device_variant {
-    VARIANT_A528B = 0,
-    VARIANT_A528N,
-    VARIANT_M526B,
-    VARIANT_M526BR,
-    VARIANT_A736B,
-    VARIANT_MAX
+    VARIANT_G990B = 0,
+    VARIANT_G990B2
 };
 
 typedef struct {
@@ -17,37 +13,19 @@ typedef struct {
     std::string codename;
 } variant;
 
-static const variant international_models_a52sxq = {
-    .model = "SM-A528B",
-    .codename = "a52sxq"
+static const variant international_models_r9q = {
+    .model = "SM-G990B",
+    .codename = "r9q"
 };
 
-static const variant asia_models_a52sxq = {
-    .model = "SM-A528N",
-    .codename = "a52sxq"
-};
-
-static const variant international_models_m52xq = {
-    .model = "SM-M526BR",
-    .codename = "m52xq"
-};
-
-static const variant america_models_m52xq = {
-    .model = "SM-M526B",
-    .codename = "m52xq"
-};
-
-static const variant international_models_a73xq = {
-    .model = "SM-A736B",
-    .codename = "a73xq"
+static const variant international_models_r9q2 = {
+    .model = "SM-G990B2",
+    .codename = "r9q2"
 };
 
 static const variant *all_variants[VARIANT_MAX] = {
-    &international_models_a52sxq,
-    &asia_models_a52sxq,
-    &international_models_m52xq,
-    &america_models_m52xq,
-    &international_models_a73xq
+    &international_models_r9q,
+    &international_models_r9q2
 };
 
 #endif // INIT_SM8350_H

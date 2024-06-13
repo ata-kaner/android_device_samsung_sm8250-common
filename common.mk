@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-COMMON_PATH := device/samsung/sm8250-common
+COMMON_PATH := device/samsung/sm8350-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
@@ -72,10 +72,10 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
-    android.hardware.audio@7.0-impl.samsung-sm8250 \
+    android.hardware.audio@7.0-impl.samsung-sm8350 \
     android.hardware.audio.effect@7.0-impl \
     android.hardware.soundtrigger@2.2-impl \
-    audio_parameter_service.samsung_sm8250 \
+    audio_parameter_service.samsung_sm8350 \
     audio.r_submix.default \
     audio.usb.default
 
@@ -243,11 +243,11 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light-service.samsung.sm8250
+    android.hardware.light-service.samsung.sm8350
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.samsung-qcom.sm8250
+    vendor.lineage.livedisplay@2.0-service.samsung-qcom.sm8350
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -440,7 +440,7 @@ PRODUCT_PACKAGES += \
 
 # Touch features
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung_sm8250
+    vendor.lineage.touch@1.0-service.samsung_sm8350
 
 # Vendor service manager
 PRODUCT_PACKAGES += \
@@ -496,4 +496,4 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/samsung/aidl/power-libperfmgr
 
 # Inherit proprietary blobs
-$(call inherit-product, vendor/samsung/sm8250-common/sm8250-common-vendor.mk)
+$(call inherit-product, vendor/samsung/sm8350-common/sm8350-common-vendor.mk)

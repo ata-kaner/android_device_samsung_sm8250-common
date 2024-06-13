@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-COMMON_PATH := device/samsung/sm8250-common
+COMMON_PATH := device/samsung/sm8350-common
 
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -55,14 +55,14 @@ TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a76
 
 # Kernel config
-TARGET_KERNEL_SOURCE        := kernel/samsung/sm8250
+TARGET_KERNEL_SOURCE        := kernel/samsung/sm8350
 TARGET_KERNEL_ARCH          := arm64
 TARGET_KERNEL_HEADER_ARCH   := arm64
-TARGET_LINUX_KERNEL_VERSION := 4.19
+TARGET_LINUX_KERNEL_VERSION := 5.4
 
 # Kernel flags
 BOARD_KERNEL_IMAGE_NAME        := Image
-BOARD_BOOT_HEADER_VERSION      := 2
+BOARD_BOOT_HEADER_VERSION      := 3
 BOARD_KERNEL_SEPARATED_DTBO    := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG   := true
 
@@ -176,7 +176,7 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 TARGET_KEYMASTER_VARIANT := samsung
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_samsung_sm8250
+TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_samsung_sm8350
 
 # HIDL manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
@@ -222,7 +222,7 @@ TARGET_BOARD_INFO_FILE := $(COMMON_PATH)/board-info.txt
 BOARD_USES_FULL_RECOVERY_IMAGE := true
 
 # Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_samsung_sm8250
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_samsung_sm8350
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 
 # Security patch

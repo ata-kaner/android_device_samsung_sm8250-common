@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "android.hardware.lights-service.samsung.sm8250"
+#define LOG_TAG "android.hardware.lights-service.samsung.sm8350"
 
 #include <android-base/stringprintf.h>
 #include <fstream>

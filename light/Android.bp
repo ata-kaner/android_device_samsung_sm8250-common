@@ -5,10 +5,10 @@
 //
 
 cc_binary {
-    name: "android.hardware.light-service.samsung.sm8250",
+    name: "android.hardware.light-service.samsung.sm8350",
     relative_install_path: "hw",
-    init_rc: ["android.hardware.light-service.samsung.sm8250.rc"],
-    vintf_fragments: ["android.hardware.light-service.samsung.sm8250.xml"],
+    init_rc: ["android.hardware.light-service.samsung.sm8350.rc"],
+    vintf_fragments: ["android.hardware.light-service.samsung.sm8350.xml"],
     local_include_dirs: ["include"],
     srcs: [
         "Lights.cpp",

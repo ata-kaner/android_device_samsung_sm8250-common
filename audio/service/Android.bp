@@ -14,7 +14,7 @@
 // limitations under the License.
 
 cc_binary {
-    name: "audio_parameter_service.samsung_sm8250",
+    name: "audio_parameter_service.samsung_sm8350",
     init_rc: ["audio_parameter_service.rc"],
     system_ext_specific: true,
     srcs: [

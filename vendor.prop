@@ -95,7 +95,7 @@ ro.camera.notify_nfc=1
 
 # Chipset
 ro.soc.manufacturer=QTI
-ro.soc.model=SM8250
+ro.soc.model=SM8350
 
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2

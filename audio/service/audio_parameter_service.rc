@@ -1,4 +1,4 @@
-service audio_parameter_service /system_ext/bin/audio_parameter_service.samsung_sm8250
+service audio_parameter_service /system_ext/bin/audio_parameter_service.samsung_sm8350
     oneshot
     disabled
 

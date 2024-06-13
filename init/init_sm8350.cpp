@@ -10,12 +10,10 @@
 #include "property_service.h"
 #include "vendor_init.h"
 
-#include "init_sm8250.h"
+#include "init_sm8350.h"
 
 #define MODEL_NAME_LEN 5
-#define BUILD_NAME_LEN 8
-#define CODENAME_LEN   9
-
+#define MODEL_NAME_LEN_M52 6
 
 static void property_override(char const prop[], char const value[]) {
     prop_info *pi;
@@ -38,8 +36,12 @@ void property_override_quad(char const system_prop[], char const vendor_prop[], 
 void vendor_load_properties()
 {
     const std::string bootloader = android::base::GetProperty("ro.bootloader", "");
-    const std::string bl_model = bootloader.substr(0, MODEL_NAME_LEN);
-    const std::string bl_build = bootloader.substr(MODEL_NAME_LEN);
+    std::string bl_model;
+    if (bootloader.substr(0, MODEL_NAME_LEN_M52) == "M526BR") {
+        bl_model = bootloader.substr(0, MODEL_NAME_LEN_M52);
+    } else {
+        bl_model = bootloader.substr(0, MODEL_NAME_LEN);
+    }
 
     std::string model;
     std::string device;
@@ -56,16 +58,11 @@ void vendor_load_properties()
     }
 
     if (device.size() == 0) {
-        LOG(ERROR) << "Could not detect device, forcing G781B";
-        device = "r8q";
+        LOG(ERROR) << "Could not detect device, forcing r9q";
+        device = "r9q";
     }
 
-    if (bootloader.find("G780G") == 0) {
-        name = device + "xx";
-    }
-    else {
-        name = device + "xxx";
-    }
+    name = device + "xx";
 
     LOG(INFO) << "Found bootloader: " << bootloader.c_str();
     LOG(INFO) << "Setting ro.product.model: " << model.c_str();
@@ -77,13 +74,4 @@ void vendor_load_properties()
     property_override_quad("ro.product.device", "ro.product.vendor.device", "ro.product.product.device", "ro.product.odm.device", device.c_str());
     property_override_quad("ro.product.name", "ro.product.vendor.name", "ro.product.product.name", "ro.product.odm.name", name.c_str());
     property_override("ro.build.product", device.c_str());
-
-    if (bootloader.find("G780G") == 0) {
-         property_override("ro.build.description", "r8qxx-user 11 RP1A.200720.012 G780GXXS8EXC1 release-keys");
-         property_override("ro.vendor.build.fingerprint", "samsung/r8qxx/r8q:11/RP1A.200720.012/G780GXXS8EXC1:user/release-keys");
-    }
-    else if (bootloader.find("G781B") == 0) {
-         property_override("ro.build.description", "r8qxxx-user 11 RP1A.200720.012 G781BXXS9HXC2 release-keys");
-         property_override("ro.vendor.build.fingerprint", "samsung/r8qxxx/r8q:11/RP1A.200720.012/G781BXXS9HXC2:user/release-keys");
-    }
 }

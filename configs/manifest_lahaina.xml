@@ -150,6 +150,39 @@
         <fqname>@1.0::IWeaver/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.lineage.livedisplay</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IAdaptiveBacklight</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IDisplayColorCalibration</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ISunlightEnhancement</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.0::IAdaptiveBacklight/default</fqname>
+        <fqname>@2.0::IDisplayColorCalibration/default</fqname>
+        <fqname>@2.0::ISunlightEnhancement/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.touch</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGloveMode</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ITouchscreenGesture</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>com.qualcomm.qti.imscmservice</name>
         <transport>hwbinder</transport>
         <version>2.2</version>
@@ -555,10 +588,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.0::ISehGnss/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.samsung.hardware.media.converter</name>
-        <fqname>ISehColorConverterStore/default</fqname>
     </hal>
     <sepolicy>
         <version>30.0</version>

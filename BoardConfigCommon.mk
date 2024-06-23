@@ -174,6 +174,9 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 # Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
 
+# Include
+$(call soong_config_set,samsungVars,target_specific_header_path,$(COMMON_PATH)/include)
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_samsung_sm8250
 

@@ -161,11 +161,9 @@ BOARD_USES_ALSA_AUDIO := true
 # Camera
 SOONG_CONFIG_NAMESPACES += samsungCameraVars
 SOONG_CONFIG_samsungCameraVars += \
-    needs_sec_reserved_field \
-    extra_ids
+    needs_sec_reserved_field
 
 SOONG_CONFIG_samsungCameraVars_needs_sec_reserved_field := true
-SOONG_CONFIG_samsungCameraVars_extra_ids := 20,21,23,50,52
 
 # Health
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/batt_slate_mode

@@ -10,9 +10,11 @@
 /data/vendor/gatekeeper(/.*)?                u:object_r:gatekeeper_vendor_data_file:s0
 
 # DEV
+/dev/block/platform/soc/1d84000.ufshc/by-name/bluetooth      u:object_r:vendor_modem_block_device:s0
+/dev/block/platform/soc/ld84000.ufshc/by-name/carrier        u:object_r:carrier_block_device:s0
+/dev/block/platform/soc/1d84000.ufshc/by-name/dqmdbg         u:object_r:dqmdbg_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/dsp            u:object_r:dsp_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/dtbo           u:object_r:dtbo_block_device:s0
-/dev/block/platform/soc/1d84000.ufshc/by-name/dqmdbg         u:object_r:dqmdbg_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/efs            u:object_r:efs_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/modem          u:object_r:vendor_modem_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/omr            u:object_r:omr_block_device:s0

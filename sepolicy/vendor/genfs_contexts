@@ -100,10 +100,6 @@ genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0
 
 genfscon sysfs /devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/input/input3/wakeup                                 u:object_r:sysfs_wakeup:s0
 
-genfscon sysfs /devices/platform/soc/a600000.ssusb/wakeup                                                                   u:object_r:sysfs_wakeup:s0
-
-genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm8150@0:qcom,pm8150_rtc/wakeup               u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm8150@0:qcom,power-on@800/wakeup             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-04/c440000.qcom,spmi:qcom,pm8150l@4:qcom,power-on@800/wakeup            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-08/c440000.qcom,spmi:qcom,pmxprairie@8:qcom,power-on@800/wakeup         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/b0000000.qcom,cnss-qca6490/wakeup                                                                      u:object_r:sysfs_wakeup:s0
@@ -116,8 +112,6 @@ genfscon sysfs /devices/platform/soc/soc:i2c@22/i2c-6/6-003b/power_supply/mfc-ch
 genfscon sysfs /devices/platform/soc/soc:sec-dual-battery/power_supply/sec-dual-battery/wakeup                              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:sec-direct-charger/power_supply/sec-direct-charger/wakeup                          u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,msm-audio-apr/soc:qcom,msm-audio-apr:qcom,q6core-audio/soc:qcom,msm-audio-apr:qcom,q6core-audio:sound/Listen   u:object_r:sysfs_wakeup:s0
-
-genfscon sysfs /devices/virtual/diag/diag/wakeup                                                                            u:object_r:sysfs_wakeup:s0
 
 # Sensors
 genfscon sysfs /devices/virtual/camera/                                                                     u:object_r:sysfs_camera:s0

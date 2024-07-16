@@ -18,7 +18,6 @@
 /dev/block/platform/soc/1d84000.ufshc/by-name/omr            u:object_r:omr_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/persistent     u:object_r:frp_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/sec_efs        u:object_r:sec_efs_block_device:s0
-/dev/block/platform/soc/1d84000.ufshc/by-name/bluetooth      u:object_r:vendor_modem_block_device:s0
 /dev/block/platform/soc/1d84000.ufshc/by-name/spu            u:object_r:spu_block_device:s0
 /dev/ttyGS[0-9]*	                                         u:object_r:serial_device:s0
 

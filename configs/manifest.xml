@@ -46,10 +46,8 @@
         <interface>
             <name>IGatekeeper</name>
             <instance>default</instance>
-            <instance>mdfpp</instance>
         </interface>
         <fqname>@1.0::IGatekeeper/default</fqname>
-        <fqname>@1.0::IGatekeeper/mdfpp</fqname>
     </hal>
     <hal format="hidl" override="true">
         <name>android.hardware.keymaster</name>

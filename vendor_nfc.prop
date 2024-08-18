@@ -1,0 +1,9 @@
+# NFC
+ro.vendor.nfc.info.antpos=1
+ro.vendor.nfc.support.advancedsetting=false
+ro.vendor.nfc.support.autoselect=true
+ro.vendor.nfc.support.defaultaid=true
+ro.vendor.nfc.support.ese=true
+ro.vendor.nfc.support.nonaid=true
+ro.vendor.nfc.support.othercategory=true
+ro.vendor.nfc.support.uicc=true

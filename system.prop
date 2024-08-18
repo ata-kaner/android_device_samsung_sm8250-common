@@ -1,8 +1,8 @@
 # Camera
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.aperture,org.lineageos.aperture.dev
 
-# RIL
-ro.vendor.qti.va_aosp.support=1
-
 # Netflix
 ro.netflix.bsp_rev=Q8250-19134-1
+
+# RIL
+ro.vendor.qti.va_aosp.support=1

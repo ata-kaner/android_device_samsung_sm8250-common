@@ -449,9 +449,6 @@ vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0.so
 
 # Certificate Authority
--vendor/app/CACertService/CACertService.apk
-vendor/lib64/libcacertclient.so
-vendor/lib64/libjnihelper.so
 vendor/lib64/vendor.qti.hardware.cacert@1.0.so
 
 # Charger
@@ -625,37 +622,11 @@ vendor/firmware/cs40l25a_clab.wmfw
 vendor/firmware/cs40l25a_exc.bin
 
 # GNSS
-vendor/bin/hw/android.hardware.gnss@2.1-service-qti
-vendor/bin/loc_launcher
-vendor/bin/lowi-server
-vendor/bin/xtra-daemon
-vendor/etc/flp.conf
-vendor/etc/gnss_antenna_info.conf
-vendor/etc/gps.conf
-vendor/etc/init/android.hardware.gnss@2.1-service-qti.rc
-vendor/etc/izat.conf
-vendor/etc/lowi.conf
-vendor/etc/sap.conf
--vendor/etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml
-vendor/lib/hw/android.hardware.gnss@2.1-impl-qti.so
-vendor/lib/hw/vendor.samsung.hardware.gnss@2.0-impl-sec.so
-vendor/lib/libbatching.so
 vendor/lib/libdataitems.so
 vendor/lib/libgarden.so
-vendor/lib/libgeofencing.so
-vendor/lib/libgnss.so
-vendor/lib/libgnsspps.so
 vendor/lib/libgps.utils.so
-vendor/lib/libizat_client_api.so
-vendor/lib/libizat_core.so
 vendor/lib/libloc_core.so
-vendor/lib/libloc_socket.so
 vendor/lib/liblocation_api.so
-vendor/lib/liblocationservice_glue.so
-vendor/lib/liblowi_client.so
-vendor/lib/libqcc_file_agent.so
-vendor/lib/libqdma_file_agent.so
-vendor/lib/libsynergy_loc_api.so
 vendor/lib/vendor.qti.gnss@1.0.so
 vendor/lib/vendor.qti.gnss@1.1.so
 vendor/lib/vendor.qti.gnss@1.2.so
@@ -664,28 +635,11 @@ vendor/lib/vendor.qti.gnss@2.1.so
 vendor/lib/vendor.qti.gnss@3.0.so
 vendor/lib/vendor.qti.gnss@4.0.so
 vendor/lib/vendor.qti.hardware.qccsyshal@1.0.so
-vendor/lib/vendor.samsung.hardware.gnss@2.0.so
-vendor/lib64/hw/android.hardware.gnss@2.1-impl-qti.so
-vendor/lib64/hw/vendor.samsung.hardware.gnss@2.0-impl-sec.so
-vendor/lib64/libbatching.so
-vendor/lib64/libcdfw.so
-vendor/lib64/libcdfw_remote_api.so
 vendor/lib64/libdataitems.so
 vendor/lib64/libgarden.so
-vendor/lib64/libgeofencing.so
-vendor/lib64/libgnss.so
-vendor/lib64/libgnsspps.so
 vendor/lib64/libgps.utils.so
-vendor/lib64/libizat_client_api.so
-vendor/lib64/libizat_core.so
 vendor/lib64/libloc_core.so
-vendor/lib64/libloc_socket.so
 vendor/lib64/liblocation_api.so
-vendor/lib64/liblocationservice_glue.so
-vendor/lib64/liblowi_client.so
-vendor/lib64/libqcc_file_agent.so
-vendor/lib64/libqdma_file_agent.so
-vendor/lib64/libsynergy_loc_api.so
 vendor/lib64/vendor.qti.gnss@1.0.so
 vendor/lib64/vendor.qti.gnss@1.1.so
 vendor/lib64/vendor.qti.gnss@1.2.so
@@ -897,12 +851,6 @@ vendor/bin/irsc_util
 vendor/bin/pd-mapper
 vendor/bin/qrtr-ns
 vendor/bin/ssr_setup
-vendor/etc/locale/plmn_delta_zh-rCN.bin
-vendor/etc/locale/plmn_delta_zh-rHK.bin
-vendor/etc/locale/plmn_delta_zh-rTW.bin
-vendor/etc/plmn_delta.bin
-vendor/etc/plmn_delta_attaio.bin
-vendor/etc/plmn_delta_usagsm.bin
 vendor/lib/libdiagjni.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
@@ -934,8 +882,6 @@ vendor/lib64/libqmi_csi.so
 vendor/lib64/libqmi_csvt_srvc.so
 vendor/lib64/libqmi_encdec.so
 vendor/lib64/libqmi_legacy.so
-vendor/lib64/libqmiservices-ext.so
-vendor/lib64/libqmiservices-sem-ext.so
 vendor/lib64/libqmiservices.so
 
 # QTEE
@@ -960,13 +906,7 @@ vendor/etc/init/ipa_fws.rc
 vendor/etc/init/ipacm-diag.rc
 vendor/etc/init/netmgrd.rc
 vendor/etc/init/vendor.qti.tftp.rc
-vendor/etc/locale/plmn_delta_eng.bin
-vendor/etc/mtu-conf.xml
-vendor/etc/pdpcnt-conf.xml
-vendor/etc/plmn_delta_hktw.bin
-vendor/etc/plmn_se13.bin
 vendor/etc/sec_config
-vendor/etc/sec_config_oem
 vendor/lib/libconfigdb.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libmdmdetect.so
@@ -978,11 +918,7 @@ vendor/lib/libpdnotifier.so
 vendor/lib/libqcmaputils.so
 vendor/lib/libqrtr.so
 vendor/lib/libqsocket.so
-vendor/lib/libsec_semRil.so
-vendor/lib/libsecril-client.so
 vendor/lib/libsystem_health_mon.so
-vendor/lib64/libSemDataProps.so
-vendor/lib64/libSemTelephonyProps.so
 vendor/lib64/libconfigdb.so
 vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libengmode_client.so
@@ -996,18 +932,12 @@ vendor/lib64/libpdnotifier.so
 vendor/lib64/libqcmaputils.so
 vendor/lib64/libqrtr.so
 vendor/lib64/libqsocket.so
-vendor/lib64/libril_sem.so
-vendor/lib64/libsec-ril.so|3298a4818e1a2a42aaef90ac8ae53a1c2ea8ce3a
-vendor/lib64/libsec_semRil.so
 vendor/lib64/libsecril-client.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libvkmanager_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.1.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.2.so
-vendor/lib64/vendor.samsung.hardware.radio.bridge@2.0.so
-vendor/lib64/vendor.samsung.hardware.radio.bridge@2.1.so
-vendor/lib64/vendor.samsung.hardware.radio.channel@2.0.so
 
 # RemoteFS
 vendor/bin/rmt_storage

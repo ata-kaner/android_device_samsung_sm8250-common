@@ -30,6 +30,13 @@ write_headers "gts7l gts7lwifi gts7xl gts7xlwifi r8q"
 # The standard common blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
+# Exclude blobs from non-cellular tablet builds
+printf '\n%s\n' 'ifneq ($(TARGET_HAS_NO_RIL),true)' >> "$PRODUCTMK"
+
+write_makefiles "${MY_DIR}/proprietary-files-radio.txt" true
+
+printf '%s\n' 'endif' >> "$PRODUCTMK"
+
 # Finish
 write_footers
 

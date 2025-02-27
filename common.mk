@@ -222,6 +222,7 @@ $(call soong_config_set,samsungVars,target_specific_header_path,$(LOCAL_PATH)/in
 
 # Kernel
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
+PRODUCT_ENABLE_UFFD_GC := true
 
 # Keymaster
 PRODUCT_PACKAGES += \

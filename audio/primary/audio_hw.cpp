@@ -30,7 +30,6 @@ std::mutex gHookLock;
 
 hw_module_t* gStockModule;
 int (*gStockSetParameters)(audio_hw_device*, const char*);
-int (*gStockSetMode)(audio_hw_device*, audio_mode_t);
 int (*gStockOpenOutputStream)(audio_hw_device*, audio_io_handle_t, audio_devices_t,
                               audio_output_flags_t, audio_config*, audio_stream_out**, const char*);
 
@@ -101,31 +100,6 @@ int adevSetParameters(audio_hw_device* dev, const char* kvpairs) {
     return gStockSetParameters(dev, params.c_str());
 }
 
-int adevSetMode(audio_hw_device* dev, audio_mode_t mode) {
-    // Samsung sets the g_call_sim_slot audio parameter in the framework.
-    // vendor.calls.slot_id{0,1} report 1 while that SIM is in a call, 0 otherwise.
-    char simSlot1[PROPERTY_VALUE_MAX], simSlot2[PROPERTY_VALUE_MAX];
-
-    property_get("vendor.calls.slot_id0", simSlot1, "");
-    property_get("vendor.calls.slot_id1", simSlot2, "");
-
-    // Wait until one SIM slot reports a call.
-    if (mode == AUDIO_MODE_IN_CALL) {
-        while (!strcmp(simSlot1, "0") && !strcmp(simSlot2, "0")) {
-            property_get("vendor.calls.slot_id0", simSlot1, "");
-            property_get("vendor.calls.slot_id1", simSlot2, "");
-        }
-    }
-
-    if (!strcmp(simSlot1, "1")) {
-        gStockSetParameters(dev, "g_call_sim_slot=0x01");
-    } else if (!strcmp(simSlot2, "1")) {
-        gStockSetParameters(dev, "g_call_sim_slot=0x02");
-    }
-
-    return gStockSetMode(dev, mode);
-}
-
 int adevOpenOutputStream(audio_hw_device* dev, audio_io_handle_t handle, audio_devices_t devices,
                          audio_output_flags_t flags, audio_config* config,
                          audio_stream_out** stream_out, const char* address) {
@@ -174,10 +148,8 @@ int adevOpen(const hw_module_t* /* module */, const char* name, hw_device_t** de
         std::lock_guard<std::mutex> lock(gHookLock);
         if (adev->set_parameters != adevSetParameters) {
             gStockSetParameters = adev->set_parameters;
-            gStockSetMode = adev->set_mode;
             gStockOpenOutputStream = adev->open_output_stream;
             adev->set_parameters = adevSetParameters;
-            adev->set_mode = adevSetMode;
             adev->open_output_stream = adevOpenOutputStream;
         }
     }

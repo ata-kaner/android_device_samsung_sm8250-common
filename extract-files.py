@@ -44,6 +44,11 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     ('vendor/lib64/libhypermotion_core.so', 'vendor/lib64/libsensorlistener.so', 'vendor/lib64/libvdis_core.so'): blob_fixup()
         .add_needed('libshim_sensorndkbridge.so'),
+    'vendor/lib64/libscaler_hw.unifunc.so': blob_fixup()
+        .add_needed('libui_shim.so'),
+    'vendor/lib64/unihal_main@2.1.so': blob_fixup()
+        .add_needed('libshim_sensorndkbridge.so')
+        .add_needed('libui_shim.so'),
     ('vendor/lib64/hw/gatekeeper.mdfpp.so', 'vendor/lib64/libkeymaster_helper.so', 'vendor/lib64/libskeymaster4device.so'): blob_fixup()
         .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
     'vendor/lib64/libSecC2ComponentStore.so': blob_fixup()

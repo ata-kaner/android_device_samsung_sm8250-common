@@ -192,6 +192,7 @@ vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 
 # Camera (UniHAL)
 vendor/lib64/hw/camera.unihal.default.so
+vendor/lib64/libexifa.camera.samsung.so
 vendor/lib64/libformatConverter.unifunc.so
 vendor/lib64/libimgproc_sw.unifunc.so
 vendor/lib64/libjpegencoder_sw.unifunc.so

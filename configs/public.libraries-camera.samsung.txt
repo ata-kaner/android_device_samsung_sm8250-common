@@ -1,0 +1,16 @@
+libAIQSolution_MPI.camera.samsung.so
+libBeauty_v4.camera.samsung.so
+libFaceRestoration.camera.samsung.so
+libFace_Landmark_API.camera.samsung.so
+libHprFace_GAE_api.camera.samsung.so
+libHpr_RecGAE_cvFeature_v1.0.camera.samsung.so
+libLocalTM_pcc.camera.samsung.so
+libMultiFrameProcessing30.camera.samsung.so
+libOpenCv.camera.samsung.so
+libPortraitSolution.camera.samsung.so
+libSwIsp_wrapper_v1.camera.samsung.so
+libcore2nativeutil.camera.samsung.so
+libexifa.camera.samsung.so
+libjpega.camera.samsung.so
+libsrib_CNNInterface.camera.samsung.so
+libsrib_humanaware_engine.camera.samsung.so

@@ -131,4 +131,13 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl">
+        <name>vendor.samsung.hardware.snap</name>
+        <version>1</version>
+        <interface>
+            <name>ISehSnap</name>
+            <instance>default</instance>
+            <instance>secsnap</instance>
+        </interface>
+    </hal>
 </manifest>

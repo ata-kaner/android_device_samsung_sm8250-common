@@ -11,6 +11,7 @@ allow hal_camera_default vendor_sysfs_camera_writable:file rw_file_perms;
 
 allow hal_camera_default proc_meminfo:file r_file_perms;
 
+hal_client_domain(hal_camera_default, hal_samsung_snap)
 hal_client_domain(hal_camera_default, hal_thermal)
 
 binder_call(hal_camera_default, system_server)

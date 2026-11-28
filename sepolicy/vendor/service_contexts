@@ -7,5 +7,8 @@ vendor.samsung.hardware.radio.channel.ISehRadioChannel/epdgd2       u:object_r:h
 vendor.samsung.hardware.radio.channel.ISehRadioChannel/imsd         u:object_r:hal_radio_service:s0
 vendor.samsung.hardware.radio.channel.ISehRadioChannel/imsd2        u:object_r:hal_radio_service:s0
 
+# SNAP
+vendor.samsung.hardware.snap.ISehSnap/secsnap                       u:object_r:hal_samsung_snap_service:s0
+
 # S pen
 vendor.samsung.hardware.spen.ISPen/default                          u:object_r:hal_samsung_spen_service:s0

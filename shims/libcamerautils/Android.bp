@@ -1,0 +1,16 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_shared {
+    name: "libshim_camerautils",
+    srcs: ["CameraUtils.cpp"],
+    shared_libs: [
+        "libcamera_client",
+        "libcamera_metadata",
+        "libutils",
+    ],
+    compile_multilib: "64",
+}

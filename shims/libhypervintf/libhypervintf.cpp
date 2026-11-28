@@ -22,6 +22,9 @@ void hyper_checkResourceExist(int) {
 void hyper_acquire(HyPerToken, std::vector<int>) {
 }
 
+void hyper_acquire(HyPerToken, int, std::vector<int>) {
+}
+
 void hyper_setProcName(std::string) {
 }
 

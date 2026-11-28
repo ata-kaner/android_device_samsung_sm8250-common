@@ -1,0 +1,1 @@
+libsnap_aidl.snap.samsung.so

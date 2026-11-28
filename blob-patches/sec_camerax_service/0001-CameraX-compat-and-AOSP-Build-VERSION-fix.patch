@@ -1,0 +1,64 @@
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index 70b212e..3c620f4 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -69,5 +69,11 @@
+         <uses-native-library android:name="libTracking.polarr.so" android:required="false"/>
+         <uses-native-library android:name="libFeature.polarr.so" android:required="false"/>
+         <service android:exported="false" android:name="com.samsung.android.camera.core2.processor.util.PostProcessorLoggingService"/>
++        <uses-native-library android:name="libMultiFrameProcessing30.camera.samsung.so" android:required="false"/>
++        <uses-native-library android:name="libLocalTM_pcc.camera.samsung.so" android:required="false"/>
++        <uses-native-library android:name="libSwIsp_wrapper_v1.camera.samsung.so" android:required="false"/>
++        <uses-native-library android:name="libsnap_aidl.snap.samsung.so" android:required="false"/>
++        <uses-native-library android:name="libsrib_humanaware_engine.camera.samsung.so" android:required="false"/>
++        <uses-native-library android:name="libsrib_CNNInterface.camera.samsung.so" android:required="false"/>
+     </application>
+ </manifest>
+diff --git a/smali/com/samsung/android/camera/core2/node/SefNode.smali b/smali/com/samsung/android/camera/core2/node/SefNode.smali
+index d4ab8c8..1c7627b 100644
+--- a/smali/com/samsung/android/camera/core2/node/SefNode.smali
++++ b/smali/com/samsung/android/camera/core2/node/SefNode.smali
+@@ -1278,7 +1278,7 @@
+     return-void
+ 
+     :cond_0
+-    sget v0, Landroid/os/Build$VERSION;->SEM_FIRST_SDK_INT:I
++    sget v0, Landroid/os/Build$VERSION;->DEVICE_INITIAL_SDK_INT:I
+ 
+     const/16 v3, 0x21
+ 
+diff --git a/smali/com/samsung/android/camera/core2/processor/postSaving/module/PostSavingModuleSefInsert.smali b/smali/com/samsung/android/camera/core2/processor/postSaving/module/PostSavingModuleSefInsert.smali
+index 82926e9..3a52249 100644
+--- a/smali/com/samsung/android/camera/core2/processor/postSaving/module/PostSavingModuleSefInsert.smali
++++ b/smali/com/samsung/android/camera/core2/processor/postSaving/module/PostSavingModuleSefInsert.smali
+@@ -254,7 +254,7 @@
+ 
+     invoke-virtual {p1, v1}, Ljava/util/Optional;->ifPresent(Ljava/util/function/Consumer;)V
+ 
+-    sget p1, Landroid/os/Build$VERSION;->SEM_FIRST_SDK_INT:I
++    sget p1, Landroid/os/Build$VERSION;->DEVICE_INITIAL_SDK_INT:I
+ 
+     const/16 v1, 0x21
+ 
+diff --git a/smali/com/samsung/android/camera/core2/util/JpegUtils.smali b/smali/com/samsung/android/camera/core2/util/JpegUtils.smali
+index 1acf9f9..772ee13 100644
+--- a/smali/com/samsung/android/camera/core2/util/JpegUtils.smali
++++ b/smali/com/samsung/android/camera/core2/util/JpegUtils.smali
+@@ -1005,7 +1005,7 @@
+ 
+     invoke-virtual {v3, v8}, Ljava/util/Optional;->ifPresent(Ljava/util/function/Consumer;)V
+ 
+-    sget v3, Landroid/os/Build$VERSION;->SEM_FIRST_SDK_INT:I
++    sget v3, Landroid/os/Build$VERSION;->DEVICE_INITIAL_SDK_INT:I
+ 
+     const-string v8, "SAMSUNG"
+ 
+@@ -1053,7 +1053,7 @@
+ 
+     invoke-static {v3, v13}, Lcom/samsung/android/camera/core2/util/CLog;->h(Lcom/samsung/android/camera/core2/util/CLog$Tag;Ljava/lang/String;)V
+ 
+-    sget v13, Landroid/os/Build$VERSION;->SEM_FIRST_SDK_INT:I
++    sget v13, Landroid/os/Build$VERSION;->DEVICE_INITIAL_SDK_INT:I
+ 
+     if-lt v13, v10, :cond_7
+ 

@@ -137,8 +137,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles_kona_tablet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 endif
 
+$(call inherit-product, hardware/samsung/samsung-fwk/samsung-fwk.mk)
+
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider-service.samsung
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/permissions/sec_camerax_impl.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/sec_camerax_impl.xml
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -328,6 +333,11 @@ endif
 
 # Public libraries
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/public.libraries-arcsoft.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-arcsoft.txt \
+    $(LOCAL_PATH)/configs/public.libraries-camera.samsung.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-camera.samsung.txt \
+    $(LOCAL_PATH)/configs/public.libraries-media.samsung.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-media.samsung.txt \
+    $(LOCAL_PATH)/configs/public.libraries-quram.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-quram.txt \
+    $(LOCAL_PATH)/configs/public.libraries-snap.samsung.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-snap.samsung.txt \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # QTI fwk-detect

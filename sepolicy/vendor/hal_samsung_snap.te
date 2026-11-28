@@ -1,0 +1,5 @@
+binder_call(hal_samsung_snap_client, hal_samsung_snap_server)
+binder_call(hal_samsung_snap_server, hal_samsung_snap_client)
+
+add_service(hal_samsung_snap_server, hal_samsung_snap_service)
+allow hal_samsung_snap_client hal_samsung_snap_service:service_manager find;

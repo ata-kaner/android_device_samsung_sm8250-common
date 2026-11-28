@@ -1,0 +1,6 @@
+libface_landmark.arcsoft.so
+libhigh_dynamic_range.arcsoft.so
+libhumantracking.arcsoft.so
+libimage_enhancement.arcsoft.so
+liblow_light_hdr.arcsoft.so
+libveengine.arcsoft.so

@@ -29,11 +29,36 @@ namespace_imports = [
 ]
 
 
+def lib_fixup_system_suffix(lib: str, partition: str, *args, **kwargs):
+    return f'{lib}_system' if partition == 'system' else lib
+
+
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
+    (
+        'libBeauty_v4.camera.samsung',
+        'libFace_Landmark_API.camera.samsung',
+        'libHprFace_GAE_api.camera.samsung',
+        'libHpr_RecGAE_cvFeature_v1.0.camera.samsung',
+        'libOpenCv.camera.samsung',
+        'libbeautyshot.arcsoft',
+        'libexifa.camera.samsung',
+        'libimage_enhancement.arcsoft',
+        'libmpbase',
+        'libpadm',
+        'libsavscmn',
+    ): lib_fixup_system_suffix,
 }
 
 blob_fixups: blob_fixups_user_type = {
+    'system/lib64/libcore2nativeutil.camera.samsung.so': blob_fixup()
+        .add_needed('libshim_camerautils.so'),
+    'system/priv-app/sec_camerax_service/sec_camerax_service.apk': blob_fixup()
+        .apktool_patch('blob-patches/sec_camerax_service'),
+    'vendor/bin/hw/vendor.samsung.hardware.snap-service': blob_fixup()
+        .remove_needed('vendor.samsung.hardware.hyper-V2-ndk_platform.so'),
+    'vendor/etc/init/vendor.samsung.hardware.snap-default.rc': blob_fixup()
+        .regex_replace('interface aidl default', 'interface aidl vendor.samsung.hardware.snap.ISehSnap/secsnap'),
     ('vendor/lib/mediadrm/libwvdrmengine.so', 'vendor/lib/libwvhidl.so'): blob_fixup()
         .add_needed('libcrypto_shim.so'),
     'vendor/lib64/libarcsoft_multi_frame_video_hdr.so': blob_fixup()
